@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# all the commands in the pipe chain use null terminated filenames to be
+# compatible with all possible filenames
+# (even ones that may include a newline in the filename)
+#
+# 'find' outputs all filenames in the project directory.
+# 'egrep' filters the filenames to the ones we want to include in the archive.
+# 'tar' reads the list of null terminated filenames to archive from stdin.
+
+cd ..
+find ResumeGenerator -type f -print0 | \
+egrep --null-data --null '(\.((java)|(jar))|(resume_sample.xml)|(resume_sample.pdf))$' | \
+tar --create --verbose --gzip --file ResumeGenerator/ResumeGenerator.tar.gz --null --files-from=-
