@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Resume Generator Test Suite" verbose="1">
+    <test name="Test all">
+        <packages>
+            <package name="me.romankh.resumegenerator"/>
+        </packages>
+    </test>
+
+    <test name="Test parser">
+        <packages>
+            <package name="me.romankh.resumegenerator.parser"/>
+        </packages>
+    </test>
+</suite>

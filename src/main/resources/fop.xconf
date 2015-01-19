@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<fop version="1.0">
+  <!-- Base URL for resolving relative URLs -->
+  <base>.</base>
+
+  <renderers>
+    <renderer mime="application/pdf">
+      <fonts>
+        <!-- Register all fonts found in the 'fonts' directory. -->
+        <directory recursive="true">fonts</directory>
+      </fonts>
+    </renderer>
+  </renderers>
+</fop>

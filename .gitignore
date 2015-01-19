@@ -1,0 +1,10 @@
+.DS_Store
+*.swp
+
+# Maven
+target/
+
+# IntelliJ IDEA
+.idea/
+out/
+*.iml
