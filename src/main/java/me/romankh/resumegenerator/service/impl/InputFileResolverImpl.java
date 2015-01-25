@@ -45,13 +45,7 @@ public class InputFileResolverImpl implements InputFileResolver {
     if (useDefaults) {
       is = getClass().getClassLoader().getResourceAsStream(filePath);
     } else {
-      // If the file path is not absolute, resolve it relative to the config properties file in which it is specified.
-      File file = new File(filePath);
-      if (!file.isAbsolute()) {
-        File configFile = new File(configFilePath);
-        file = new File(configFile.getParent(), filePath);
-      }
-
+      File file = resolveFilePath(filePath);
       is = new BufferedInputStream(new FileInputStream(file));
     }
 
@@ -59,20 +53,20 @@ public class InputFileResolverImpl implements InputFileResolver {
   }
 
   /**
-   * Returns null if the file at 'xmlFilePath' has not been modified since it was cached ('cachedFileModifiedDate').
+   * Returns null if the file at 'filePath' has not been modified since it was cached ('cachedFileModifiedDate').
    * Null is also returned when using the default input files (since they are on the classpath, they can be in a jar)
    * or if the file can not be found.
    * Otherwise, returns the file's modification date.
    *
-   * @param xmlFilePath
+   * @param filePath
    * @param cachedFileModifiedDate
    * @return
    */
-  public Date getDateModifiedSince(String xmlFilePath, Date cachedFileModifiedDate) {
+  public Date getDateModifiedSince(String filePath, Date cachedFileModifiedDate) {
     if (!useDefaults) {
-      File xmlFile = new File(xmlFilePath);
-      if (xmlFile.exists()) {
-        Date modifiedDate = new Date(xmlFile.lastModified());
+      File file = resolveFilePath(filePath);
+      if (file.exists()) {
+        Date modifiedDate = new Date(file.lastModified());
         if (cachedFileModifiedDate == null || modifiedDate.after(cachedFileModifiedDate)) {
           return modifiedDate;
         }
@@ -80,5 +74,16 @@ public class InputFileResolverImpl implements InputFileResolver {
     }
 
     return null;
+  }
+
+  File resolveFilePath(String filePath) {
+    // If the file path is not absolute, resolve it relative to the config properties file in which it is specified.
+    File file = new File(filePath);
+    if (!file.isAbsolute()) {
+      File configFile = new File(configFilePath);
+      file = new File(configFile.getParent(), filePath);
+    }
+
+    return file;
   }
 }
