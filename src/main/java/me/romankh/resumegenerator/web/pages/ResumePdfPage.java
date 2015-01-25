@@ -48,6 +48,11 @@ public class ResumePdfPage {
               cachingPdfRenderer.render(os);
             } catch (Exception e) {
               logger.error("Unable to render PDF", e);
+              try {
+                os.close();
+              } catch (IOException ee) {
+                logger.error(ee.getMessage(), e);
+              }
             }
           }
         }
