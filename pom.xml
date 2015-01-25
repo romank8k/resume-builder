@@ -19,7 +19,6 @@
     <dependency.version.fop>1.1</dependency.version.fop>
     <dependency.version.guava>18.0</dependency.version.guava>
     <dependency.version.guice>4.0-beta5</dependency.version.guice>
-    <dependency.version.itextpdf>5.4.5</dependency.version.itextpdf>
     <dependency.version.jcommander>1.30</dependency.version.jcommander>
     <dependency.version.jetty>9.2.6.v20141205</dependency.version.jetty>
     <dependency.version.jsr305>2.0.1</dependency.version.jsr305>
@@ -148,12 +147,6 @@
       <groupId>com.google.code.findbugs</groupId>
       <artifactId>jsr305</artifactId>
       <version>${dependency.version.jsr305}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>com.itextpdf</groupId>
-      <artifactId>itextpdf</artifactId>
-      <version>${dependency.version.itextpdf}</version>
     </dependency>
 
     <dependency>

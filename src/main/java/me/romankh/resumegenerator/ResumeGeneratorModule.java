@@ -136,10 +136,7 @@ public class ResumeGeneratorModule extends AbstractModule {
 
   @SuppressWarnings("deprecation")
   private void bindServices() {
-    bind(ResumeGeneratorService.class).annotatedWith(IText.class).to(ResumeGeneratorITextImpl.class);
     bind(ResumeGeneratorService.class).annotatedWith(XSLT.class).to(ResumeGeneratorXSLTImpl.class);
-
-    bind(CachingPDFRenderer.class).annotatedWith(IText.class).to(CachingITextPDFRenderer.class);
     bind(CachingPDFRenderer.class).annotatedWith(XSLT.class).to(CachingXSLTPDFRenderer.class);
 
     bind(InputFileResolver.class).to(InputFileResolverImpl.class);
