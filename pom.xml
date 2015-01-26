@@ -23,6 +23,7 @@
     <dependency.version.jetty>9.2.6.v20141205</dependency.version.jetty>
     <dependency.version.jsr305>2.0.1</dependency.version.jsr305>
     <dependency.version.log4j>2.1</dependency.version.log4j>
+    <dependency.version.saxon>9.6.0-4</dependency.version.saxon>
     <dependency.version.servlet-api>3.1.0</dependency.version.servlet-api>
     <dependency.version.sitebricks>0.8.10</dependency.version.sitebricks>
     <dependency.version.slf4j>1.7.5</dependency.version.slf4j>
@@ -215,6 +216,12 @@
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-slf4j-impl</artifactId>
       <version>${dependency.version.log4j}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>net.sf.saxon</groupId>
+      <artifactId>Saxon-HE</artifactId>
+      <version>${dependency.version.saxon}</version>
     </dependency>
 
     <dependency>
