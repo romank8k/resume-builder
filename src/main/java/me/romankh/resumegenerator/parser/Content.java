@@ -11,13 +11,13 @@ public class Content extends ResumeElement {
 
   public Content(DefaultHandler parent, XMLReader parser) {
     super(parent, parser, ELEMENT_NAME, buildElementList(), buildCompositeElementList(
-        new CompositeElement(Objective.class, Objective.getElementName()),
-        new CompositeElement(SummaryOfQualifications.class, SummaryOfQualifications.getElementName()),
-        new CompositeElement(Education.class, Education.getElementName()),
-        new CompositeElement(Awards.class, Awards.getElementName()),
-        new CompositeElement(RelevantCourses.class, RelevantCourses.getElementName()),
-        new CompositeElement(Projects.class, Projects.getElementName()),
-        new CompositeElement(Experience.class, Experience.getElementName())
+        new CompositeElement<>(Objective.class, Objective.getElementName()),
+        new CompositeElement<>(SummaryOfQualifications.class, SummaryOfQualifications.getElementName()),
+        new CompositeElement<>(Education.class, Education.getElementName()),
+        new CompositeElement<>(Awards.class, Awards.getElementName()),
+        new CompositeElement<>(RelevantCourses.class, RelevantCourses.getElementName()),
+        new CompositeElement<>(Projects.class, Projects.getElementName()),
+        new CompositeElement<>(Experience.class, Experience.getElementName())
         ));
   }
 

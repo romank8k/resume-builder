@@ -11,20 +11,16 @@
 
   <div>
     <c:forEach var="job" items="${pageFlow.resume.content.experience.jobs}">
-      <div id="${pageFlow.generateSectionId("", job.employer, job.role)}">
+      <div id="${pageFlow.generateSectionId("", job.employer, "")}">
         <div class="clearfix">
-          <span class="pull-left"><strong>${job.employer}</strong>, ${job.department}</span>
-          <span class="pull-right">${job.timespan}</span>
+          <span class="pull-left"><strong>${job.employer}</strong></span>
+          <span class="pull-right">${job.location}</span>
         </div>
 
-        <p>
-          <em>${job.role}</em>
-        </p>
-
         <c:set scope="request"
-               var="snippetList"
-               value="${job.accomplishments}"/>
-        <jsp:include page="snippets.jsp"/>
+               var="rolesList"
+               value="${job.roles}"/>
+        <jsp:include page="roles.jsp"/>
       </div>
     </c:forEach>
   </div>

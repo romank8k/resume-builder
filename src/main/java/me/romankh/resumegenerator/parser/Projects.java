@@ -13,13 +13,13 @@ public class Projects extends ResumeElement {
   private static final String ELEMENT_NAME = "projects";
 
   public Projects(DefaultHandler parent, XMLReader parser) {
-    super(parent, parser, ELEMENT_NAME, null, buildCompositeElementList(new CompositeElement(Project.class,
-        Project.getElementName())));
+    super(parent, parser, ELEMENT_NAME, null,
+        buildCompositeElementList(new CompositeElement<>(Project.class, Project.getElementName())));
   }
 
   public List<List<SnippetElement.Snippet>> getProjects() {
     List<List<SnippetElement.Snippet>> projectsSnippetList = new ArrayList<>();
-    List<Project> projectList = getCompositeElementByName(Project.getElementName()).getResumeElementList();
+    List<Project> projectList = getCompositeElementByClass(Project.class).getResumeElementList();
     if (projectList != null) {
       for (Project qualification : projectList) {
         projectsSnippetList.add(qualification.snippets);

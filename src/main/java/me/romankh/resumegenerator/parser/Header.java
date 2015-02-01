@@ -15,7 +15,7 @@ public class Header extends ResumeElement {
 
   public Header(DefaultHandler parent, XMLReader parser) {
     super(parent, parser, ELEMENT_NAME, buildElementList(NAME, PHONE, EMAIL, HOMEPAGE),
-        buildCompositeElementList(new CompositeElement(Address.class, Address.getElementName())));
+        buildCompositeElementList(new CompositeElement<>(Address.class, Address.getElementName())));
   }
 
   public String getName() {

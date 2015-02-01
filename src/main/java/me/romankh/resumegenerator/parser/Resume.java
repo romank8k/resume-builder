@@ -15,9 +15,10 @@ public class Resume extends ResumeElement {
   private static final String ELEMENT_NAME = "resume";
 
   public Resume(InputStream is) throws IOException, SAXException {
-    super(null, XMLReaderFactory.createXMLReader(), ELEMENT_NAME, buildElementList(), buildCompositeElementList(
-        new CompositeElement(Header.class, Header.getElementName()),
-        new CompositeElement(Content.class, Content.getElementName())));
+    super(null, XMLReaderFactory.createXMLReader(), ELEMENT_NAME, buildElementList(),
+        buildCompositeElementList(
+            new CompositeElement<>(Header.class, Header.getElementName()),
+            new CompositeElement<>(Content.class, Content.getElementName())));
 
     parser.setContentHandler(this);
     parser.parse(new InputSource(is));

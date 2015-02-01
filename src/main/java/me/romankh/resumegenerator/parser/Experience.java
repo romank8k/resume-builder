@@ -12,12 +12,12 @@ public class Experience extends ResumeElement {
   private static final String ELEMENT_NAME = "experience";
 
   public Experience(DefaultHandler parent, XMLReader parser) {
-    super(parent, parser, ELEMENT_NAME, buildElementList(), buildCompositeElementList(new CompositeElement(Job
-        .class, Job.getElementName())));
+    super(parent, parser, ELEMENT_NAME, buildElementList(),
+        buildCompositeElementList(new CompositeElement<>(Job.class, Job.getElementName())));
   }
 
   public List<Job> getJobs() {
-    return getCompositeElementByName(Job.getElementName()).getResumeElementList();
+    return getCompositeElementByClass(Job.class).getResumeElementList();
   }
 
   public static String getElementName() {

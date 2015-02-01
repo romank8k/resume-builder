@@ -13,13 +13,13 @@ public class SummaryOfQualifications extends ResumeElement {
   private static final String ELEMENT_NAME = "summary_of_qualifications";
 
   public SummaryOfQualifications(DefaultHandler parent, XMLReader parser) {
-    super(parent, parser, ELEMENT_NAME, null, buildCompositeElementList(new CompositeElement(Qualification.class,
-        Qualification.getElementName())));
+    super(parent, parser, ELEMENT_NAME, null,
+        buildCompositeElementList(new CompositeElement<>(Qualification.class, Qualification.getElementName())));
   }
 
   public List<List<SnippetElement.Snippet>> getQualifications() {
     List<List<SnippetElement.Snippet>> qualificationsSnippetList = new ArrayList<>();
-    List<Qualification> qualificationList = getCompositeElementByName(Qualification.getElementName()).getResumeElementList();
+    List<Qualification> qualificationList = getCompositeElementByClass(Qualification.class).getResumeElementList();
     if (qualificationList != null) {
       for (Qualification qualification : qualificationList) {
         qualificationsSnippetList.add(qualification.snippets);

@@ -75,11 +75,12 @@ public class ResumeHtmlPage {
   public List<Section> getSections() {
     List<Section> sectionList = new ArrayList<>();
 
-    for (ResumeElement.AbstractElement element : resume.getContent().getElementOrderList()) {
-      ResumeElement.CompositeElement compositeElement = resume.getContent().getCompositeElementByName(element.getName());
+    for (AbstractElement element : resume.getContent().getElementOrderList()) {
+      CompositeElement compositeElement = resume.getContent().getCompositeElementByName(element.getName());
 
       if (compositeElement != null) {
         Class compositeElementClass = compositeElement.getClazz();
+
         if (Objective.class.equals(compositeElementClass)) {
           String sectionName = getObjectiveSectionName();
           String sectionId = getObjectiveSectionId();
@@ -120,7 +121,7 @@ public class ResumeHtmlPage {
           Section section = new Section(sectionName, sectionId, Experience.class);
           for (Job job : experience.getJobs()) {
             String subSectionName = job.getEmployer();
-            String subSectionId = generateSectionId("", job.getEmployer(), job.getDepartment());
+            String subSectionId = generateSectionId("", job.getEmployer(), "");
             section.addSubSection(new Section(subSectionName, subSectionId, Job.class));
           }
           sectionList.add(section);

@@ -13,7 +13,7 @@ public class Education extends ResumeElement {
 
   public Education(DefaultHandler parent, XMLReader parser) {
     super(parent, parser, ELEMENT_NAME, buildElementList(),
-        buildCompositeElementList(new CompositeElement(Institution.class, Institution.getElementName())));
+        buildCompositeElementList(new CompositeElement<>(Institution.class, Institution.getElementName())));
   }
 
   public List<Institution> getInstitutions() {
