@@ -148,14 +148,16 @@ public class ResumeHtmlPage {
     List<SnippetElement.Snippet.Modifier> modifierList = snippet.getOrderedModifierList();
     if (!modifierList.isEmpty()) {
       SnippetElement.Snippet.Modifier lastModifier = null;
-      for (int i = 0; i < modifierList.size(); i++) {
-        SnippetElement.Snippet.Modifier modifier = modifierList.get(i);
+      for (SnippetElement.Snippet.Modifier modifier : modifierList) {
         switch (modifier) {
           case BOLD:
             sb.append("<strong>");
             break;
           case ITALIC:
             sb.append("<em>");
+            break;
+          case UNDERLINE:
+            sb.append("<u>");
             break;
         }
 

@@ -81,8 +81,9 @@ public class SnippetElement extends ResumeElement {
     public enum Modifier {
       BOLD("b", 1),
       ITALIC("i", 2),
-      HYPERLINK("a", 3),
-      CODE("code", 4);
+      UNDERLINE("u", 3),
+      HYPERLINK("a", 4),
+      CODE("code", 5);
 
       private final String tag;
       private final int order;
