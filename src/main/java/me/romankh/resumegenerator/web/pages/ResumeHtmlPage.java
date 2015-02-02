@@ -182,6 +182,9 @@ public class ResumeHtmlPage {
           case ITALIC:
             sb.append("</em>");
             break;
+          case UNDERLINE:
+            sb.append("</u>");
+            break;
         }
       }
     } else {
