@@ -10,12 +10,13 @@ import java.util.List;
  */
 public class Institution extends ResumeElement {
   private static final String ELEMENT_NAME = "institution";
+
   private static final String NAME = "name";
   private static final String LOCATION = "location";
-  private static final String DETAIL = "detail";
 
   public Institution(DefaultHandler parent, XMLReader parser) {
-    super(parent, parser, ELEMENT_NAME, buildElementList(NAME, LOCATION, DETAIL));
+    super(parent, parser, ELEMENT_NAME, buildElementList(NAME, LOCATION),
+        buildCompositeElementList(new CompositeElement<>(Degree.class, Degree.getElementName())));
   }
 
   public String getName() {
@@ -26,8 +27,8 @@ public class Institution extends ResumeElement {
     return getElementByName(LOCATION).getValue();
   }
 
-  public List<String> getDetails() {
-    return getElementByName(DETAIL).getValues();
+  public List<Degree> getDegrees() {
+    return getCompositeElementByClass(Degree.class).getResumeElementList();
   }
 
   public static String getElementName() {

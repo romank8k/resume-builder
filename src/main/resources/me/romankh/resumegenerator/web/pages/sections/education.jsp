@@ -13,11 +13,19 @@
     <c:forEach var="institution" items="${pageFlow.resume.content.education.institutions}">
       <div id="${pageFlow.generateSectionId(institution.class.simpleName, institution.name, "")}">
         <strong>${institution.name}</strong>, ${institution.location}
-        <ul>
-          <c:forEach var="detail" items="${institution.details}">
-            <li>${detail}</li>
+          <c:forEach var="degree" items="${institution.degrees}">
+            <div id="${pageFlow.generateSectionId("", degree.title, "")}">
+              <div class="clearfix">
+                <span class="pull-left">${degree.title}</span>
+                <span class="pull-right">${degree.timespan}</span>
+              </div>
+
+              <c:set scope="request"
+                     var="snippetList"
+                     value="${degree.accomplishments}"/>
+              <jsp:include page="snippets.jsp"/>
+            </div>
           </c:forEach>
-        </ul>
       </div>
     </c:forEach>
   </div>
