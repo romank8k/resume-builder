@@ -2,6 +2,7 @@ package me.romankh.resumegenerator;
 
 import com.google.sitebricks.SitebricksModule;
 import com.google.sitebricks.SitebricksServletModule;
+import me.romankh.resumegenerator.web.filter.Utf8OutputFilter;
 import me.romankh.resumegenerator.web.pages.ResumeHtmlPage;
 
 /**
@@ -17,6 +18,7 @@ public class ResumeGeneratorSitebricksModule extends SitebricksModule {
     return new SitebricksServletModule() {
       @Override
       protected void configurePreFilters() {
+        filter("/*").through(Utf8OutputFilter.class);
       }
 
       @Override

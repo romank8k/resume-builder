@@ -29,12 +29,14 @@ public class ResumeHtmlPage {
   private static final Pattern CAMEL_CASE_PATTERN = Pattern.compile("([A-Z][a-z]*)");
 
   private final Boolean showPersonalDataOnWeb;
+
   private final Resume resume;
 
   @Inject
   public ResumeHtmlPage(@Prop(Property.SHOW_PERSONAL_DATA_ON_WEB) Boolean showPersonalDataOnWeb,
                         ResumeCachingFactory resumeCachingFactory) throws IOException, SAXException {
     this.showPersonalDataOnWeb = showPersonalDataOnWeb;
+
     this.resume = resumeCachingFactory.getResume();
   }
 
