@@ -12,8 +12,8 @@
     Resume - ${pageFlow.resume.header.name}
   </title>
 
-  <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
-  <link href="css/resume.css" rel="stylesheet">
+  <link href="/static/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+  <link href="/static/css/resume.css" rel="stylesheet">
 </head>
 
 <body>
@@ -65,8 +65,8 @@
   </div>
 </div>
 
-<script src="vendor/jquery/jquery.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.js"></script>
+<script src="/static/vendor/jquery/jquery.js"></script>
+<script src="/static/vendor/bootstrap/js/bootstrap.js"></script>
 <script type="text/javascript">
   var $window = $(window)
   var $body = $(document.body)

@@ -6,15 +6,13 @@ import com.google.inject.servlet.GuiceServletContextListener;
 import me.romankh.resumegenerator.configuration.Prop;
 import me.romankh.resumegenerator.configuration.Property;
 import me.romankh.resumegenerator.web.UrlPageBinding;
+import me.romankh.resumegenerator.web.WebPackage;
 import me.romankh.resumegenerator.web.pages.ResumeHtmlPage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.server.handler.ContextHandlerCollection;
-import org.eclipse.jetty.server.handler.DefaultHandler;
-import org.eclipse.jetty.server.handler.HandlerCollection;
-import org.eclipse.jetty.servlet.DefaultServlet;
+import org.eclipse.jetty.server.handler.*;
 import org.eclipse.jetty.servlet.FilterHolder;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
@@ -59,9 +57,9 @@ public class HTTPServer {
 
     logger.info("Listening for HTTP connections on '{}:{}'", httpBindAddress, httpPort);
 
-    ServletContextHandler contextHandler = buildServletContextHandler();
+    Handler handler = buildHandler();
     server = new Server(InetSocketAddress.createUnresolved(httpBindAddress, httpPort));
-    server.setHandler(contextHandler);
+    server.setHandler(handler);
     server.setStopAtShutdown(true);
   }
 
@@ -80,11 +78,18 @@ public class HTTPServer {
     }
   }
 
-  public ServletContextHandler buildServletContextHandler() {
-    ContextHandlerCollection contextHandlerCollection = new ContextHandlerCollection();
+  public Handler buildHandler() {
     HandlerCollection handlerCollection = new HandlerCollection();
-    handlerCollection.setHandlers(new Handler[]{contextHandlerCollection, new DefaultHandler()});
+    handlerCollection.setHandlers(new Handler[]{
+        buildStaticResourceContextHandler(),
+        buildDynamicResourceContextHandler(),
+        new DefaultHandler()
+    });
+    return handlerCollection;
+  }
 
+  public Handler buildDynamicResourceContextHandler() {
+    ContextHandlerCollection contextHandlerCollection = new ContextHandlerCollection();
     ServletContextHandler servletContextHandler = new ServletContextHandler(
         contextHandlerCollection, httpContextPath, ServletContextHandler.SESSIONS);
     // Expose injector to web application.
@@ -116,17 +121,25 @@ public class HTTPServer {
     servletContextHandler.setBaseResource(Resource.newResource(jspResourceUrl));
     servletContextHandler.addServlet(new ServletHolder(new org.apache.jasper.servlet.JspServlet()), "*.jsp");
 
-    // Serve static files.
-    servletContextHandler.addServlet(new ServletHolder(new DefaultServlet()), "*.html");
-    servletContextHandler.addServlet(new ServletHolder(new DefaultServlet()), "*.gif");
-    servletContextHandler.addServlet(new ServletHolder(new DefaultServlet()), "*.js");
-    servletContextHandler.addServlet(new ServletHolder(new DefaultServlet()), "*.css");
-
     FilterHolder guiceFilterHolder = new FilterHolder(guiceFilter);
     // We have to be careful here and not apply the filtering to dispatcher include/forward calls because we want to
     // bypass the Guice filter when rendering JSPs with Sitebricks. Otherwise, we get into an infinite filtering loop.
     servletContextHandler.addFilter(guiceFilterHolder, "/*", EnumSet.of(DispatcherType.REQUEST));
 
-    return servletContextHandler;
+    return contextHandlerCollection;
+  }
+
+  public Handler buildStaticResourceContextHandler() {
+    String staticResources = WebPackage.class.getPackage().getName().replace('.', '/') + "/static";
+    URL staticResourceUrl = getClass().getClassLoader().getResource(staticResources);
+    logger.info("Static resources location: " + staticResourceUrl);
+
+    ResourceHandler staticResourceHandler = new ResourceHandler();
+    staticResourceHandler.setBaseResource(Resource.newResource(staticResourceUrl));
+
+    ContextHandler contextHandler = new ContextHandler("/static");
+    contextHandler.setHandler(staticResourceHandler);
+
+    return contextHandler;
   }
 }

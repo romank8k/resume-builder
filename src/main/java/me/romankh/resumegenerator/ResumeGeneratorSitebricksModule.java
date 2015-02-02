@@ -8,12 +8,8 @@ import me.romankh.resumegenerator.web.pages.ResumeHtmlPage;
  * @author Roman Khmelichek
  */
 public class ResumeGeneratorSitebricksModule extends SitebricksModule {
-  private final String webResourcePath;
-
   public ResumeGeneratorSitebricksModule() {
     super();
-
-    webResourcePath = getClass().getPackage().getName().replace('.', '/');
   }
 
   @Override
@@ -36,11 +32,5 @@ public class ResumeGeneratorSitebricksModule extends SitebricksModule {
   @Override
   protected void configureSitebricks() {
     scan(ResumeHtmlPage.class.getPackage());
-
-    at("/css/resume.css").export(buildStaticResourcePath("web/css/resume.css"));
-  }
-
-  public String buildStaticResourcePath(String relativePath) {
-    return String.format("/%s/", webResourcePath);
   }
 }
