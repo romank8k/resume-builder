@@ -67,29 +67,7 @@
 
 <script src="/static/vendor/jquery/jquery.js"></script>
 <script src="/static/vendor/bootstrap/js/bootstrap.js"></script>
-<script type="text/javascript">
-  var $window = $(window)
-  var $body = $(document.body)
-
-  var navHeight = $('.navbar').outerHeight(true) + 10;
-  //console.log(navHeight);
-  navHeight = 10;
-
-  $body.scrollspy({
-    target: '.bs-sidebar',
-    offset: navHeight
-  });
-
-  $window.on('load', function () {
-    $body.scrollspy('refresh')
-  });
-
-  $('.bs-docs-container [href=#]').click(function (e) {
-    e.preventDefault();
-  });
-
-  $body.on('activate.bs.scrollspy', function () {
-  });
-</script>
+<script src="/static/vendor/jquery.color.js"></script>
+<script src="/static/js/resume.js"></script>
 </body>
 </html>

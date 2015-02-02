@@ -5,18 +5,19 @@
 <p>
   <c:forEach var="role" items="${rolesList}">
     <div id="${pageFlow.generateSectionId("", role.role, "")}">
-    <div class="clearfix">
-      <span class="pull-left">${role.department}</span>
-      <span class="pull-right">${role.timespan}</span>
+      <div class="clearfix">
+        <span class="pull-left">${role.department}</span>
+        <span class="pull-right">${role.timespan}</span>
+      </div>
+
+      <p>
+        <em>${role.role}</em>
+      </p>
+
+      <c:set scope="request"
+             var="snippetList"
+             value="${role.accomplishments}"/>
+      <jsp:include page="snippets.jsp"/>
     </div>
-
-    <p>
-      <em>${role.role}</em>
-    </p>
-
-    <c:set scope="request"
-           var="snippetList"
-           value="${role.accomplishments}"/>
-    <jsp:include page="snippets.jsp"/>
   </c:forEach>
 </p>
