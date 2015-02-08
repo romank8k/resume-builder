@@ -14,6 +14,11 @@ import java.io.InputStream;
 public class Resume extends ResumeElement {
   private static final String ELEMENT_NAME = "resume";
 
+  private float marginLeft;
+  private float marginRight;
+  private float marginTop;
+  private float marginBottom;
+
   public Resume(InputStream is) throws IOException, SAXException {
     super(null, XMLReaderFactory.createXMLReader(), ELEMENT_NAME, buildElementList(),
         buildCompositeElementList(
@@ -23,12 +28,6 @@ public class Resume extends ResumeElement {
     parser.setContentHandler(this);
     parser.parse(new InputSource(is));
   }
-
-  // Document margins.
-  public float marginLeft = 0;
-  public float marginRight = 0;
-  public float marginTop = 0;
-  public float marginBottom = 0;
 
   @Override
   public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
@@ -60,5 +59,21 @@ public class Resume extends ResumeElement {
 
   public static String getElementName() {
     return ELEMENT_NAME;
+  }
+
+  public float getMarginLeft() {
+    return marginLeft;
+  }
+
+  public float getMarginRight() {
+    return marginRight;
+  }
+
+  public float getMarginTop() {
+    return marginTop;
+  }
+
+  public float getMarginBottom() {
+    return marginBottom;
   }
 }
