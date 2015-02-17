@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resume>
+  <meta margin-left="30" margin-right="30" margin-top="30" margin-bottom="30"/>
+
+  <header>
+    <name>Johnny Appleseed</name>
+    <phone include="true">(123) 456-7890</phone>
+    <email include="true">johnny.appleseed@gmail.com</email>
+    <homepage include="true">http://example.com</homepage>
+    <address include="true">
+      <street>123 Avenue X</street>
+      <apartment>Apt.1A</apartment>
+      <city>Brooklyn</city>
+      <state>NY</state>
+      <zip>11230</zip>
+    </address>
+  </header>
+
+  <content>
+    <objective include="true">
+      <html>
+        Find a job as a <b><i>software</i> engineer</b>
+      </html>
+    </objective>
+
+    <summary_of_qualifications include="true">
+      <qualifications>
+        <qualification include="true">
+          <html>
+            Qualification One
+          </html>
+        </qualification>
+        <qualification include="true">
+          <html>
+            Qualification Two
+          </html>
+        </qualification>
+        <qualification include="false">
+          <html>
+            Qualification Three
+          </html>
+        </qualification>
+      </qualifications>
+    </summary_of_qualifications>
+
+    <education include="true">
+      <institutions>
+        <institution include="true">
+          <name>Polytechnic Institute of NYU</name>
+          <location>Brooklyn, NY</location>
+          <degrees>
+            <degree include="true">
+              <title>Master of Science in Computer Science</title>
+              <timespan>2009 - 2011</timespan>
+              <accomplishments>
+                <accomplishment include="true">
+                  <html>
+                    Masters thesis project
+                  </html>
+                </accomplishment>
+              </accomplishments>
+            </degree>
+
+            <degree include="true">
+              <title>Bachelor of Science in Computer Engineering</title>
+              <timespan>2006 - 2011</timespan>
+              <accomplishments>
+                <accomplishment include="true">
+                  <html>
+                    Summa cum laude
+                  </html>
+                </accomplishment>
+              </accomplishments>
+            </degree>
+          </degrees>
+        </institution>
+
+        <institution include="true">
+          <name>Brooklyn Technical High School</name>
+          <location>Brooklyn, NY</location>
+          <degrees>
+            <degree include="true">
+              <title>Regents Diploma with Advanced Designation with Honors</title>
+              <timespan>2002 - 2006</timespan>
+              <accomplishments>
+                <accomplishment include="true">
+                  <html>
+                    Computer Science Major
+                  </html>
+                </accomplishment>
+              </accomplishments>
+            </degree>
+          </degrees>
+        </institution>
+      </institutions>
+    </education>
+
+    <awards include="true">
+      <awards>
+        <award include="true">
+          <title>Honors Scholarship</title>
+          <timespan>Fall 2006 — Spring 2010</timespan>
+        </award>
+      </awards>
+    </awards>
+
+    <relevant_courses include="true">
+      <courses>
+        <course include="true">
+          <html>
+            Web Search Engines
+          </html>
+        </course>
+
+        <course include="true">
+          <html>
+            Machine Learning
+          </html>
+        </course>
+
+        <course include="true">
+          <html>
+            Databases
+          </html>
+        </course>
+
+        <course include="true">
+          <html>
+            Parallel and Distributed Systems
+          </html>
+        </course>
+
+        <course include="false">
+          <html>
+            Unix System Programming
+          </html>
+        </course>
+      </courses>
+    </relevant_courses>
+
+    <projects include="true">
+      <projects>
+        <project include="true">
+          <html>
+            Project one
+          </html>
+        </project>
+        <project include="false">
+          <html>
+            Project two
+          </html>
+        </project>
+      </projects>
+    </projects>
+
+    <experience include="true">
+      <jobs>
+        <job include="true">
+          <employer>Employer One</employer>
+          <location>New York, NY</location>
+          <roles>
+            <role include="true">
+              <title>Software Developer</title>
+              <department>Testing and Automation</department>
+              <timespan>2010 - 2011</timespan>
+              <accomplishments>
+                <accomplishment include="true">
+                  <html>
+                    Wrote <b>automation</b> and <b>software testing</b> tools.
+                  </html>
+                </accomplishment>
+              </accomplishments>
+            </role>
+          </roles>
+        </job>
+      </jobs>
+    </experience>
+  </content>
+</resume>

@@ -1,3 +1,5 @@
+package me.romankh.resumegenerator;
+
 import com.google.common.io.CharStreams;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -34,6 +36,12 @@ public class TestUtils {
   public File getResourceAsFile(String path) {
     URL baseUrl = classLoader.getResource(".");
     return new File(baseUrl.getPath(), path);
+  }
+
+  public InputStream getResourceInputStream(String path) throws IOException {
+    URL baseUrl = classLoader.getResource(".");
+    logger.debug("Getting resource '{}' input stream relative to base '{}'", path, baseUrl);
+    return classLoader.getResourceAsStream(path);
   }
 
   URL getResourceBaseUrl() {

@@ -1,4 +1,4 @@
-package me.romankh.resumegenerator.service;
+package me.romankh.resumegenerator.annotations.binding;
 
 import com.google.inject.BindingAnnotation;
 

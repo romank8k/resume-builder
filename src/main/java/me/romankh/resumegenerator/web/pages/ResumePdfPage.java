@@ -6,7 +6,7 @@ import com.google.sitebricks.headless.Reply;
 import com.google.sitebricks.headless.Service;
 import com.google.sitebricks.http.Get;
 import me.romankh.resumegenerator.service.CachingPDFRenderer;
-import me.romankh.resumegenerator.service.XSLT;
+import me.romankh.resumegenerator.annotations.binding.XSLT;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

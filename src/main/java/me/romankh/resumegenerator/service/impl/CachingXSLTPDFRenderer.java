@@ -1,11 +1,11 @@
 package me.romankh.resumegenerator.service.impl;
 
 import me.romankh.resumegenerator.annotations.binding.Defaults;
+import me.romankh.resumegenerator.annotations.binding.XSLT;
 import me.romankh.resumegenerator.configuration.Prop;
 import me.romankh.resumegenerator.configuration.Property;
 import me.romankh.resumegenerator.service.InputFileResolver;
 import me.romankh.resumegenerator.service.ResumeGeneratorService;
-import me.romankh.resumegenerator.service.XSLT;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -43,7 +43,7 @@ public class CachingXSLTPDFRenderer extends AbstractCachingPDFRenderer {
     this.resumeGeneratorService = resumeGeneratorService;
   }
 
-  public synchronized void render(OutputStream os) throws Exception {
+  public synchronized void render(OutputStream pdfOs) throws Exception {
     Date xmlModifiedSinceDate = inputFileResolver.getDateModifiedSince(resumeXmlPath, resumeXmlLastModifiedDate);
     Date xslModifiedSinceDate = inputFileResolver.getDateModifiedSince(resumeXslPath, resumeXslLastModifiedDate);
     if (cachedPdfBytes == null || xmlModifiedSinceDate != null || xslModifiedSinceDate != null) {
@@ -55,6 +55,6 @@ public class CachingXSLTPDFRenderer extends AbstractCachingPDFRenderer {
       resumeXslLastModifiedDate = xslModifiedSinceDate;
     }
 
-    writeCachedBytes(cachedPdfBytes, os);
+    writeCachedBytes(cachedPdfBytes, pdfOs);
   }
 }

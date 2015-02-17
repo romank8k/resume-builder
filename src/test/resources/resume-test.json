@@ -1,0 +1,135 @@
+{
+    "resume" : {
+        "meta" : {
+            "margin-left" : 30,
+            "margin-right" : 30,
+            "margin-top" : 30,
+            "margin-bottom" : 30
+        },
+        "header" : {
+            "name" : "Johnny Appleseed",
+            "phone" : "(123) 456-7890",
+            "email" : "johnny.appleseed@gmail.com",
+            "homepage" : "http://example.com",
+            "address" : {
+                "street" : "123 Avenue X",
+                "apartment" : "Apt.1A",
+                "city" : "Brooklyn",
+                "state" : "NY",
+                "zip" : "11230"
+            }
+        },
+        "content" : {
+            "objective" : {
+                "include" : true,
+                "html" : "Find a job as a <b><i>software</i> engineer</b>"
+            },
+            "summary_of_qualifications" : {
+                "include" : true,
+                "qualifications" : [ {
+                    "include" : true,
+                    "html" : "Qualification One"
+                }, {
+                    "include" : true,
+                    "html" : "Qualification Two"
+                }, {
+                    "include" : false,
+                    "html" : "Qualification Three"
+                } ]
+            },
+            "education" : {
+                "include" : true,
+                "institutions" : [ {
+                    "include" : true,
+                    "name" : "Polytechnic Institute of NYU",
+                    "location" : "Brooklyn, NY",
+                    "degrees" : [ {
+                        "include" : true,
+                        "title" : "Master of Science in Computer Science",
+                        "timespan" : "2009 - 2011",
+                        "accomplishments" : [ {
+                            "include" : true,
+                            "html" : "Masters thesis project"
+                        } ]
+                    }, {
+                        "include" : true,
+                        "title" : "Bachelor of Science in Computer Engineering",
+                        "timespan" : "2006 - 2011",
+                        "accomplishments" : [ {
+                            "include" : true,
+                            "html" : "Summa cum laude"
+                        } ]
+                    } ]
+                }, {
+                    "include" : false,
+                    "name" : "Brooklyn Technical High School",
+                    "location" : "Brooklyn, NY",
+                    "degrees" : [ {
+                        "include" : true,
+                        "title" : "Regents Diploma with Advanced Designation with Honors",
+                        "timespan" : "2002 - 2006",
+                        "accomplishments" : [ {
+                            "include" : true,
+                            "html" : "Computer Science Major"
+                        } ]
+                    } ]
+                } ]
+            },
+            "awards" : {
+                "include" : true,
+                "awards" : [ {
+                    "include" : true,
+                    "title" : "Honors Scholarship",
+                    "timespan" : "Fall 2006 — Spring 2010"
+                } ]
+            },
+            "relevant_courses" : {
+                "include" : true,
+                "courses" : [ {
+                    "include" : true,
+                    "html" : "Web Search Engines"
+                }, {
+                    "include" : true,
+                    "html" : "Machine Learning"
+                }, {
+                    "include" : true,
+                    "html" : "Databases"
+                }, {
+                    "include" : true,
+                    "html" : "Parallel and Distributed Systems"
+                }, {
+                    "include" : false,
+                    "html" : "Unix System Programming"
+                } ]
+            },
+            "projects" : {
+                "include" : true,
+                "projects" : [ {
+                    "include" : true,
+                    "html" : "Project one"
+                }, {
+                    "include" : false,
+                    "html" : "Project two"
+                } ]
+            },
+            "experience" : {
+                "include" : true,
+                "jobs" : [ {
+                    "include" : true,
+                    "employer" : "Employer One",
+                    "location" : "New York, NY",
+                    "roles" : [ {
+                        "include" : true,
+                        "title" : "Software Developer",
+                        "timespan" : "2010 - 2011",
+                        "department" : "Testing and Automation",
+                        "accomplishments" : [ {
+                            "include" : true,
+                            "html" : "Wrote <b>automation</b> and <b>software testing</b> tools."
+                        } ]
+                    } ]
+                } ]
+            }
+        }
+    }
+}

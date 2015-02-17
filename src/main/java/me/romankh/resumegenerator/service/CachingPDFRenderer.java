@@ -6,5 +6,5 @@ import java.io.OutputStream;
  * @author Roman Khmelichek
  */
 public interface CachingPDFRenderer {
-  void render(OutputStream os) throws Exception;
+  void render(OutputStream pdfOs) throws Exception;
 }

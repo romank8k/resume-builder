@@ -9,6 +9,7 @@ import com.google.inject.util.Providers;
 import me.romankh.resumegenerator.annotations.binding.ConfigFilePath;
 import me.romankh.resumegenerator.annotations.binding.Defaults;
 import me.romankh.resumegenerator.annotations.binding.IsWebServer;
+import me.romankh.resumegenerator.annotations.binding.XSLT;
 import me.romankh.resumegenerator.configuration.AllProperties;
 import me.romankh.resumegenerator.configuration.PropImpl;
 import me.romankh.resumegenerator.configuration.Property;
@@ -140,6 +141,7 @@ public class ResumeGeneratorModule extends AbstractModule {
     bind(CachingPDFRenderer.class).annotatedWith(XSLT.class).to(CachingXSLTPDFRenderer.class);
 
     bind(InputFileResolver.class).to(InputFileResolverImpl.class);
+    bind(ResumeFactory.class).to(ResumeFactoryImpl.class);
   }
 
   private void bindFactories() {

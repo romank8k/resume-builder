@@ -30,7 +30,7 @@ public class ResumeHtmlPage {
 
   private final Boolean showPersonalDataOnWeb;
 
-  private final Resume resume;
+  private final ResumeParser resume;
 
   @Inject
   public ResumeHtmlPage(@Prop(Property.SHOW_PERSONAL_DATA_ON_WEB) Boolean showPersonalDataOnWeb,
@@ -141,7 +141,7 @@ public class ResumeHtmlPage {
     return sb.toString();
   }
 
-  public Resume getResume() {
+  public ResumeParser getResume() {
     return resume;
   }
 

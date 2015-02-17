@@ -79,12 +79,14 @@ public abstract class ResumeElement extends DefaultHandler {
   @Override
   public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
     if (qName.equals(elementName)) {
-      logger.info("START {}", elementName);
+      if (logger.isTraceEnabled())
+        logger.trace("START {}", elementName);
     }
 
     SimpleElement currElement = getElementByName(qName);
     if (currElement != null && include(attributes)) {
-      logger.info("START {}", currElement.getName());
+      if (logger.isTraceEnabled())
+        logger.trace("START {}", currElement.getName());
       activeElement = currElement;
       currElement.addValue();
 
@@ -93,7 +95,8 @@ public abstract class ResumeElement extends DefaultHandler {
 
     CompositeElement<? extends ResumeElement> compositeElement = getCompositeElementByName(qName);
     if (compositeElement != null && include(attributes)) {
-      logger.info("START COMPOSITE {}", compositeElement.getName());
+      if (logger.isTraceEnabled())
+        logger.trace("START COMPOSITE {}", compositeElement.getName());
 
       try {
         addCompositeElementInstance(compositeElement, parser, this);
@@ -117,12 +120,14 @@ public abstract class ResumeElement extends DefaultHandler {
   public void endElement(String uri, String localName, String qName) {
     SimpleElement currElement = getElementByName(qName);
     if (currElement != null) {
-      logger.info("END {}: {}", currElement.getName(), currElement.getValue());
+      if (logger.isTraceEnabled())
+        logger.trace("END {}: {}", currElement.getName(), currElement.getValue());
       activeElement = null;
     }
 
     if (qName.equals(elementName)) {
-      logger.info("END {}", elementName);
+      if (logger.isTraceEnabled())
+        logger.trace("END {}", elementName);
       parser.setContentHandler(parent);
     }
   }

@@ -11,15 +11,15 @@ import java.io.InputStream;
 /**
  * @author Roman Khmelichek
  */
-public class Resume extends ResumeElement {
+public class ResumeParser extends ResumeElement {
   private static final String ELEMENT_NAME = "resume";
 
-  private float marginLeft;
-  private float marginRight;
-  private float marginTop;
-  private float marginBottom;
+  private int marginLeft;
+  private int marginRight;
+  private int marginTop;
+  private int marginBottom;
 
-  public Resume(InputStream is) throws IOException, SAXException {
+  public ResumeParser(InputStream is) throws IOException, SAXException {
     super(null, XMLReaderFactory.createXMLReader(), ELEMENT_NAME, buildElementList(),
         buildCompositeElementList(
             new CompositeElement<>(Header.class, Header.getElementName()),
@@ -35,14 +35,14 @@ public class Resume extends ResumeElement {
 
     if (qName.equals("meta")) {
       for (int i = 0; i < attributes.getLength(); i++) {
-        float margin = Float.parseFloat(attributes.getValue(i));
-        if (attributes.getQName(i).equals("margin_left")) {
+        int margin = Integer.parseInt(attributes.getValue(i));
+        if (attributes.getQName(i).equals("margin-left")) {
           marginLeft = margin;
-        } else if (attributes.getQName(i).equals("margin_right")) {
+        } else if (attributes.getQName(i).equals("margin-right")) {
           marginRight = margin;
-        } else if (attributes.getQName(i).equals("margin_top")) {
+        } else if (attributes.getQName(i).equals("margin-top")) {
           marginTop = margin;
-        } else if (attributes.getQName(i).equals("margin_bottom")) {
+        } else if (attributes.getQName(i).equals("margin-bottom")) {
           marginBottom = margin;
         }
       }
@@ -61,19 +61,19 @@ public class Resume extends ResumeElement {
     return ELEMENT_NAME;
   }
 
-  public float getMarginLeft() {
+  public int getMarginLeft() {
     return marginLeft;
   }
 
-  public float getMarginRight() {
+  public int getMarginRight() {
     return marginRight;
   }
 
-  public float getMarginTop() {
+  public int getMarginTop() {
     return marginTop;
   }
 
-  public float getMarginBottom() {
+  public int getMarginBottom() {
     return marginBottom;
   }
 }

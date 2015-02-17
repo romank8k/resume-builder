@@ -10,7 +10,7 @@ import me.romankh.resumegenerator.ResumeGeneratorModule;
 import me.romankh.resumegenerator.configuration.PropImpl;
 import me.romankh.resumegenerator.configuration.Property;
 import me.romankh.resumegenerator.service.ResumeGeneratorService;
-import me.romankh.resumegenerator.service.XSLT;
+import me.romankh.resumegenerator.annotations.binding.XSLT;
 
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
