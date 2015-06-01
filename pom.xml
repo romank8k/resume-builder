@@ -11,7 +11,7 @@
   <packaging>jar</packaging>
 
   <properties>
-    <jdk.version>1.7</jdk.version>
+    <jdk.version>1.8</jdk.version>
 
     <dependency.version.commons-codec>1.8</dependency.version.commons-codec>
     <dependency.version.commons-lang>2.6</dependency.version.commons-lang>
