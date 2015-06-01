@@ -25,6 +25,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.URL;
@@ -99,6 +100,7 @@ public class HTTPServer {
         return injector;
       }
     });
+    servletContextHandler.setAttribute("javax.servlet.context.tempdir", buildJspTempDir());
 
     // Add the JSTL to the Jetty classpath.
     URL tagLibResourceUrl = getClass().getClassLoader().getResource("taglib");
@@ -141,5 +143,16 @@ public class HTTPServer {
     contextHandler.setHandler(staticResourceHandler);
 
     return contextHandler;
+  }
+
+  File buildJspTempDir() {
+    File jspTempDir = new File(System.getProperty("java.io.tmpdir"), "jsp");
+    if (!jspTempDir.exists()) {
+      if (!jspTempDir.mkdirs()) {
+        logger.warn("Unable to create JSP temp directory: " + jspTempDir.getAbsolutePath());
+      }
+    }
+
+    return jspTempDir;
   }
 }
