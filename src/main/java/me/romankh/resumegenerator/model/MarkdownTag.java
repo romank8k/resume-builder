@@ -1,5 +1,7 @@
 package me.romankh.resumegenerator.model;
 
+import org.eclipse.persistence.oxm.annotations.XmlValueExtension;
+
 import javax.xml.bind.annotation.XmlAnyElement;
 import javax.xml.bind.annotation.XmlMixed;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -11,6 +13,7 @@ import java.util.List;
  */
 @XmlRootElement(name = "markdown")
 public class MarkdownTag extends Tag {
+  @XmlValueExtension
   @XmlValue
   @XmlMixed
   @XmlAnyElement
