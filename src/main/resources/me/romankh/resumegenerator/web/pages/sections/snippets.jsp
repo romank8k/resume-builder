@@ -5,7 +5,7 @@
 <ul>
   <c:forEach var="snippets" items="${snippetList}">
     <li>
-      <c:forEach var="snippet" items="${snippets}">${pageFlow.formatTextSnippet(snippet)}</c:forEach>
+      <c:forEach var="snippet" items="${snippets}">${snippet}</c:forEach>
     </li>
   </c:forEach>
 </ul>

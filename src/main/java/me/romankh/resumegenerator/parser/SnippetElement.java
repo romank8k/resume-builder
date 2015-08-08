@@ -1,21 +1,17 @@
 package me.romankh.resumegenerator.parser;
 
+import org.apache.commons.lang.StringEscapeUtils;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
 
-import java.util.*;
-
 /**
  * @author Roman Khmelichek
  */
 public class SnippetElement extends ResumeElement {
-  // Maintain a stack to handle nested snippets.
-  public Deque<Snippet> activeElementStack = new ArrayDeque<>();
-
-  // List of snippets that are popped off the stack.
-  public List<Snippet> snippets = new ArrayList<>();
+  private String html;
+  private StringBuilder htmlBuilder;
 
   public SnippetElement(DefaultHandler parent, XMLReader parser, String elementName) {
     super(parent, parser, elementName, null);
@@ -25,34 +21,44 @@ public class SnippetElement extends ResumeElement {
   public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
     super.startElement(uri, localName, qName, attributes);
 
-    Snippet.Modifier modifier = Snippet.Modifier.getModifierByName(qName);
-    if (modifier == null)
-      throw new IllegalStateException("Unexpected tag within snippet: " + qName);
-
-    Snippet currSnippet = new Snippet();
-    Snippet top = activeElementStack.peekLast();
-    if (top != null) {
-      // This is a nested snippet. Need to copy the list of modifiers to the new snippet.
-      for (Snippet.Modifier currModifier : top.getModifierList()) {
-        currSnippet.addModifier(currModifier);
+    if (htmlBuilder != null) {
+      htmlBuilder.append('<');
+      htmlBuilder.append(qName);
+      if (attributes.getLength() > 0) {
+        htmlBuilder.append(' ');
       }
 
-      // Remove the previous snippet from the stack and add to the list of snippets.
-      // Only if we do not have any modifiers.
-      if (top.getModifierList().isEmpty())
-        snippets.add(activeElementStack.removeLast());
-    }
+      for (int i = 0; i < attributes.getLength(); i++) {
+        String attrName = attributes.getQName(i);
+        String attrValue = attributes.getValue(i);
 
-    currSnippet.addModifier(modifier);
-    activeElementStack.addLast(currSnippet);
+        htmlBuilder.append(attrName);
+        htmlBuilder.append('=');
+        htmlBuilder.append('"');
+        htmlBuilder.append(escapeAttribute(attrValue));
+        htmlBuilder.append('"');
+      }
+
+      htmlBuilder.append('>');
+    } else {
+      if (qName.equalsIgnoreCase("html")) {
+        htmlBuilder = new StringBuilder();
+      }
+    }
   }
 
   @Override
   public void endElement(String uri, String localName, String qName) {
-    Snippet.Modifier modifier = Snippet.Modifier.getModifierByName(qName);
-
-    if (modifier != null || qName.equals(elementName)) {
-      snippets.add(activeElementStack.removeLast());
+    if (qName.equalsIgnoreCase("html")) {
+      html = htmlBuilder.toString();
+      htmlBuilder = null;
+    } else {
+      if (htmlBuilder != null) {
+        htmlBuilder.append('<');
+        htmlBuilder.append('/');
+        htmlBuilder.append(qName);
+        htmlBuilder.append(">");
+      }
     }
 
     super.endElement(uri, localName, qName);
@@ -60,88 +66,16 @@ public class SnippetElement extends ResumeElement {
 
   @Override
   public void characters(char[] ch, int start, int length) {
-    Snippet top = activeElementStack.peekLast();
-    if (top != null) {
-      top.append(ch, start, length);
-    } else {
-      top = new Snippet();
-      top.append(ch, start, length);
-      activeElementStack.addLast(top);
+    if (htmlBuilder != null) {
+      htmlBuilder.append(ch, start, length);
     }
   }
 
-  public List<Snippet> getSnippets() {
-    return snippets;
+  String escapeAttribute(String attr) {
+    return StringEscapeUtils.escapeXml(attr);
   }
 
-  public static class Snippet {
-    private final StringBuilder sb;
-    private final List<Modifier> modifierList;
-
-    public enum Modifier {
-      HTML("html", 1),
-      BOLD("b", 2),
-      ITALIC("i", 3),
-      UNDERLINE("u", 4),
-      HYPERLINK("a", 5),
-      CODE("code", 6),
-      BR("br", 7);
-
-      private final String tag;
-      private final int order;
-
-      Modifier(String tag, int order) {
-        this.tag = tag;
-        this.order = order;
-      }
-
-      public String getTag() {
-        return tag;
-      }
-
-      public int getOrder() {
-        return order;
-      }
-
-      public static Modifier getModifierByName(String name) {
-        for (Modifier modifier : values()) {
-          if (modifier.tag.equals(name))
-            return modifier;
-        }
-
-        return null;
-      }
-    }
-
-    public Snippet() {
-      this.sb = new StringBuilder();
-      this.modifierList = new ArrayList<>();
-    }
-
-    public void append(char[] ch, int start, int length) {
-      sb.append(ch, start, length);
-    }
-
-    public String getText() {
-      return sb.toString();
-    }
-
-    public void addModifier(Modifier modifier) {
-      modifierList.add(modifier);
-    }
-
-    public List<Modifier> getModifierList() {
-      return modifierList;
-    }
-
-    public List<Modifier> getOrderedModifierList() {
-      Collections.sort(modifierList, new Comparator<Modifier>() {
-        @Override
-        public int compare(Modifier lhs, Modifier rhs) {
-          return Integer.compare(lhs.order, rhs.order);
-        }
-      });
-      return modifierList;
-    }
+  public String getHtml() {
+    return html;
   }
 }

@@ -17,15 +17,15 @@ public class SummaryOfQualifications extends ResumeElement {
         buildCompositeElementList(new CompositeElement<>(Qualification.class, Qualification.getElementName())));
   }
 
-  public List<List<SnippetElement.Snippet>> getQualifications() {
-    List<List<SnippetElement.Snippet>> qualificationsSnippetList = new ArrayList<>();
+  public List<String> getQualifications() {
+    List<String> qualificationSnippets = new ArrayList<>();
     List<Qualification> qualificationList = getCompositeElementByClass(Qualification.class).getResumeElementList();
     if (qualificationList != null) {
       for (Qualification qualification : qualificationList) {
-        qualificationsSnippetList.add(qualification.snippets);
+        qualificationSnippets.add(qualification.getHtml());
       }
     }
-    return qualificationsSnippetList;
+    return qualificationSnippets;
   }
 
   public static class Qualification extends SnippetElement {

@@ -17,16 +17,15 @@ public class Projects extends ResumeElement {
         buildCompositeElementList(new CompositeElement<>(Project.class, Project.getElementName())));
   }
 
-  public List<List<SnippetElement.Snippet>> getProjects() {
-    List<List<SnippetElement.Snippet>> projectsSnippetList = new ArrayList<>();
+  public List<String> getProjects() {
+    List<String> projectSnippets = new ArrayList<>();
     List<Project> projectList = getCompositeElementByClass(Project.class).getResumeElementList();
     if (projectList != null) {
       for (Project qualification : projectList) {
-        projectsSnippetList.add(qualification.snippets);
+        projectSnippets.add(qualification.getHtml());
       }
     }
-    return projectsSnippetList;
-
+    return projectSnippets;
   }
 
   public static String getElementName() {

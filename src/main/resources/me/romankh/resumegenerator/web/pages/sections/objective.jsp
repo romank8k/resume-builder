@@ -11,7 +11,7 @@
 
   <div>
     <p>
-      <c:forEach var="snippet" items="${pageFlow.resume.content.objective.snippets}">${pageFlow.formatTextSnippet(snippet)}</c:forEach>
+      ${pageFlow.resume.content.objective.html}
     </p>
   </div>
 </div>

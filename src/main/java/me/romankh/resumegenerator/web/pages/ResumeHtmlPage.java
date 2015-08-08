@@ -145,55 +145,6 @@ public class ResumeHtmlPage {
     return resume;
   }
 
-  public String formatTextSnippet(SnippetElement.Snippet snippet) {
-    StringBuilder sb = new StringBuilder();
-
-    List<SnippetElement.Snippet.Modifier> modifierList = snippet.getOrderedModifierList();
-    if (!modifierList.isEmpty()) {
-      SnippetElement.Snippet.Modifier lastModifier = null;
-      for (SnippetElement.Snippet.Modifier modifier : modifierList) {
-        switch (modifier) {
-          case BOLD:
-            sb.append("<strong>");
-            break;
-          case ITALIC:
-            sb.append("<em>");
-            break;
-          case UNDERLINE:
-            sb.append("<u>");
-            break;
-        }
-
-        lastModifier = modifier;
-      }
-
-      if (lastModifier == SnippetElement.Snippet.Modifier.HYPERLINK) {
-        sb.append("<a href='").append(snippet.getText()).append("'>").append(snippet.getText()).append("</a>");
-      } else {
-        sb.append(snippet.getText());
-      }
-
-      for (int i = modifierList.size() - 1; i >= 0; i--) {
-        SnippetElement.Snippet.Modifier modifier = modifierList.get(i);
-        switch (modifier) {
-          case BOLD:
-            sb.append("</strong>");
-            break;
-          case ITALIC:
-            sb.append("</em>");
-            break;
-          case UNDERLINE:
-            sb.append("</u>");
-            break;
-        }
-      }
-    } else {
-      sb.append(snippet.getText());
-    }
-
-    return sb.toString();
-  }
-
   public String formatCamelCaseName(String camelCase) {
     Matcher matcher = CAMEL_CASE_PATTERN.matcher(camelCase);
 

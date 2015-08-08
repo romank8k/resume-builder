@@ -38,15 +38,15 @@ public class Role extends ResumeElement {
     return getElementByName(TITLE).getValue();
   }
 
-  public List<List<SnippetElement.Snippet>> getAccomplishments() {
-    List<List<SnippetElement.Snippet>> accomplishmentsSnippetList = new ArrayList<>();
+  public List<String> getAccomplishments() {
+    List<String> accomplishmentSnippets = new ArrayList<>();
     List<Accomplishment> accomplishmentList = getCompositeElementByClass(Accomplishment.class).getResumeElementList();
     if (accomplishmentList != null) {
       for (Accomplishment accomplishment : accomplishmentList) {
-        accomplishmentsSnippetList.add(accomplishment.snippets);
+        accomplishmentSnippets.add(accomplishment.getHtml());
       }
     }
-    return accomplishmentsSnippetList;
+    return accomplishmentSnippets;
   }
 
   public static String getElementName() {
