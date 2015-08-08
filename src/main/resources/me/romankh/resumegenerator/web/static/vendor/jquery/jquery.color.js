@@ -1,12 +1,12 @@
 /*!
- * jQuery Color Animations v@VERSION
+ * jQuery Color Animations v2.1.2
  * https://github.com/jquery/jquery-color
  *
- * Copyright jQuery Foundation and other contributors
+ * Copyright 2013 jQuery Foundation and other contributors
  * Released under the MIT license.
  * http://jquery.org/license
  *
- * Date: @DATE
+ * Date: Wed Jan 16 08:47:09 2013 -0600
  */
 (function( jQuery, undefined ) {
 
@@ -660,4 +660,4 @@ colors = jQuery.Color.names = {
 	_default: "#ffffff"
 };
 
-}( jQuery ));
+})( jQuery );
