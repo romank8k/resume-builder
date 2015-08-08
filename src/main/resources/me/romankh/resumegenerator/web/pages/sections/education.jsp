@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:useBean id="pageFlow" scope="request" type="me.romankh.resumegenerator.web.pages.ResumeHtmlPage"/>
 
-<div id="${pageFlow.educationSectionId}" class="bs-docs-section">
+<div id="${pageFlow.educationSectionId}" class="primary-section">
   <div class="page-header">
     <h3>
       ${pageFlow.educationSectionName}
@@ -11,7 +11,8 @@
 
   <div>
     <c:forEach var="institution" items="${pageFlow.resume.content.education.institutions}">
-      <div id="${pageFlow.generateSectionId(institution.class.simpleName, institution.name, "")}">
+      <div id="${pageFlow.generateSectionId(institution.class.simpleName, institution.name, "")}"
+           class="secondary-section">
         <strong>${institution.name}</strong>, ${institution.location}
           <c:forEach var="degree" items="${institution.degrees}">
             <div id="${pageFlow.generateSectionId("", degree.title, "")}">

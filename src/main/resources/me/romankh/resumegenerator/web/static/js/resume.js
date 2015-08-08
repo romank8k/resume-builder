@@ -24,10 +24,10 @@ $(function () {
             var id = href.substr(idx);
             var $el = $(id);
             $el.animate({
-                'background-color': 'yellow'
-            }, 400, function () {
+                'border-color': 'black'
+            }, 200, function () {
                 $el.animate({
-                    'background-color': 'none'
+                    'border-color': 'white'
                 }, 400, function () {
                 });
             });

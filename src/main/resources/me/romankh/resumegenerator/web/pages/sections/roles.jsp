@@ -4,7 +4,7 @@
 
 <p>
   <c:forEach var="role" items="${rolesList}">
-    <div id="${pageFlow.generateSectionId("", role.role, "")}">
+    <div>
       <div class="clearfix">
         <span class="pull-left">${role.department}</span>
         <span class="pull-right">${role.timespan}</span>

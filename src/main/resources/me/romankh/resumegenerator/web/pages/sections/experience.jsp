@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:useBean id="pageFlow" scope="request" type="me.romankh.resumegenerator.web.pages.ResumeHtmlPage"/>
 
-<div id="${pageFlow.experienceSectionId}" class="bs-docs-section">
+<div id="${pageFlow.experienceSectionId}" class="primary-section">
   <div class="page-header">
     <h3>
       ${pageFlow.experienceSectionName}
@@ -11,7 +11,8 @@
 
   <div>
     <c:forEach var="job" items="${pageFlow.resume.content.experience.jobs}">
-      <div id="${pageFlow.generateSectionId("", job.employer, "")}">
+      <div id="${pageFlow.generateSectionId("", job.employer, "")}"
+           class="secondary-section">
         <div class="clearfix">
           <span class="pull-left"><strong>${job.employer}</strong></span>
           <span class="pull-right">${job.location}</span>
