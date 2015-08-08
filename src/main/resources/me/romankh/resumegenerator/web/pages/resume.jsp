@@ -67,7 +67,7 @@
 
 <script src="/static/vendor/jquery/jquery.js"></script>
 <script src="/static/vendor/bootstrap/js/bootstrap.js"></script>
-<script src="/static/vendor/jquery.color.js"></script>
+<script src="/static/vendor/jquery/jquery.color.js"></script>
 <script src="/static/js/resume.js"></script>
 </body>
 </html>
