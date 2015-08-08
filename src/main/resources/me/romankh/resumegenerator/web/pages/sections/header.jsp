@@ -3,7 +3,7 @@
 <jsp:useBean id="pageFlow" scope="request" type="me.romankh.resumegenerator.web.pages.ResumeHtmlPage"/>
 
 <div class="bs-docs-section">
-  <div class="page-header">
+  <div class="resume-header">
     <div id="js-header">
       <div>
         <span class="h3 pull-left">${pageFlow.resume.header.name}</span>
