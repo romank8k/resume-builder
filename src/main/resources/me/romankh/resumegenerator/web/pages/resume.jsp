@@ -113,6 +113,12 @@
       </c:forEach>
     </div>
   </div>
+
+  <div class="row">
+    <div id="resume-footer">
+      <p class="pull-right">Made with <a href="https://github.com/rkhmelichek/ResumeGenerator">Resume Generator.</a></p>
+    </div>
+  </div>
 </div>
 
 <script src="/static/vendor/jquery/jquery.js"></script>
