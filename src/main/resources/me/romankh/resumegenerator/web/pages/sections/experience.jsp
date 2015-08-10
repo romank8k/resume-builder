@@ -14,8 +14,8 @@
       <div id="${pageFlow.generateSectionId("", job.employer, "")}"
            class="resume-secondary-section">
         <div class="clearfix">
-          <span class="pull-left">
-            <strong>${job.employer}</strong>
+          <span class="pull-left resume-employer">
+            ${job.employer}
           </span>
           <span class="pull-right">
             <strong>${job.location}</strong>

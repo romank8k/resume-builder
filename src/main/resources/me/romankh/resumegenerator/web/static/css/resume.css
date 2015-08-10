@@ -40,6 +40,12 @@ body {
     margin-left: 20px;
 }
 
+.resume-institution,
+.resume-employer {
+    font-size: 18px;
+    font-weight: 700;
+}
+
 /*
  * Resume masthead
  */

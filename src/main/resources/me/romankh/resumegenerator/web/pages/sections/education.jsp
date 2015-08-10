@@ -13,7 +13,7 @@
     <c:forEach var="institution" items="${pageFlow.resume.content.education.institutions}">
       <div id="${pageFlow.generateSectionId(institution.class.simpleName, institution.name, "")}"
            class="resume-secondary-section">
-        <strong>${institution.name}</strong>, ${institution.location}
+        <span class="resume-institution">${institution.name}</span>, ${institution.location}
           <c:forEach var="degree" items="${institution.degrees}">
             <div id="${pageFlow.generateSectionId("", degree.title, "")}"
                  class="resume-tertiary-section">
