@@ -13,21 +13,16 @@ public class Role extends ResumeElement {
   private static final String ELEMENT_NAME = "role";
 
   private static final String DEPARTMENT = "department";
-  private static final String ROLE = "role";
   private static final String TIMESPAN = "timespan";
   private static final String TITLE = "title";
 
   public Role(DefaultHandler parent, XMLReader parser) {
-    super(parent, parser, ELEMENT_NAME, buildElementList(DEPARTMENT, ROLE, TIMESPAN, TITLE),
+    super(parent, parser, ELEMENT_NAME, buildElementList(DEPARTMENT, TIMESPAN, TITLE),
         buildCompositeElementList(new CompositeElement<>(Accomplishment.class, Accomplishment.getElementName())));
   }
 
   public String getDepartment() {
     return getElementByName(DEPARTMENT).getValue();
-  }
-
-  public String getRole() {
-    return getElementByName(ROLE).getValue();
   }
 
   public String getTimespan() {

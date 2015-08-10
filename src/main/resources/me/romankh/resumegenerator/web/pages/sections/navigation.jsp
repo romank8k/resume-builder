@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:useBean id="pageFlow" scope="request" type="me.romankh.resumegenerator.web.pages.ResumeHtmlPage"/>
 
-<ul class="nav bs-sidenav">
+<ul class="nav">
   <c:forEach var="section" items="${pageFlow.sections}">
     <li class="">
       <a href="#${section.sectionId}">${section.sectionName}</a>

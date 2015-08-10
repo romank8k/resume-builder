@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:useBean id="pageFlow" scope="request" type="me.romankh.resumegenerator.web.pages.ResumeHtmlPage"/>
 
-<div id="${pageFlow.projectsSectionId}" class="primary-section">
+<div id="${pageFlow.projectsSectionId}" class="resume-primary-section">
   <div class="page-header">
     <h3>
       ${pageFlow.projectsSectionName}

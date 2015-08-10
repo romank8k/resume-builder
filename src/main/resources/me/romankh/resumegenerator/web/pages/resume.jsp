@@ -12,33 +12,83 @@
     Resume - ${pageFlow.resume.header.name}
   </title>
 
-  <link href="/static/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
-  <link href="/static/css/resume.css" rel="stylesheet">
+  <link href="static/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="static/css/resume.css" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Merriweather+Sans:400,400italic,700,700italic" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-
 <a href="https://github.com/rkhmelichek/ResumeGenerator">
-  <img style="position: absolute; top: 0; right: 0; border: 0;"
+  <img class="github-ribbon"
        src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"
        alt="Fork me on GitHub">
 </a>
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-3">
-      <div class="bs-sidebar hidden-print affix" role="complementary">
-        <jsp:include page="sections/navigation.jsp"></jsp:include>
-      </div>
+<div id="resume-masthead">
+  <div class="container">
+    <div id="resume-masthead-header">
+      <span class="pull-left">
+        <c:choose>
+          <c:when test="${empty pageFlow.resume.header.homepage}">
+            ${pageFlow.resume.header.name}
+          </c:when>
+          <c:otherwise>
+            <a href="${pageFlow.resume.header.homepage}">${pageFlow.resume.header.name}</a>
+          </c:otherwise>
+        </c:choose>
+      </span>
+    </div>
+    <div class="clearfix"></div>
+
+    <div id="resume-masthead-info">
+      <c:if test="${pageFlow.showPersonalDataOnWeb}">
+        <div>
+          <span class="pull-left">
+            ${pageFlow.resume.header.phone}
+          </span>
+          <span class="pull-right">
+            ${pageFlow.resume.header.address.street},
+            ${pageFlow.resume.header.address.apartment}
+          </span>
+        </div>
+        <div class="clearfix"></div>
+
+        <div>
+          <span class="pull-left">
+            ${pageFlow.resume.header.email}
+          </span>
+          <span class="pull-right">
+            ${pageFlow.resume.header.address.city},
+            ${pageFlow.resume.header.address.state}
+            ${pageFlow.resume.header.address.zip}
+          </span>
+        </div>
+        <div class="clearfix"></div>
+      </c:if>
     </div>
 
-    <div class="col-md-9" role="main">
-      <a href="${pageFlow.resumePdfPageUrl}">
-        Click here for a PDF version
-      </a>
+    <div id="resume-masthead-bottom">
+      <div>
+        <span class="pull-left">
+          <a href="${pageFlow.resumePdfPageUrl}">
+            Click here for a PDF version
+          </a>
+        </span>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>
 
-      <jsp:include page="sections/header.jsp"></jsp:include>
+<div class="container">
+  <div class="row">
+    <div class="hidden-xs col-sm-3">
+      <nav id="resume-sidebar" class="hidden-print" role="navigation">
+        <jsp:include page="sections/navigation.jsp"></jsp:include>
+      </nav>
+    </div>
 
+    <div id="resume-content" class="col-xs-12 col-sm-9" role="main">
       <c:forEach var="section" items="${pageFlow.sections}">
         <c:choose>
           <c:when test="${section.sectionClass.simpleName eq 'Objective'}">
@@ -67,7 +117,8 @@
 
 <script src="/static/vendor/jquery/jquery.js"></script>
 <script src="/static/vendor/bootstrap/js/bootstrap.js"></script>
-<script src="/static/vendor/jquery/jquery.color.js"></script>
+<script src="/static/vendor/jquery/jquery.scrollTo.js"></script>
+<script src="/static/vendor/jquery/jquery.localScroll.js"></script>
 <script src="/static/js/resume.js"></script>
 </body>
 </html>

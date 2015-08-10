@@ -4,15 +4,15 @@
 
 <p>
   <c:forEach var="role" items="${rolesList}">
-    <div>
+    <div class="resume-tertiary-section">
       <div class="clearfix">
-        <span class="pull-left">${role.department}</span>
-        <span class="pull-right">${role.timespan}</span>
+        <span class="pull-left">
+          <strong><em>${role.title}</em></strong>
+        </span>
+        <span class="pull-right">
+          <strong>${role.timespan}</strong>
+        </span>
       </div>
-
-      <p>
-        <em>${role.role}</em>
-      </p>
 
       <c:set scope="request"
              var="snippetList"

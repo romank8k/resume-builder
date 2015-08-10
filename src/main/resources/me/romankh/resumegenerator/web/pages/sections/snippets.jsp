@@ -3,9 +3,9 @@
 <jsp:useBean id="pageFlow" scope="request" type="me.romankh.resumegenerator.web.pages.ResumeHtmlPage"/>
 
 <ul>
-  <c:forEach var="snippets" items="${snippetList}">
+  <c:forEach var="snippet" items="${snippetList}">
     <li>
-      <c:forEach var="snippet" items="${snippets}">${snippet}</c:forEach>
+        ${snippet}
     </li>
   </c:forEach>
 </ul>
