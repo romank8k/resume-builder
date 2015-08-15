@@ -10,11 +10,15 @@
   </div>
 
   <div>
-    <c:forEach var="award" items="${pageFlow.resume.content.awards.awards}">
-      <div class="clearfix">
-        <span class="pull-left">${award.title}</span>
-        <span class="pull-right">${award.timespan}</span>
+    <div class="resume-secondary-section">
+      <div class="resume-tertiary-section">
+        <c:forEach var="award" items="${pageFlow.resume.content.awards.awards}">
+          <div class="clearfix">
+            <span class="pull-left">${award.title}</span>
+            <span class="pull-right">${award.timespan}</span>
+          </div>
+        </c:forEach>
       </div>
-    </c:forEach>
+    </div>
   </div>
 </div>

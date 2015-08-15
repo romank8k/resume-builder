@@ -10,9 +10,13 @@
   </div>
 
   <div>
-    <c:set scope="request"
-           var="snippetList"
-           value="${pageFlow.resume.content.projects.projects}"/>
-    <jsp:include page="snippets.jsp"/>
+    <div class="resume-secondary-section">
+      <div class="resume-tertiary-section">
+        <c:set scope="request"
+               var="snippetList"
+               value="${pageFlow.resume.content.projects.projects}"/>
+        <jsp:include page="snippets.jsp"/>
+      </div>
+    </div>
   </div>
 </div>

@@ -10,8 +10,10 @@
   </div>
 
   <div>
-    <p>
-      ${pageFlow.resume.content.objective.html}
-    </p>
+    <div class="resume-secondary-section">
+      <div class="resume-tertiary-section">
+        ${pageFlow.resume.content.objective.html}
+      </div>
+    </div>
   </div>
 </div>
