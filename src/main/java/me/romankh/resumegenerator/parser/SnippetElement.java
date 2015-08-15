@@ -12,6 +12,7 @@ import org.xml.sax.helpers.DefaultHandler;
 public class SnippetElement extends ResumeElement {
   private String html;
   private StringBuilder htmlBuilder;
+  private boolean voidTag;
 
   public SnippetElement(DefaultHandler parent, XMLReader parser, String elementName) {
     super(parent, parser, elementName, null);
@@ -39,6 +40,13 @@ public class SnippetElement extends ResumeElement {
         htmlBuilder.append('"');
       }
 
+      if (Html5VoidTag.findTag(qName) != null) {
+        // HTML5 void tags should not have a corresponding closing tag (or they should be self-closing).
+        // Make them self-closing for compatibility with XML.
+        htmlBuilder.append('/');
+        voidTag = true;
+      }
+
       htmlBuilder.append('>');
     } else {
       if (qName.equalsIgnoreCase("html")) {
@@ -54,10 +62,14 @@ public class SnippetElement extends ResumeElement {
       htmlBuilder = null;
     } else {
       if (htmlBuilder != null) {
-        htmlBuilder.append('<');
-        htmlBuilder.append('/');
-        htmlBuilder.append(qName);
-        htmlBuilder.append(">");
+        if (!voidTag) {
+          htmlBuilder.append('<');
+          htmlBuilder.append('/');
+          htmlBuilder.append(qName);
+          htmlBuilder.append(">");
+        } else {
+          voidTag = false;
+        }
       }
     }
 
@@ -67,6 +79,10 @@ public class SnippetElement extends ResumeElement {
   @Override
   public void characters(char[] ch, int start, int length) {
     if (htmlBuilder != null) {
+      if (voidTag) {
+        // If the void tag incorrectly has content - ignore it.
+        return;
+      }
       htmlBuilder.append(ch, start, length);
     }
   }
