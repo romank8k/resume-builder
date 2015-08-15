@@ -13,25 +13,33 @@
     <c:forEach var="institution" items="${pageFlow.resume.content.education.institutions}">
       <div id="${pageFlow.generateSectionId(institution.class.simpleName, institution.name, "")}"
            class="resume-secondary-section">
-        <span class="resume-institution">${institution.name}</span>, ${institution.location}
-          <c:forEach var="degree" items="${institution.degrees}">
-            <div id="${pageFlow.generateSectionId("", degree.title, "")}"
-                 class="resume-tertiary-section">
-              <div class="clearfix">
-                <span class="pull-left">
-                  <strong><em>${degree.title}</em></strong>
-                </span>
-                <span class="pull-right">
-                  <strong>${degree.timespan}</strong>
-                </span>
-              </div>
+        <div class="clearfix">
+          <span class="pull-left resume-institution">
+              ${institution.name}
+          </span>
+          <span class="pull-right">
+            <strong>${institution.location}</strong>
+          </span>
+        </div>
 
-              <c:set scope="request"
-                     var="snippetList"
-                     value="${degree.accomplishments}"/>
-              <jsp:include page="snippets.jsp"/>
+        <c:forEach var="degree" items="${institution.degrees}">
+          <div id="${pageFlow.generateSectionId("", degree.title, "")}"
+               class="resume-tertiary-section">
+            <div class="clearfix">
+              <span class="pull-left">
+                <strong><em>${degree.title}</em></strong>
+              </span>
+              <span class="pull-right">
+                <strong>${degree.timespan}</strong>
+              </span>
             </div>
-          </c:forEach>
+
+            <c:set scope="request"
+                   var="snippetList"
+                   value="${degree.accomplishments}"/>
+            <jsp:include page="snippets.jsp"/>
+          </div>
+        </c:forEach>
       </div>
     </c:forEach>
   </div>
