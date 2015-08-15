@@ -46,6 +46,7 @@ body {
 }
 
 .resume-tertiary-section {
+    margin: 10px 0;
 }
 .resume-tertiary-section > ul {
     padding-left: 0;
