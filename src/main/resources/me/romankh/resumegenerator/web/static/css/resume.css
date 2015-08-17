@@ -27,8 +27,6 @@ body {
     right: 0;
     padding: 10px 60px;
     background: rgba(202, 210, 227, 0.95);
-    border: none;
-    border-top: 2px solid #22313f;
 }
 #resume-footer > p {
     margin: 0;
@@ -73,8 +71,6 @@ body {
     /* Height should match top margin on body. */
     height: 149px;
     background: rgba(202, 210, 227, 0.95);
-    border: none;
-    border-bottom: 2px solid #22313f;
     overflow: hidden;
 
     font-size: 32px;
