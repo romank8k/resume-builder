@@ -49,7 +49,7 @@ $(window).load(function () {
 
         $sidebar.localScroll({
             duration: 800,
-            hash: true,
+            hash: false,
             easing: 'swing',
             onBefore: function (e, anchor, $target) {
             },
