@@ -12,9 +12,16 @@ body {
     margin-top: 149px;
 }
 
+a {
+    color: rgb(46, 200, 102);
+}
+a:hover {
+    color: rgb(57, 66, 78);
+}
+
 #resume-footer {
     padding: 10px 0 0 0;
-    border-top: solid #555 1px;
+    border-top: solid #eee 1px;
 }
 
 .resume-primary-section {
@@ -55,13 +62,16 @@ body {
     z-index: 1030;
     /* Height should match top margin on body. */
     height: 149px;
-    background: rgba(202, 210, 227, 0.95);
+    background: rgba(57, 66, 78, 0.95);
+    color: rgb(248, 249, 250);
     overflow: hidden;
-
     font-size: 32px;
     font-style: normal;
     font-weight: 400;
     line-height: 40px;
+}
+#resume-masthead a:hover {
+    color: rgb(248, 249, 250);
 }
 
 #resume-masthead-header {
@@ -94,7 +104,7 @@ body {
     top: 149px;
     bottom: 0;
     margin: 20px 0;
-    border-right: solid #555 1px;
+    border-right: solid #eee 1px;
 }
 
 #resume-sidebar > .nav {
@@ -103,7 +113,6 @@ body {
 
 #resume-sidebar .nav > li > a {
     display: block;
-    color: #716b7a;
     padding: 5px 20px;
 }
 
@@ -113,16 +122,17 @@ body {
 }
 #resume-sidebar .nav > li > a:focus {
     background-color: inherit;
+    color: rgb(46, 200, 102);
 }
 #resume-sidebar .nav > li > a:hover {
-    border-left: 2px solid #563d7c;
+    color: rgb(248, 249, 250);
+    background-color: rgb(46, 200, 102);
 }
 
 #resume-sidebar .nav > .active > a,
 #resume-sidebar .nav > .active:hover > a,
 #resume-sidebar .nav > .active:focus > a {
     font-weight: 700;
-    color: #563d7c;
     border-left: 2px solid #563d7c;
 }
 
