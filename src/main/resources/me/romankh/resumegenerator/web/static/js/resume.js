@@ -7,9 +7,13 @@ $(window).load(function () {
     var $body = $('body');
     var $masthead = $('#resume-masthead');
     var $sidebar = $('#resume-sidebar');
+    var $content = $('#resume-content');
+    var $footer = $('#resume-footer');
 
     var viewportHeight = $window.height();
     var bodyHeight = $body.height();
+    var contentHeight = $content.height();
+    var footerHeight = $footer.outerHeight();
     var mastheadHeight = $masthead.outerHeight();  // Includes the border.
     var collapseBy = mastheadHeight - minHeight;  // Amount we'll be collapsing the masthead by.
 
@@ -24,8 +28,10 @@ $(window).load(function () {
         var $lastSecondaryEl = $('.resume-secondary-section').last();
         if ($lastSecondaryEl.length) {
             var lastSecondaryYPosition = $lastSecondaryEl.position().top;
-            var extendHeightBy = viewportHeight - (documentHeight - lastSecondaryYPosition);
-            $body.height(bodyHeight + extendHeightBy);
+            var extendHeightBy = viewportHeight - (documentHeight - lastSecondaryYPosition) - footerHeight;
+            if (extendHeightBy > 0) {
+                $content.height(bodyHeight + extendHeightBy);
+            }
         }
     })();
 

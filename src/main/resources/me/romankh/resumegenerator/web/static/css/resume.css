@@ -12,24 +12,9 @@ body {
     margin-top: 149px;
 }
 
-.github-ribbon {
-    position: fixed;
-    top: 0;
-    right: 0;
-    border: 0;
-    z-index: 2000;
-}
-
 #resume-footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 10px 60px;
-    background: rgba(202, 210, 227, 0.95);
-}
-#resume-footer > p {
-    margin: 0;
+    padding: 10px 0 0 0;
+    border-top: solid #555 1px;
 }
 
 .resume-primary-section {
@@ -107,14 +92,13 @@ body {
     position: fixed;
     /* Top should match top margin on body. */
     top: 149px;
-    margin-top: 20px;
-    background: rgba(202, 210, 227, 0.95);
-    border-radius: 10px;
+    bottom: 0;
+    margin: 20px 0;
+    border-right: solid #555 1px;
 }
 
-#resume-sidebar .nav {
-    margin: 5px 0;
-    padding: 2px 0;
+#resume-sidebar > .nav {
+    margin-right: 10px;
 }
 
 #resume-sidebar .nav > li > a {
@@ -131,8 +115,7 @@ body {
     background-color: inherit;
 }
 #resume-sidebar .nav > li > a:hover {
-    background-color: #99b0e0;
-    border-right: 2px solid #563d7c;
+    border-left: 2px solid #563d7c;
 }
 
 #resume-sidebar .nav > .active > a,
@@ -140,7 +123,7 @@ body {
 #resume-sidebar .nav > .active:focus > a {
     font-weight: 700;
     color: #563d7c;
-    border-right: 2px solid #563d7c;
+    border-left: 2px solid #563d7c;
 }
 
 #resume-sidebar .nav .nav > li > a {

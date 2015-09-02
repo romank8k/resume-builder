@@ -18,12 +18,6 @@
 </head>
 
 <body>
-<a href="https://github.com/rkhmelichek/ResumeGenerator">
-  <img class="github-ribbon"
-       src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"
-       alt="Fork me on GitHub">
-</a>
-
 <div id="resume-masthead">
   <div class="container">
     <div id="resume-masthead-header">
@@ -88,35 +82,38 @@
       </nav>
     </div>
 
-    <div id="resume-content" class="col-xs-12 col-sm-9" role="main">
-      <c:forEach var="section" items="${pageFlow.sections}">
-        <c:choose>
-          <c:when test="${section.sectionClass.simpleName eq 'Objective'}">
-            <jsp:include page="sections/objective.jsp"></jsp:include>
-          </c:when>
-          <c:when test="${section.sectionClass.simpleName eq 'SummaryOfQualifications'}">
-            <jsp:include page="sections/summaryOfQualifications.jsp"></jsp:include>
-          </c:when>
-          <c:when test="${section.sectionClass.simpleName eq 'Education'}">
-            <jsp:include page="sections/education.jsp"></jsp:include>
-          </c:when>
-          <c:when test="${section.sectionClass.simpleName eq 'Awards'}">
-            <jsp:include page="sections/awards.jsp"></jsp:include>
-          </c:when>
-          <c:when test="${section.sectionClass.simpleName eq 'Projects'}">
-            <jsp:include page="sections/projects.jsp"></jsp:include>
-          </c:when>
-          <c:when test="${section.sectionClass.simpleName eq 'Experience'}">
-            <jsp:include page="sections/experience.jsp"></jsp:include>
-          </c:when>
-        </c:choose>
-      </c:forEach>
-    </div>
-  </div>
+    <div class="col-xs-12 col-sm-9">
+      <div id="resume-content" role="main">
+        <c:forEach var="section" items="${pageFlow.sections}">
+          <c:choose>
+            <c:when test="${section.sectionClass.simpleName eq 'Objective'}">
+              <jsp:include page="sections/objective.jsp"></jsp:include>
+            </c:when>
+            <c:when test="${section.sectionClass.simpleName eq 'SummaryOfQualifications'}">
+              <jsp:include page="sections/summaryOfQualifications.jsp"></jsp:include>
+            </c:when>
+            <c:when test="${section.sectionClass.simpleName eq 'Education'}">
+              <jsp:include page="sections/education.jsp"></jsp:include>
+            </c:when>
+            <c:when test="${section.sectionClass.simpleName eq 'Awards'}">
+              <jsp:include page="sections/awards.jsp"></jsp:include>
+            </c:when>
+            <c:when test="${section.sectionClass.simpleName eq 'Projects'}">
+              <jsp:include page="sections/projects.jsp"></jsp:include>
+            </c:when>
+            <c:when test="${section.sectionClass.simpleName eq 'Experience'}">
+              <jsp:include page="sections/experience.jsp"></jsp:include>
+            </c:when>
+          </c:choose>
+        </c:forEach>
+      </div>
 
-  <div class="row">
-    <div id="resume-footer">
-      <p class="pull-right">Made with <a href="https://github.com/rkhmelichek/ResumeGenerator">Resume Generator.</a></p>
+      <div id="resume-footer">
+        <p class="pull-right">
+          Made with <a href="https://github.com/rkhmelichek/ResumeGenerator">Resume Generator</a>
+        </p>
+        <p style="clear: both;"></p>
+      </div>
     </div>
   </div>
 </div>
