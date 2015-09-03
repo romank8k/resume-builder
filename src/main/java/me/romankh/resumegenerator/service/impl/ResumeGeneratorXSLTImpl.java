@@ -34,7 +34,7 @@ public class ResumeGeneratorXSLTImpl implements ResumeGeneratorService {
   private final FopFactory fopFactory = FopFactory.newInstance();
 
   private boolean isWebServer;
-  private final Boolean showPersonalDataOnWeb;
+  private final boolean showPersonalDataOnWeb;
   private final InputFileResolver inputFileResolver;
   private final ResumeCachingFactory resumeCachingFactory;
   private final ResumeFactory resumeFactory;
@@ -49,7 +49,7 @@ public class ResumeGeneratorXSLTImpl implements ResumeGeneratorService {
 
   @Inject
   public ResumeGeneratorXSLTImpl(@IsWebServer boolean isWebServer,
-                                 @Prop(Property.SHOW_PERSONAL_DATA_ON_WEB) Boolean showPersonalDataOnWeb,
+                                 @Prop(Property.SHOW_PERSONAL_DATA_ON_WEB) boolean showPersonalDataOnWeb,
                                  InputFileResolver inputFileResolver,
                                  ResumeCachingFactory resumeCachingFactory,
                                  ResumeFactory resumeFactory) throws Exception {
@@ -92,10 +92,8 @@ public class ResumeGeneratorXSLTImpl implements ResumeGeneratorService {
 
       Transformer transformer = transformerFactory.newTransformer(new StreamSource(xslIs));
 
-      // TODO: Make this part of the <meta> section?
       if (isWebServer) {
-        // Set the value of a <param> tag in the stylesheet.
-        //transformer.setParameter("showPersonalData", showPersonalDataOnWeb);
+        transformer.setParameter("showPersonalData", showPersonalDataOnWeb);
       }
 
       Source source = new StreamSource(xmlIs);
