@@ -10,6 +10,8 @@ body {
 
     /* This value is replicated in several style rules. */
     margin-top: 149px;
+
+    background-color: #fafafa;
 }
 
 a {
@@ -21,7 +23,7 @@ a:hover {
 
 #resume-footer {
     padding: 10px 0 0 0;
-    border-top: solid #eee 1px;
+    border-top: solid #ddd 1px;
 }
 
 .resume-primary-section {
@@ -104,7 +106,7 @@ a:hover {
     top: 149px;
     bottom: 0;
     margin: 20px 0;
-    border-right: solid #eee 1px;
+    border-right: solid #ddd 1px;
 }
 
 #resume-sidebar > .nav {
@@ -166,6 +168,7 @@ a:hover {
  */
 .page-header {
     padding-bottom: 0;
+    border-bottom: 1px solid #ddd;
 }
 .page-header:first-child {
     /* Align the first section with the sidebar. */
