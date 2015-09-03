@@ -50,7 +50,8 @@ $(window).load(function () {
 
         $body.scrollspy({
             target: '#resume-sidebar',
-            offset: mastheadTotalMinHeight + extra
+            // Add 5 extra pixels to help active sidebar labels align correctly on FireFox.
+            offset: mastheadTotalMinHeight + extra + 5
         });
 
         $sidebar.localScroll({
