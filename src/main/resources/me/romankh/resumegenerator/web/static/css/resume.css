@@ -15,10 +15,10 @@ body {
 }
 
 a {
-    color: rgb(46, 200, 102);
+    color: #6db33f;
 }
 a:hover {
-    color: rgb(57, 66, 78);
+    color: rgb(46, 200, 102);
 }
 
 #resume-footer {
@@ -65,7 +65,7 @@ a:hover {
     /* Height should match top margin on body. */
     height: 149px;
     background: rgba(57, 66, 78, 0.95);
-    color: rgb(248, 249, 250);
+    color: #fafafa;
     overflow: hidden;
     font-size: 32px;
     font-style: normal;
@@ -73,7 +73,7 @@ a:hover {
     line-height: 40px;
 }
 #resume-masthead a:hover {
-    color: rgb(248, 249, 250);
+    color: rgb(46, 200, 102);
 }
 
 #resume-masthead-header {
@@ -124,11 +124,11 @@ a:hover {
 }
 #resume-sidebar .nav > li > a:focus {
     background-color: inherit;
-    color: rgb(46, 200, 102);
+    color: #6db33f;
 }
 #resume-sidebar .nav > li > a:hover {
     color: rgb(248, 249, 250);
-    background-color: rgb(46, 200, 102);
+    background-color: #6db33f;
 }
 
 #resume-sidebar .nav > .active > a,
