@@ -5,7 +5,7 @@
   <header>
     <name>Johnny Appleseed</name>
     <phone include="true">(123) 456-7890</phone>
-    <email include="true">johnny.appleseed@gmail.com</email>
+    <email include="true">johnny.appleseed@example.com</email>
     <homepage include="true">http://example.com</homepage>
     <address include="true">
       <street>123 Avenue X</street>

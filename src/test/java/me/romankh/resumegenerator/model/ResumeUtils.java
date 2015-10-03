@@ -27,7 +27,7 @@ public class ResumeUtils {
     resume.setResumeHeader(new ResumeHeader()
         .setName("Johnny Appleseed")
         .setPhone("(123) 456-7890")
-        .setEmail("johnny.appleseed@gmail.com")
+        .setEmail("johnny.appleseed@example.com")
         .setHomepage("http://example.com")
         .setAddress(new Address()
             .setStreet("123 Avenue X")

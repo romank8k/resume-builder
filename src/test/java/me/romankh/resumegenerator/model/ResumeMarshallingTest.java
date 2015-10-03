@@ -148,7 +148,7 @@ public class ResumeMarshallingTest extends TestUtils {
     assertNotNull(resume.getResumeHeader());
     assertEquals(resume.getResumeHeader().getName(), "Johnny Appleseed");
     assertEquals(resume.getResumeHeader().getPhone(), "(123) 456-7890");
-    assertEquals(resume.getResumeHeader().getEmail(), "johnny.appleseed@gmail.com");
+    assertEquals(resume.getResumeHeader().getEmail(), "johnny.appleseed@example.com");
     assertEquals(resume.getResumeHeader().getHomepage(), "http://example.com");
     // Address.
     assertNotNull(resume.getResumeHeader().getAddress());

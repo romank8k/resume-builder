@@ -9,7 +9,7 @@
         "header" : {
             "name" : "Johnny Appleseed",
             "phone" : "(123) 456-7890",
-            "email" : "johnny.appleseed@gmail.com",
+            "email" : "johnny.appleseed@example.com",
             "homepage" : "http://example.com",
             "address" : {
                 "street" : "123 Avenue X",
