@@ -92,6 +92,9 @@
             <c:when test="${section.sectionClass.simpleName eq 'SummaryOfQualifications'}">
               <jsp:include page="sections/summaryOfQualifications.jsp"></jsp:include>
             </c:when>
+            <c:when test="${section.sectionClass.simpleName eq 'Experience'}">
+              <jsp:include page="sections/experience.jsp"></jsp:include>
+            </c:when>
             <c:when test="${section.sectionClass.simpleName eq 'Education'}">
               <jsp:include page="sections/education.jsp"></jsp:include>
             </c:when>
@@ -100,9 +103,6 @@
             </c:when>
             <c:when test="${section.sectionClass.simpleName eq 'Projects'}">
               <jsp:include page="sections/projects.jsp"></jsp:include>
-            </c:when>
-            <c:when test="${section.sectionClass.simpleName eq 'Experience'}">
-              <jsp:include page="sections/experience.jsp"></jsp:include>
             </c:when>
           </c:choose>
         </c:forEach>
