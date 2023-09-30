@@ -12,9 +12,6 @@ public class Content {
   @XmlElement(name = "summary_of_qualifications")
   private SummaryOfQualificationsSection summaryOfQualificationsSection;
 
-  @XmlElement(name = "education")
-  private EducationSection educationSection;
-
   @XmlElement(name = "awards")
   private AwardsSection awardsSection;
 
@@ -26,6 +23,9 @@ public class Content {
 
   @XmlElement(name = "experience")
   private ExperienceSection experienceSection;
+
+  @XmlElement(name = "education")
+  private EducationSection educationSection;
 
   public ObjectiveSection getObjectiveSection() {
     return objectiveSection;
@@ -42,15 +42,6 @@ public class Content {
 
   public Content setSummaryOfQualificationsSection(SummaryOfQualificationsSection summaryOfQualificationsSection) {
     this.summaryOfQualificationsSection = summaryOfQualificationsSection;
-    return this;
-  }
-
-  public EducationSection getEducationSection() {
-    return educationSection;
-  }
-
-  public Content setEducationSection(EducationSection educationSection) {
-    this.educationSection = educationSection;
     return this;
   }
 
@@ -87,6 +78,15 @@ public class Content {
 
   public Content setExperienceSection(ExperienceSection experienceSection) {
     this.experienceSection = experienceSection;
+    return this;
+  }
+
+  public EducationSection getEducationSection() {
+    return educationSection;
+  }
+
+  public Content setEducationSection(EducationSection educationSection) {
+    this.educationSection = educationSection;
     return this;
   }
 }

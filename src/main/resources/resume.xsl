@@ -201,55 +201,6 @@
     </fo:table-row>
   </xsl:template>
 
-  <!-- Education -->
-  <xsl:template match="education[@include='true']">
-    <fo:table-row>
-      <fo:table-cell>
-        <fo:block font-family="{$sectionHeaderFontFamily}"
-                  font-size="{$sectionHeaderFontSize}"
-                  font-weight="{$sectionHeaderFontWeight}">
-          <xsl:value-of select="translate($educationLabel, $lowercase, $uppercase)"/>
-        </fo:block>
-      </fo:table-cell>
-
-      <fo:table-cell>
-        <fo:block padding-bottom="{$educationSectionContentBottomPadding}">
-          <xsl:for-each select="institutions/institution[@include='true']">
-            <fo:block padding-bottom="{$educationSectionSubContentBottomPadding}">
-              <fo:block font-weight="bold">
-                <xsl:call-template name="justifyLineTemplate">
-                  <xsl:with-param name="leftContent" select="name"/>
-                  <xsl:with-param name="rightContent" select="location"/>
-                </xsl:call-template>
-              </fo:block>
-
-              <xsl:for-each select="degrees/degree[@include='true']">
-                <fo:block padding-bottom="{$sectionSubSubContentBottomPadding}">
-                  <fo:block font-weight="bold">
-                    <xsl:call-template name="justifyLineTemplate">
-                      <xsl:with-param name="leftContent" select="title"/>
-                      <xsl:with-param name="leftAttributes">
-                        font-style="italic"
-                      </xsl:with-param>
-                      <xsl:with-param name="rightContent" select="timespan"/>
-                      <xsl:with-param name="rightAttributes"/>
-                    </xsl:call-template>
-                  </fo:block>
-
-                  <fo:block>
-                    <xsl:apply-templates select="accomplishments">
-                      <xsl:with-param name="bulleted" select="xs:boolean('true')"/>
-                    </xsl:apply-templates>
-                  </fo:block>
-                </fo:block>
-              </xsl:for-each>
-            </fo:block>
-          </xsl:for-each>
-        </fo:block>
-      </fo:table-cell>
-    </fo:table-row>
-  </xsl:template>
-
   <!-- Awards -->
   <xsl:template match="awards[@include='true']">
     <fo:table-row>
@@ -392,6 +343,55 @@
                   <fo:block space-after="{$sectionSubContentBottomPadding}"/>
                 </xsl:when>
               </xsl:choose>
+            </fo:block>
+          </xsl:for-each>
+        </fo:block>
+      </fo:table-cell>
+    </fo:table-row>
+  </xsl:template>
+
+  <!-- Education -->
+  <xsl:template match="education[@include='true']">
+    <fo:table-row>
+      <fo:table-cell>
+        <fo:block font-family="{$sectionHeaderFontFamily}"
+                  font-size="{$sectionHeaderFontSize}"
+                  font-weight="{$sectionHeaderFontWeight}">
+          <xsl:value-of select="translate($educationLabel, $lowercase, $uppercase)"/>
+        </fo:block>
+      </fo:table-cell>
+
+      <fo:table-cell>
+        <fo:block padding-bottom="{$educationSectionContentBottomPadding}">
+          <xsl:for-each select="institutions/institution[@include='true']">
+            <fo:block padding-bottom="{$educationSectionSubContentBottomPadding}">
+              <fo:block font-weight="bold">
+                <xsl:call-template name="justifyLineTemplate">
+                  <xsl:with-param name="leftContent" select="name"/>
+                  <xsl:with-param name="rightContent" select="location"/>
+                </xsl:call-template>
+              </fo:block>
+
+              <xsl:for-each select="degrees/degree[@include='true']">
+                <fo:block padding-bottom="{$sectionSubSubContentBottomPadding}">
+                  <fo:block font-weight="bold">
+                    <xsl:call-template name="justifyLineTemplate">
+                      <xsl:with-param name="leftContent" select="title"/>
+                      <xsl:with-param name="leftAttributes">
+                        font-style="italic"
+                      </xsl:with-param>
+                      <xsl:with-param name="rightContent" select="timespan"/>
+                      <xsl:with-param name="rightAttributes"/>
+                    </xsl:call-template>
+                  </fo:block>
+
+                  <fo:block>
+                    <xsl:apply-templates select="accomplishments">
+                      <xsl:with-param name="bulleted" select="xs:boolean('true')"/>
+                    </xsl:apply-templates>
+                  </fo:block>
+                </fo:block>
+              </xsl:for-each>
             </fo:block>
           </xsl:for-each>
         </fo:block>
