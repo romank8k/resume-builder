@@ -3,7 +3,7 @@ const SaveToExistingDirectoryPlugin = require('website-scraper-existing-director
 
 scrape({
   urls: ['http://localhost:8080/resume-html'],
-  directory: '../../rkhmelichek.github.io/',
+  directory: '../../romank8k.github.io/',
   plugins: [ new SaveToExistingDirectoryPlugin() ]
 }).then((result) => {
   console.log(result);
