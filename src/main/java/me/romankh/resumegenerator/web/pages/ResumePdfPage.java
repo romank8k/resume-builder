@@ -15,7 +15,7 @@ import java.io.*;
 /**
  * @author Roman Khmelichek
  */
-@At("/resume-pdf")
+@At("/resume.pdf")
 @Service
 public class ResumePdfPage {
   private static final Logger logger = LogManager.getLogger(ResumePdfPage.class);
