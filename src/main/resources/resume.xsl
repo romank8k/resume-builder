@@ -259,34 +259,6 @@
     </fo:table-row>
   </xsl:template>
 
-  <!-- Projects -->
-  <xsl:template match="projects[@include='true']">
-    <fo:table-row>
-      <fo:table-cell>
-        <fo:block font-family="{$sectionHeaderFontFamily}"
-                  font-size="{$sectionHeaderFontSize}"
-                  font-weight="{$sectionHeaderFontWeight}">
-          <xsl:value-of select="translate($projectsLabel, $lowercase, $uppercase)"/>
-        </fo:block>
-      </fo:table-cell>
-
-      <fo:table-cell>
-        <fo:block padding-bottom="{$sectionContentBottomPadding}">
-          <xsl:if test="projects">
-            <fo:list-block provisional-distance-between-starts="5mm"
-                           provisional-label-separation="15mm">
-              <xsl:for-each select="projects/project[@include='true']">
-                <xsl:call-template name="listItemTemplate">
-                  <xsl:with-param name="bulleted" select="xs:boolean('true')"/>
-                </xsl:call-template>
-              </xsl:for-each>
-            </fo:list-block>
-          </xsl:if>
-        </fo:block>
-      </fo:table-cell>
-    </fo:table-row>
-  </xsl:template>
-
   <!-- Experience -->
   <xsl:template match="experience[@include='true']">
     <fo:table-row>
@@ -399,7 +371,6 @@
     </fo:table-row>
   </xsl:template>
 
-
   <xsl:template match="accomplishments">
     <xsl:param name="bulleted" />
 
@@ -413,6 +384,34 @@
         </xsl:for-each>
       </fo:list-block>
     </xsl:if>
+  </xsl:template>
+
+  <!-- Projects -->
+  <xsl:template match="projects[@include='true']">
+    <fo:table-row>
+      <fo:table-cell>
+        <fo:block font-family="{$sectionHeaderFontFamily}"
+                  font-size="{$sectionHeaderFontSize}"
+                  font-weight="{$sectionHeaderFontWeight}">
+          <xsl:value-of select="translate($projectsLabel, $lowercase, $uppercase)"/>
+        </fo:block>
+      </fo:table-cell>
+
+      <fo:table-cell>
+        <fo:block padding-bottom="{$sectionContentBottomPadding}">
+          <xsl:if test="projects">
+            <fo:list-block provisional-distance-between-starts="5mm"
+                           provisional-label-separation="15mm">
+              <xsl:for-each select="projects/project[@include='true']">
+                <xsl:call-template name="listItemTemplate">
+                  <xsl:with-param name="bulleted" select="xs:boolean('true')"/>
+                </xsl:call-template>
+              </xsl:for-each>
+            </fo:list-block>
+          </xsl:if>
+        </fo:block>
+      </fo:table-cell>
+    </fo:table-row>
   </xsl:template>
 
   <xsl:template name="listItemTemplate">
