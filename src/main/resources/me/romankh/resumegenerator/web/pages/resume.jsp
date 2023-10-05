@@ -110,7 +110,7 @@
 
       <div id="resume-footer">
         <p class="pull-right">
-          Made with <a href="https://github.com/rkhmelichek/ResumeGenerator">Resume Generator</a>
+          Made with <a href="https://github.com/romank8k/ResumeGenerator">Resume Generator</a>
         </p>
         <p style="clear: both;"></p>
       </div>
