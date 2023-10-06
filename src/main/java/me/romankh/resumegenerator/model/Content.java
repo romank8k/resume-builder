@@ -18,14 +18,14 @@ public class Content {
   @XmlElement(name = "relevant_courses")
   private RelevantCoursesSection relevantCoursesSection;
 
-  @XmlElement(name = "projects")
-  private ProjectsSection projectsSection;
-
   @XmlElement(name = "experience")
   private ExperienceSection experienceSection;
 
   @XmlElement(name = "education")
   private EducationSection educationSection;
+
+  @XmlElement(name = "projects")
+  private ProjectsSection projectsSection;
 
   public ObjectiveSection getObjectiveSection() {
     return objectiveSection;
@@ -63,15 +63,6 @@ public class Content {
     return this;
   }
 
-  public ProjectsSection getProjectsSection() {
-    return projectsSection;
-  }
-
-  public Content setProjectsSection(ProjectsSection projectsSection) {
-    this.projectsSection = projectsSection;
-    return this;
-  }
-
   public ExperienceSection getExperienceSection() {
     return experienceSection;
   }
@@ -87,6 +78,15 @@ public class Content {
 
   public Content setEducationSection(EducationSection educationSection) {
     this.educationSection = educationSection;
+    return this;
+  }
+
+  public ProjectsSection getProjectsSection() {
+    return projectsSection;
+  }
+
+  public Content setProjectsSection(ProjectsSection projectsSection) {
+    this.projectsSection = projectsSection;
     return this;
   }
 }
