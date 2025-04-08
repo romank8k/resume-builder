@@ -1,10 +1,10 @@
-const scrape = require('website-scraper');
-const SaveToExistingDirectoryPlugin = require('website-scraper-existing-directory');
+import scrape from 'website-scraper';
+import SaveToExistingDirectoryPlugin from 'website-scraper-existing-directory';
 
-scrape({
+const result = await scrape({
   urls: ['http://localhost:8080/resume-html'],
   directory: '../../romank8k.github.io/',
   plugins: [ new SaveToExistingDirectoryPlugin() ]
-}).then((result) => {
-  console.log(result);
 });
+
+console.log(result);

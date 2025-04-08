@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "website-scraper": "^4.2.3",
-    "website-scraper-existing-directory": "^0.1.0"
+    "website-scraper": "^5.3.1",
+    "website-scraper-existing-directory": "^1.0.1"
   }
 }
