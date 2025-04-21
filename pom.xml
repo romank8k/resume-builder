@@ -21,7 +21,6 @@
     <dependency.version.jetty>12.0.8</dependency.version.jetty>
     <dependency.version.log4j>2.1</dependency.version.log4j>
     <dependency.version.saxon>9.6.0-4</dependency.version.saxon>
-    <dependency.version.servlet-api>3.1.0</dependency.version.servlet-api>
     <dependency.version.slf4j>1.7.5</dependency.version.slf4j>
 
     <dependency.version.mockito>1.10.19</dependency.version.mockito>
@@ -247,12 +246,6 @@
       <groupId>net.sf.saxon</groupId>
       <artifactId>Saxon-HE</artifactId>
       <version>${dependency.version.saxon}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
-      <version>${dependency.version.servlet-api}</version>
     </dependency>
 
     <dependency>
