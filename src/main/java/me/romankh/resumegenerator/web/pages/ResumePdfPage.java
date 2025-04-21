@@ -1,12 +1,8 @@
 package me.romankh.resumegenerator.web.pages;
 
 import com.google.inject.Inject;
-import com.google.sitebricks.At;
-import com.google.sitebricks.headless.Reply;
-import com.google.sitebricks.headless.Service;
-import com.google.sitebricks.http.Get;
-import me.romankh.resumegenerator.service.CachingPDFRenderer;
 import me.romankh.resumegenerator.annotations.binding.XSLT;
+import me.romankh.resumegenerator.service.CachingPDFRenderer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -15,8 +11,6 @@ import java.io.*;
 /**
  * @author Roman Khmelichek
  */
-@At("/resume.pdf")
-@Service
 public class ResumePdfPage {
   private static final Logger logger = LogManager.getLogger(ResumePdfPage.class);
 
@@ -27,8 +21,7 @@ public class ResumePdfPage {
     this.cachingPdfRenderer = cachingPdfRenderer;
   }
 
-  @Get
-  public Reply<InputStream> handler() {
+  public InputStream handler() {
     PipedInputStream pipedInputStream = new PipedInputStream();
     PipedOutputStream pipedOutputStream;
     try {
@@ -58,6 +51,6 @@ public class ResumePdfPage {
         }
     ).start();
 
-    return Reply.with(is).type("application/pdf");
+    return is;
   }
 }

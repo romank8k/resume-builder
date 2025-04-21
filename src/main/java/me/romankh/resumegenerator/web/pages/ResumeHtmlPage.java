@@ -1,13 +1,10 @@
 package me.romankh.resumegenerator.web.pages;
 
 import com.google.inject.Inject;
-import com.google.sitebricks.At;
-import com.google.sitebricks.Show;
 import me.romankh.resumegenerator.configuration.Prop;
 import me.romankh.resumegenerator.configuration.Property;
 import me.romankh.resumegenerator.parser.*;
 import me.romankh.resumegenerator.service.ResumeCachingFactory;
-import me.romankh.resumegenerator.web.UrlPageBinding;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.xml.sax.SAXException;
@@ -21,8 +18,6 @@ import java.util.regex.Pattern;
 /**
  * @author Roman Khmelichek
  */
-@At("/resume-html")
-@Show("resume.jsp")
 public class ResumeHtmlPage {
   private static final Logger logger = LogManager.getLogger(ResumeHtmlPage.class);
 
@@ -220,9 +215,5 @@ public class ResumeHtmlPage {
 
   public String getExperienceSectionId() {
     return generateSectionId("section", Experience.class.getSimpleName(), "");
-  }
-
-  public String getResumePdfPageUrl() {
-    return UrlPageBinding.getPageUrl(ResumePdfPage.class);
   }
 }

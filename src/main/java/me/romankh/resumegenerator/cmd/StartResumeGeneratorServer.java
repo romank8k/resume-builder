@@ -5,9 +5,7 @@ import com.beust.jcommander.Parameter;
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import me.romankh.resumegenerator.HTTPServer;
 import me.romankh.resumegenerator.ResumeGeneratorModule;
-import me.romankh.resumegenerator.ResumeGeneratorSitebricksModule;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,11 +32,10 @@ public class StartResumeGeneratorServer {
     } else {
       AbstractModule resumeGeneratorModule = arguments.configPropertiesFiles.isEmpty() ?
           new ResumeGeneratorModule(true) : new ResumeGeneratorModule(true, arguments.configPropertiesFiles.get(0));
-      AbstractModule resumeGeneratorSitebricksModule = new ResumeGeneratorSitebricksModule();
 
-      Injector injector = Guice.createInjector(resumeGeneratorModule, resumeGeneratorSitebricksModule);
-      HTTPServer httpServer = injector.getInstance(HTTPServer.class);
-      httpServer.run();
+      Injector injector = Guice.createInjector(resumeGeneratorModule);
+//      HTTPServer httpServer = injector.getInstance(HTTPServer.class);
+//      httpServer.run();
     }
   }
 }
