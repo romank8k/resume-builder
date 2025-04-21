@@ -7,8 +7,8 @@ import me.romankh.resumegenerator.parser.ResumeParser;
 import me.romankh.resumegenerator.service.ResumeFactory;
 import org.xml.sax.SAXException;
 
-import javax.inject.Inject;
-import javax.inject.Singleton;
+import jakarta.inject.Inject;
+import jakarta.inject.Singleton;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;

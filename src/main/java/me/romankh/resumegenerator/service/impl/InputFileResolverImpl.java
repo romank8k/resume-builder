@@ -6,8 +6,8 @@ import me.romankh.resumegenerator.configuration.Prop;
 import me.romankh.resumegenerator.configuration.Property;
 import me.romankh.resumegenerator.service.InputFileResolver;
 
-import javax.inject.Inject;
-import javax.inject.Singleton;
+import jakarta.inject.Inject;
+import jakarta.inject.Singleton;
 import java.io.*;
 import java.util.Date;
 

@@ -9,8 +9,8 @@ import me.romankh.resumegenerator.service.ResumeGeneratorService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.inject.Inject;
-import javax.inject.Singleton;
+import jakarta.inject.Inject;
+import jakarta.inject.Singleton;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.util.Date;
