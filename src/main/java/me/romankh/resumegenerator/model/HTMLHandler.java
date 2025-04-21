@@ -5,12 +5,12 @@ import org.eclipse.persistence.oxm.XMLRoot;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.ValidationEventHandler;
-import javax.xml.bind.annotation.DomHandler;
-import javax.xml.bind.util.JAXBResult;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Marshaller;
+import jakarta.xml.bind.ValidationEventHandler;
+import jakarta.xml.bind.annotation.DomHandler;
+import jakarta.xml.bind.util.JAXBResult;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Source;

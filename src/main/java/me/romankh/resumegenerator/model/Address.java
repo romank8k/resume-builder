@@ -1,6 +1,6 @@
 package me.romankh.resumegenerator.model;
 
-import javax.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElement;
 
 /**
  * @author Roman Khmelichek

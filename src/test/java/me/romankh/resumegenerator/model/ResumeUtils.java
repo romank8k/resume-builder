@@ -1,7 +1,7 @@
 package me.romankh.resumegenerator.model;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
 
 /**
  * @author Roman Khmelichek

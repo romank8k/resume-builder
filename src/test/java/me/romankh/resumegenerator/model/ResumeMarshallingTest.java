@@ -7,7 +7,7 @@ import org.eclipse.persistence.jaxb.MarshallerProperties;
 import org.eclipse.persistence.jaxb.UnmarshallerProperties;
 import org.testng.annotations.Test;
 
-import javax.xml.bind.*;
+import jakarta.xml.bind.*;
 import javax.xml.transform.Result;
 import javax.xml.transform.stream.StreamResult;
 import java.io.IOException;
