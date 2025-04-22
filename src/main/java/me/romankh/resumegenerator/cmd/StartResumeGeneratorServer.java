@@ -5,8 +5,16 @@ import com.beust.jcommander.Parameter;
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import me.romankh.resumegenerator.JspRenderingModule;
+import me.romankh.resumegenerator.ResumeGeneratorConfig;
 import me.romankh.resumegenerator.ResumeGeneratorModule;
+import me.romankh.resumegenerator.StaticAssetModule;
+import org.gwizard.config.ConfigModule;
+import org.gwizard.logging.LoggingModule;
+import org.gwizard.rest.RestModule;
+import org.gwizard.services.Run;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,9 +41,16 @@ public class StartResumeGeneratorServer {
       AbstractModule resumeGeneratorModule = arguments.configPropertiesFiles.isEmpty() ?
           new ResumeGeneratorModule(true) : new ResumeGeneratorModule(true, arguments.configPropertiesFiles.get(0));
 
-      Injector injector = Guice.createInjector(resumeGeneratorModule);
-//      HTTPServer httpServer = injector.getInstance(HTTPServer.class);
-//      httpServer.run();
+      final Injector injector = Guice.createInjector(
+              resumeGeneratorModule,
+              new ConfigModule(new File("test.yml"), ResumeGeneratorConfig.class),
+              new LoggingModule(),
+              new JspRenderingModule(),
+              new RestModule("/rest"),
+              new StaticAssetModule()
+      );
+
+      injector.getInstance(Run.class).start();
     }
   }
 }

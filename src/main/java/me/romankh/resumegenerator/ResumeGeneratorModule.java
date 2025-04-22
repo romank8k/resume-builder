@@ -1,11 +1,12 @@
 package me.romankh.resumegenerator;
 
-import com.google.inject.AbstractModule;
-import com.google.inject.Binder;
-import com.google.inject.Key;
-import com.google.inject.TypeLiteral;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.inject.*;
 import com.google.inject.matcher.Matchers;
 import com.google.inject.util.Providers;
+import io.dropwizard.jackson.Jackson;
+import jakarta.inject.Singleton;
 import me.romankh.resumegenerator.annotations.binding.ConfigFilePath;
 import me.romankh.resumegenerator.annotations.binding.Defaults;
 import me.romankh.resumegenerator.annotations.binding.IsWebServer;
@@ -16,8 +17,13 @@ import me.romankh.resumegenerator.configuration.Property;
 import me.romankh.resumegenerator.configuration.converters.CommaDelimitedListTypeConverter;
 import me.romankh.resumegenerator.service.*;
 import me.romankh.resumegenerator.service.impl.*;
+import me.romankh.resumegenerator.web.resource.ApiResource;
+import me.romankh.resumegenerator.web.resource.WebResource;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.gwizard.logging.LoggingConfig;
+import org.gwizard.web.WebConfig;
+import org.gwizard.web.WebServer;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -69,8 +75,25 @@ public class ResumeGeneratorModule extends AbstractModule {
   @Override
   protected void configure() {
     bindConfigs();
+    bindWebServices();
     bindServices();
     bindFactories();
+  }
+
+  @Provides
+  @Singleton
+  public ObjectMapper objectMapper() {
+    return Jackson.newObjectMapper().disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+  }
+
+  @Provides
+  public LoggingConfig loggingConfig(final ResumeGeneratorConfig cfg) {
+    return cfg.getLogging();
+  }
+
+  @Provides
+  public WebConfig webConfig(final ResumeGeneratorConfig cfg) {
+    return cfg.getWeb();
   }
 
   private void bindConfigs() {
@@ -133,6 +156,12 @@ public class ResumeGeneratorModule extends AbstractModule {
 
     logger.info("Using resume XML file: {}", resumeXmlPath);
     logger.info("Using resume XSL file: {}", resumeXslPath);
+  }
+
+  public void bindWebServices() {
+    bind(WebServer.class).to(ResumeGeneratorWebServer.class);
+    bind(ApiResource.class);
+    bind(WebResource.class);
   }
 
   @SuppressWarnings("deprecation")

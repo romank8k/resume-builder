@@ -40,9 +40,17 @@ public class RenderResumePDF {
     } else {
       ResumeGeneratorModule resumeGeneratorModule;
       if (!arguments.configPropertiesFiles.isEmpty())
-        resumeGeneratorModule = new ResumeGeneratorModule(false, arguments.configPropertiesFiles.get(0));
+        resumeGeneratorModule = new ResumeGeneratorModule(false, arguments.configPropertiesFiles.get(0)) {
+          @Override
+          public void bindWebServices() {
+          }
+        };
       else
-        resumeGeneratorModule = new ResumeGeneratorModule(false);
+        resumeGeneratorModule = new ResumeGeneratorModule(false) {
+          @Override
+          public void bindWebServices() {
+          }
+        };
 
       Injector injector = Guice.createInjector(resumeGeneratorModule);
       ResumeGeneratorService resumeGeneratorService = injector.getInstance(Key.get(ResumeGeneratorService.class,
