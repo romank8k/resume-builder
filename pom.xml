@@ -13,7 +13,6 @@
   <properties>
     <jdk.version>17</jdk.version>
 
-    <dependency.version.fop>1.1</dependency.version.fop>
     <dependency.version.jetty>12.0.8</dependency.version.jetty>
     <dependency.version.slf4j>1.7.5</dependency.version.slf4j>
   </properties>
@@ -145,27 +144,7 @@
     <dependency>
       <groupId>org.apache.xmlgraphics</groupId>
       <artifactId>fop</artifactId>
-      <version>${dependency.version.fop}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>org.apache.avalon.framework</groupId>
-          <artifactId>avalon-framework-api</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.apache.avalon.framework</groupId>
-          <artifactId>avalon-framework-impl</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>avalon-framework</groupId>
-      <artifactId>avalon-framework-api</artifactId>
-      <version>4.2.0</version>
-    </dependency>
-    <dependency>
-      <groupId>avalon-framework</groupId>
-      <artifactId>avalon-framework-impl</artifactId>
-      <version>4.2.0</version>
+      <version>2.10</version>
     </dependency>
 
     <dependency>

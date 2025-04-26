@@ -1,5 +1,7 @@
 package me.romankh.resumegenerator.service.impl;
 
+import jakarta.inject.Inject;
+import jakarta.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
 import me.romankh.resumegenerator.annotations.binding.IsWebServer;
 import me.romankh.resumegenerator.configuration.Prop;
@@ -10,15 +12,14 @@ import me.romankh.resumegenerator.service.ResumeCachingFactory;
 import me.romankh.resumegenerator.service.ResumeFactory;
 import me.romankh.resumegenerator.service.ResumeGeneratorService;
 import org.apache.fop.apps.*;
+import org.xml.sax.SAXException;
 
-import jakarta.inject.Inject;
-import jakarta.inject.Singleton;
 import javax.xml.transform.*;
 import javax.xml.transform.sax.SAXResult;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import java.io.*;
-import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Date;
 
@@ -29,20 +30,21 @@ import java.util.Date;
 @Slf4j
 public class ResumeGeneratorXSLTImpl implements ResumeGeneratorService {
   private final TransformerFactory transformerFactory = TransformerFactory.newInstance();
-  private final FopFactory fopFactory = FopFactory.newInstance();
 
   private boolean isWebServer;
   private final boolean showPersonalDataOnWeb;
   private final InputFileResolver inputFileResolver;
   private final ResumeCachingFactory resumeCachingFactory;
   private final ResumeFactory resumeFactory;
+  private final FopFactory fopFactory;
 
-  ResumeGeneratorXSLTImpl(ResumeFactory resumeFactory) {
+  ResumeGeneratorXSLTImpl(ResumeFactory resumeFactory) throws Exception {
     this.isWebServer = true;
     this.showPersonalDataOnWeb = true;
     this.inputFileResolver = null;
     this.resumeCachingFactory = null;
     this.resumeFactory = resumeFactory;
+    this.fopFactory = buildFopFactory();
   }
 
   @Inject
@@ -56,17 +58,14 @@ public class ResumeGeneratorXSLTImpl implements ResumeGeneratorService {
     this.inputFileResolver = inputFileResolver;
     this.resumeCachingFactory = resumeCachingFactory;
     this.resumeFactory = resumeFactory;
+    this.fopFactory = buildFopFactory();
+  }
 
-    try {
-      URL fopConfUrl = getClass().getClassLoader().getResource("fop.xconf");
-      fopFactory.setUserConfig(fopConfUrl.toString());
-
-      // Ability to resolve fonts located on the classpath.
-      FOURIResolver uriResolver = (FOURIResolver) fopFactory.getURIResolver();
-      uriResolver.setCustomURIResolver(new ClasspathURIResolver());
-    } catch (MalformedURLException e) {
-      log.error(e.getMessage(), e);
-    }
+  FopFactory buildFopFactory() throws SAXException, IOException, URISyntaxException {
+    URL fopConfUrl = getClass().getClassLoader().getResource("fop.xconf");
+    FopConfParser fopConfParser = new FopConfParser(new File(fopConfUrl.toURI()));
+    FopFactoryBuilder fopFactoryBuilder = fopConfParser.getFopFactoryBuilder();
+    return fopFactoryBuilder.build();
   }
 
   @Override
