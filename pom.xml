@@ -23,7 +23,6 @@
     <dependency.version.saxon>9.6.0-4</dependency.version.saxon>
     <dependency.version.slf4j>1.7.5</dependency.version.slf4j>
 
-    <dependency.version.mockito>1.10.19</dependency.version.mockito>
     <dependency.version.testng>6.8.5</dependency.version.testng>
   </properties>
 
@@ -253,13 +252,6 @@
       <groupId>net.sf.saxon</groupId>
       <artifactId>Saxon-HE</artifactId>
       <version>${dependency.version.saxon}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.mockito</groupId>
-      <artifactId>mockito-all</artifactId>
-      <version>${dependency.version.mockito}</version>
-      <scope>test</scope>
     </dependency>
 
     <dependency>
