@@ -1,16 +1,15 @@
 package me.romankh.resumegenerator.parser;
 
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Unmarshaller;
+import lombok.extern.slf4j.Slf4j;
 import me.romankh.resumegenerator.TestUtils;
 import me.romankh.resumegenerator.model.Resume;
 import me.romankh.resumegenerator.model.ResumeUtils;
 import org.apache.commons.io.IOUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.testng.annotations.Test;
 
-import jakarta.xml.bind.JAXBContext;
-import jakarta.xml.bind.JAXBException;
-import jakarta.xml.bind.Unmarshaller;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -20,9 +19,8 @@ import static org.testng.Assert.assertNotNull;
 /**
  * @author Roman Khmelichek
  */
+@Slf4j
 public class ResumeParserBenchmark extends TestUtils {
-  private static final Logger logger = LogManager.getLogger(ResumeParserBenchmark.class);
-
   private final ResumeUtils resumeUtils = new ResumeUtils();
   private final JAXBContext jaxbContext = buildJaxbContext();
   private final Unmarshaller unmarshaller = buildUnmarshaller();
@@ -51,8 +49,8 @@ public class ResumeParserBenchmark extends TestUtils {
       totalMillisJaxb += (endJaxb - startJaxb);
     }
 
-    logger.info("SAX seconds: {}", (totalMillisSax / 1000.));
-    logger.info("JAXB seconds: {}", (totalMillisJaxb / 1000.));
+    log.info("SAX seconds: {}", (totalMillisSax / 1000.));
+    log.info("JAXB seconds: {}", (totalMillisJaxb / 1000.));
   }
 
   void parseSax(byte[] bytes) throws Exception {

@@ -1,8 +1,7 @@
 package me.romankh.resumegenerator;
 
 import com.google.common.io.CharStreams;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.*;
 import java.net.URL;
@@ -10,14 +9,13 @@ import java.net.URL;
 /**
  * @author Roman Khmelichek
  */
+@Slf4j
 public class TestUtils {
-  private static final Logger logger = LogManager.getLogger(TestUtils.class);
-
   private static final ClassLoader classLoader = TestUtils.class.getClassLoader();
 
   public String getResourceAsString(String path) throws IOException {
     URL baseUrl = classLoader.getResource(".");
-    logger.debug("Loading resource '{}' relative to base '{}'", path, baseUrl);
+    log.debug("Loading resource '{}' relative to base '{}'", path, baseUrl);
 
     String resourceStr;
     InputStream is = classLoader.getResourceAsStream(path);
@@ -40,7 +38,7 @@ public class TestUtils {
 
   public InputStream getResourceInputStream(String path) throws IOException {
     URL baseUrl = classLoader.getResource(".");
-    logger.debug("Getting resource '{}' input stream relative to base '{}'", path, baseUrl);
+    log.debug("Getting resource '{}' input stream relative to base '{}'", path, baseUrl);
     return classLoader.getResourceAsStream(path);
   }
 

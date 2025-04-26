@@ -1,12 +1,11 @@
 package me.romankh.resumegenerator.service.impl;
 
+import lombok.extern.slf4j.Slf4j;
 import me.romankh.resumegenerator.configuration.Property;
 import me.romankh.resumegenerator.parser.ResumeParser;
 import me.romankh.resumegenerator.service.InputFileResolver;
 import me.romankh.resumegenerator.configuration.Prop;
 import me.romankh.resumegenerator.service.ResumeCachingFactory;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.xml.sax.SAXException;
 
 import jakarta.inject.Inject;
@@ -18,9 +17,8 @@ import java.util.Date;
  * @author Roman Khmelichek
  */
 @Singleton
+@Slf4j
 public class ResumeCachingFactoryImpl implements ResumeCachingFactory {
-  private static final Logger logger = LogManager.getLogger(ResumeCachingFactoryImpl.class);
-
   private final String resumeXmlPath;
   private final InputFileResolver inputFileResolver;
 
@@ -43,13 +41,13 @@ public class ResumeCachingFactoryImpl implements ResumeCachingFactory {
         try {
           newResume = new ResumeParser(inputFileResolver.getResumeXmlInputStream());
         } catch (IOException | SAXException e) {
-          logger.error("Unable to parse modified resume", e);
+          log.error("Unable to parse modified resume", e);
         }
 
         if (newResume != null) {
           resume = newResume;
           resumeLastModifiedDate = modifiedSinceDate;
-          logger.info("Successfully parsed modified XML resume '{}'", resumeXmlPath);
+          log.info("Successfully parsed modified XML resume '{}'", resumeXmlPath);
         }
       } else {
         // OK to throw an Exception since we haven't successfully parsed the resume yet.

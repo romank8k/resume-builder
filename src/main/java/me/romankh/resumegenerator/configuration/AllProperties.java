@@ -1,7 +1,6 @@
 package me.romankh.resumegenerator.configuration;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,9 +8,8 @@ import java.util.Map;
 /**
  * @author Roman Khmelichek
  */
+@Slf4j
 public class AllProperties {
-  private static final Logger logger = LogManager.getLogger(AllProperties.class);
-
   private final Map<String, Property> propertyNameMap = new HashMap<>();
   private final Map<String, String> propertyValueMap = new HashMap<>();
 
@@ -34,7 +32,7 @@ public class AllProperties {
     String value = propertyValueMap.get(property.getName());
     if (value == null) {
       value = property.getDefaultValue();
-      logger.debug("Using default value for config property '{}: {}", property.getName(), value);
+      log.debug("Using default value for config property '{}: {}", property.getName(), value);
     }
 
     return value;

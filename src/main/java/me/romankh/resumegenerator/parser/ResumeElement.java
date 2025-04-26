@@ -1,7 +1,6 @@
 package me.romankh.resumegenerator.parser;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
@@ -15,9 +14,8 @@ import java.util.List;
 /**
  * @author Roman Khmelichek
  */
+@Slf4j
 public abstract class ResumeElement extends DefaultHandler {
-  private static final Logger logger = LogManager.getLogger(ResumeElement.class);
-
   protected final DefaultHandler parent;
   protected XMLReader parser;
   protected final String elementName;
@@ -79,14 +77,14 @@ public abstract class ResumeElement extends DefaultHandler {
   @Override
   public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
     if (qName.equals(elementName)) {
-      if (logger.isTraceEnabled())
-        logger.trace("START {}", elementName);
+      if (log.isTraceEnabled())
+        log.trace("START {}", elementName);
     }
 
     SimpleElement currElement = getElementByName(qName);
     if (currElement != null && include(attributes)) {
-      if (logger.isTraceEnabled())
-        logger.trace("START {}", currElement.getName());
+      if (log.isTraceEnabled())
+        log.trace("START {}", currElement.getName());
       activeElement = currElement;
       currElement.addValue();
 
@@ -95,8 +93,8 @@ public abstract class ResumeElement extends DefaultHandler {
 
     CompositeElement<? extends ResumeElement> compositeElement = getCompositeElementByName(qName);
     if (compositeElement != null && include(attributes)) {
-      if (logger.isTraceEnabled())
-        logger.trace("START COMPOSITE {}", compositeElement.getName());
+      if (log.isTraceEnabled())
+        log.trace("START COMPOSITE {}", compositeElement.getName());
 
       try {
         addCompositeElementInstance(compositeElement, parser, this);
@@ -120,14 +118,14 @@ public abstract class ResumeElement extends DefaultHandler {
   public void endElement(String uri, String localName, String qName) {
     SimpleElement currElement = getElementByName(qName);
     if (currElement != null) {
-      if (logger.isTraceEnabled())
-        logger.trace("END {}: {}", currElement.getName(), currElement.getValue());
+      if (log.isTraceEnabled())
+        log.trace("END {}: {}", currElement.getName(), currElement.getValue());
       activeElement = null;
     }
 
     if (qName.equals(elementName)) {
-      if (logger.isTraceEnabled())
-        logger.trace("END {}", elementName);
+      if (log.isTraceEnabled())
+        log.trace("END {}", elementName);
       parser.setContentHandler(parent);
     }
   }

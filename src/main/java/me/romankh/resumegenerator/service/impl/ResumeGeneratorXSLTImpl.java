@@ -1,5 +1,6 @@
 package me.romankh.resumegenerator.service.impl;
 
+import lombok.extern.slf4j.Slf4j;
 import me.romankh.resumegenerator.annotations.binding.IsWebServer;
 import me.romankh.resumegenerator.configuration.Prop;
 import me.romankh.resumegenerator.configuration.Property;
@@ -9,8 +10,6 @@ import me.romankh.resumegenerator.service.ResumeCachingFactory;
 import me.romankh.resumegenerator.service.ResumeFactory;
 import me.romankh.resumegenerator.service.ResumeGeneratorService;
 import org.apache.fop.apps.*;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
@@ -27,9 +26,8 @@ import java.util.Date;
  * @author Roman Khmelichek
  */
 @Singleton
+@Slf4j
 public class ResumeGeneratorXSLTImpl implements ResumeGeneratorService {
-  private static final Logger logger = LogManager.getLogger(ResumeGeneratorXSLTImpl.class);
-
   private final TransformerFactory transformerFactory = TransformerFactory.newInstance();
   private final FopFactory fopFactory = FopFactory.newInstance();
 
@@ -67,7 +65,7 @@ public class ResumeGeneratorXSLTImpl implements ResumeGeneratorService {
       FOURIResolver uriResolver = (FOURIResolver) fopFactory.getURIResolver();
       uriResolver.setCustomURIResolver(new ClasspathURIResolver());
     } catch (MalformedURLException e) {
-      logger.error(e.getMessage(), e);
+      log.error(e.getMessage(), e);
     }
   }
 

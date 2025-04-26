@@ -7,6 +7,7 @@ import com.google.inject.matcher.Matchers;
 import com.google.inject.util.Providers;
 import io.dropwizard.jackson.Jackson;
 import jakarta.inject.Singleton;
+import lombok.extern.slf4j.Slf4j;
 import me.romankh.resumegenerator.annotations.binding.ConfigFilePath;
 import me.romankh.resumegenerator.annotations.binding.Defaults;
 import me.romankh.resumegenerator.annotations.binding.IsWebServer;
@@ -20,8 +21,6 @@ import me.romankh.resumegenerator.service.impl.*;
 import me.romankh.resumegenerator.web.resource.ApiResource;
 import me.romankh.resumegenerator.web.resource.ResumeHtmlResource;
 import me.romankh.resumegenerator.web.resource.ResumePdfResource;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.gwizard.logging.LoggingConfig;
 import org.gwizard.web.WebConfig;
 import org.gwizard.web.WebServer;
@@ -37,9 +36,8 @@ import java.util.Properties;
 /**
  * @author Roman Khmelichek
  */
+@Slf4j
 public class ResumeGeneratorModule extends AbstractModule {
-  private static final Logger logger = LogManager.getLogger(ResumeGeneratorModule.class);
-
   private static final String DEFAULT_PROPERTIES_FILE = "resume.config.properties";
 
   private final boolean isWebServer;
@@ -51,7 +49,7 @@ public class ResumeGeneratorModule extends AbstractModule {
     this.isWebServer = isWebServer;
     this.useDefaultProperties = true;
     this.configPropertiesFile = DEFAULT_PROPERTIES_FILE;
-    logger.info("Loading default configuration from classpath: {}", DEFAULT_PROPERTIES_FILE);
+    log.info("Loading default configuration from classpath: {}", DEFAULT_PROPERTIES_FILE);
 
     try {
       this.configProperties = loadPropertiesFromClasspath(DEFAULT_PROPERTIES_FILE);
@@ -64,7 +62,7 @@ public class ResumeGeneratorModule extends AbstractModule {
     this.isWebServer = isWebServer;
     this.useDefaultProperties = false;
     this.configPropertiesFile = configPropertiesFile;
-    logger.info("Loading configuration from file: {}", configPropertiesFile);
+    log.info("Loading configuration from file: {}", configPropertiesFile);
 
     try {
       this.configProperties = loadPropertiesFromFilePath(configPropertiesFile);
@@ -108,9 +106,9 @@ public class ResumeGeneratorModule extends AbstractModule {
       if (allProps.isProperty(key)) {
         allProps.addProperty(key, value);
 
-        logger.info("Loaded config '{}': {}", key, value);
+        log.info("Loaded config '{}': {}", key, value);
       } else {
-        logger.warn("Property with key '{}' is invalid", key);
+        log.warn("Property with key '{}' is invalid", key);
       }
     }
 
@@ -155,8 +153,8 @@ public class ResumeGeneratorModule extends AbstractModule {
     String resumeXmlPath = keyValueMap.get(Key.get(new TypeLiteral<String>(){}, new PropImpl(Property.RESUME_XML_PATH)));
     String resumeXslPath = keyValueMap.get(Key.get(new TypeLiteral<String>(){}, new PropImpl(Property.RESUME_XSL_PATH)));
 
-    logger.info("Using resume XML file: {}", resumeXmlPath);
-    logger.info("Using resume XSL file: {}", resumeXslPath);
+    log.info("Using resume XML file: {}", resumeXmlPath);
+    log.info("Using resume XSL file: {}", resumeXslPath);
   }
 
   public void bindWebServices() {

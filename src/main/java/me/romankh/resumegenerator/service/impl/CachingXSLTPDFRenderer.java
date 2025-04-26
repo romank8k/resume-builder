@@ -1,16 +1,14 @@
 package me.romankh.resumegenerator.service.impl;
 
+import jakarta.inject.Inject;
+import jakarta.inject.Singleton;
 import me.romankh.resumegenerator.annotations.binding.Defaults;
 import me.romankh.resumegenerator.annotations.binding.XSLT;
 import me.romankh.resumegenerator.configuration.Prop;
 import me.romankh.resumegenerator.configuration.Property;
 import me.romankh.resumegenerator.service.InputFileResolver;
 import me.romankh.resumegenerator.service.ResumeGeneratorService;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
-import jakarta.inject.Inject;
-import jakarta.inject.Singleton;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.util.Date;
@@ -20,8 +18,6 @@ import java.util.Date;
  */
 @Singleton
 public class CachingXSLTPDFRenderer extends AbstractCachingPDFRenderer {
-  private static final Logger logger = LogManager.getLogger(CachingXSLTPDFRenderer.class);
-
   private final String resumeXmlPath;
   private final String resumeXslPath;
   private final InputFileResolver inputFileResolver;

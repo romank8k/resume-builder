@@ -1,13 +1,11 @@
 package me.romankh.resumegenerator.model;
 
+import jakarta.xml.bind.*;
 import me.romankh.resumegenerator.TestUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.eclipse.persistence.jaxb.MarshallerProperties;
 import org.eclipse.persistence.jaxb.UnmarshallerProperties;
 import org.testng.annotations.Test;
 
-import jakarta.xml.bind.*;
 import javax.xml.transform.Result;
 import javax.xml.transform.stream.StreamResult;
 import java.io.IOException;
@@ -21,8 +19,6 @@ import static org.testng.Assert.*;
  * @author Roman Khmelichek
  */
 public class ResumeMarshallingTest extends TestUtils {
-  private static final Logger logger = LogManager.getLogger(ResumeMarshallingTest.class);
-
   private final ResumeUtils resumeUtils = new ResumeUtils();
 
   @Test(description = "Unmarshall from XML and verify contents")

@@ -1,11 +1,10 @@
 package me.romankh.resumegenerator.service.impl;
 
 import com.google.common.io.CharStreams;
+import lombok.extern.slf4j.Slf4j;
 import me.romankh.resumegenerator.TestUtils;
 import me.romankh.resumegenerator.model.Resume;
 import me.romankh.resumegenerator.model.ResumeUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.testng.annotations.Test;
 
 import jakarta.xml.bind.JAXBContext;
@@ -15,9 +14,8 @@ import java.io.*;
 /**
  * @author Roman Khmelichek
  */
+@Slf4j
 public class ResumeGeneratorXSLTImplTest extends TestUtils {
-  private static final Logger logger = LogManager.getLogger(ResumeGeneratorXSLTImplTest.class);
-
   private final ResumeUtils resumeUtils = new ResumeUtils();
 
   @Test
@@ -42,7 +40,7 @@ public class ResumeGeneratorXSLTImplTest extends TestUtils {
     InputStreamReader isr = new InputStreamReader(xslFoIs);
     StringWriter sw = new StringWriter();
     CharStreams.copy(isr, sw);
-    logger.debug(sw.toString());
+    log.debug(sw.toString());
     resumeGeneratorXSLT.render(resume, xslIs, xmlIs, out);
   }
 }
