@@ -5,8 +5,9 @@ web:
 
 logging:
   loggers:
-    "com.example.app": TRACE
+    "me.romankh.resumegenerator": DEBUG
     "com.voodoodyne.gwizard": DEBUG
+    "org.apache.fop": WARN
 
   xml: |
     <configuration>
