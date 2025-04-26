@@ -7,11 +7,9 @@ import lombok.extern.slf4j.Slf4j;
 import me.romankh.resumegenerator.TestUtils;
 import me.romankh.resumegenerator.model.Resume;
 import me.romankh.resumegenerator.model.ResumeUtils;
-import org.apache.commons.io.IOUtils;
 import org.testng.annotations.Test;
 
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 
 import static org.testng.Assert.assertNotNull;
@@ -30,9 +28,7 @@ public class ResumeParserBenchmark extends TestUtils {
     int numIterations = 100;
 
     InputStream is = getResourceInputStream("resume-test.xml");
-    ByteArrayOutputStream baos = new ByteArrayOutputStream();
-    IOUtils.copy(is, baos);
-    byte[] bytes = baos.toByteArray();
+    byte[] bytes = is.readAllBytes();
 
     long totalMillisSax = 0;
     long totalMillisJaxb = 0;
