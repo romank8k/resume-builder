@@ -16,6 +16,6 @@ public class StaticAssetModule extends ServletModule {
 
     @Override
     protected void configureServlets() {
-        serve("/*").with(StaticAssetServlet.class);
+        serve("/static/*").with(StaticAssetServlet.class);
     }
 }

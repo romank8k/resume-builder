@@ -3,6 +3,7 @@ package me.romankh.resumegenerator;
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
 import org.eclipse.jetty.ee10.apache.jsp.JettyJasperInitializer;
+import org.eclipse.jetty.ee10.jsp.JettyJspServlet;
 import org.eclipse.jetty.ee10.servlet.ServletContextHandler;
 import org.eclipse.jetty.ee10.webapp.WebAppContext;
 import org.eclipse.jetty.util.resource.ResourceFactory;
@@ -24,7 +25,7 @@ public class ResumeGeneratorWebServer extends WebServer {
         webAppContext.setContextPath("/");
 
         webAppContext.addServletContainerInitializer(new JettyJasperInitializer());
-//        webAppContext.addServlet(JettyJspServlet.class, "*.jsp");
+        webAppContext.addServlet(JettyJspServlet.class, "*.jsp");
 
         webAppContext.setBaseResource(ResourceFactory.of(webAppContext).newResource(
                 getClass().getClassLoader().getResource("me/romankh/resumegenerator/web")));

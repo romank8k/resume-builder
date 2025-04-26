@@ -46,7 +46,7 @@ public class StartResumeGeneratorServer {
               new ConfigModule(new File("test.yml"), ResumeGeneratorConfig.class),
               new LoggingModule(),
               new JspRenderingModule(),
-              new RestModule("/rest"),
+              new RestModule("/web"),
               new StaticAssetModule()
       );
 
