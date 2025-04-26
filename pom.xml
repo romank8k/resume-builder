@@ -22,8 +22,6 @@
     <dependency.version.log4j>2.1</dependency.version.log4j>
     <dependency.version.saxon>9.6.0-4</dependency.version.saxon>
     <dependency.version.slf4j>1.7.5</dependency.version.slf4j>
-
-    <dependency.version.testng>6.8.5</dependency.version.testng>
   </properties>
 
   <build>
@@ -257,7 +255,7 @@
     <dependency>
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
-      <version>${dependency.version.testng}</version>
+      <version>7.11.0</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
