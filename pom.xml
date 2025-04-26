@@ -13,7 +13,6 @@
   <properties>
     <jdk.version>17</jdk.version>
 
-    <dependency.version.commons-codec>1.8</dependency.version.commons-codec>
     <dependency.version.commons-lang>2.6</dependency.version.commons-lang>
     <dependency.version.fop>1.1</dependency.version.fop>
     <dependency.version.jetty>12.0.8</dependency.version.jetty>
@@ -169,12 +168,6 @@
       <groupId>avalon-framework</groupId>
       <artifactId>avalon-framework-impl</artifactId>
       <version>4.2.0</version>
-    </dependency>
-
-    <dependency>
-      <groupId>commons-codec</groupId>
-      <artifactId>commons-codec</artifactId>
-      <version>${dependency.version.commons-codec}</version>
     </dependency>
 
     <dependency>
