@@ -1,17 +1,16 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--@elvariable id="model" type="me.romankh.resumegenerator.web.pages.ResumeHtmlPage"--%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:useBean id="pageFlow" scope="request" type="me.romankh.resumegenerator.web.pages.ResumeHtmlPage"/>
-
-<div id="${pageFlow.educationSectionId}" class="resume-primary-section">
+<div id="${model.educationSectionId}" class="resume-primary-section">
   <div class="page-header">
     <h3>
-      ${pageFlow.educationSectionName}
+      ${model.educationSectionName}
     </h3>
   </div>
 
   <div>
-    <c:forEach var="institution" items="${pageFlow.resume.content.education.institutions}">
-      <div id="${pageFlow.generateSectionId(institution.class.simpleName, institution.name, "")}"
+    <c:forEach var="institution" items="${model.resume.content.education.institutions}">
+      <div id="${model.generateSectionId("institution-", institution.name, "")}"
            class="resume-secondary-section">
         <div class="clearfix">
           <span class="pull-left resume-institution">
@@ -23,7 +22,7 @@
         </div>
 
         <c:forEach var="degree" items="${institution.degrees}">
-          <div id="${pageFlow.generateSectionId("", degree.title, "")}"
+          <div id="${model.generateSectionId("", degree.title, "")}"
                class="resume-tertiary-section">
             <div class="clearfix">
               <span class="pull-left">

@@ -1,56 +1,47 @@
 package me.romankh.resumegenerator.web.pages;
 
 import com.google.inject.Inject;
+import lombok.extern.slf4j.Slf4j;
 import me.romankh.resumegenerator.annotations.binding.XSLT;
 import me.romankh.resumegenerator.service.CachingPDFRenderer;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.PipedInputStream;
+import java.io.PipedOutputStream;
 
 /**
  * @author Roman Khmelichek
  */
+@Slf4j
 public class ResumePdfPage {
-  private static final Logger logger = LogManager.getLogger(ResumePdfPage.class);
+    private final CachingPDFRenderer cachingPdfRenderer;
 
-  private final CachingPDFRenderer cachingPdfRenderer;
-
-  @Inject
-  public ResumePdfPage(@XSLT CachingPDFRenderer cachingPdfRenderer) {
-    this.cachingPdfRenderer = cachingPdfRenderer;
-  }
-
-  public InputStream handler() {
-    PipedInputStream pipedInputStream = new PipedInputStream();
-    PipedOutputStream pipedOutputStream;
-    try {
-      pipedOutputStream = new PipedOutputStream(pipedInputStream);
-    } catch (IOException e) {
-      throw new RuntimeException(e.getMessage(), e);
+    @Inject
+    public ResumePdfPage(@XSLT CachingPDFRenderer cachingPdfRenderer) {
+        this.cachingPdfRenderer = cachingPdfRenderer;
     }
 
-    final OutputStream os = pipedOutputStream;
-    final InputStream is = pipedInputStream;
+    public InputStream handler() throws IOException {
+        final PipedInputStream is = new PipedInputStream(1024 * 1024);
+        final PipedOutputStream os = new PipedOutputStream(is);
 
-    // Need to make sure to write to the output stream in a separate thread to make sure we do not deadlock.
-    new Thread(
-        new Runnable() {
-          public void run() {
-            try {
-              cachingPdfRenderer.render(os);
-            } catch (Exception e) {
-              logger.error("Unable to render PDF", e);
-              try {
-                os.close();
-              } catch (IOException ee) {
-                logger.error(ee.getMessage(), e);
-              }
-            }
-          }
-        }
-    ).start();
+        // Need to make sure to write to the output stream in a separate thread to make sure we do not deadlock.
+        new Thread(
+                () -> {
+                    try {
+                        cachingPdfRenderer.render(os);
+                    } catch (Exception e) {
+                        log.error("Unable to render PDF", e);
+                        try {
+                            os.close();
+                        } catch (IOException ee) {
+                            log.error(ee.getMessage(), e);
+                        }
+                    }
+                }
+        ).start();
 
-    return is;
-  }
+        return is;
+    }
 }

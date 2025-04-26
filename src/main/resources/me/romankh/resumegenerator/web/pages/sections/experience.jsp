@@ -1,17 +1,16 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--@elvariable id="model" type="me.romankh.resumegenerator.web.pages.ResumeHtmlPage"--%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:useBean id="pageFlow" scope="request" type="me.romankh.resumegenerator.web.pages.ResumeHtmlPage"/>
-
-<div id="${pageFlow.experienceSectionId}" class="resume-primary-section">
+<div id="${model.experienceSectionId}" class="resume-primary-section">
   <div class="page-header">
     <h3>
-      ${pageFlow.experienceSectionName}
+      ${model.experienceSectionName}
     </h3>
   </div>
 
   <div>
-    <c:forEach var="job" items="${pageFlow.resume.content.experience.jobs}">
-      <div id="${pageFlow.generateSectionId("", job.employer, "")}"
+    <c:forEach var="job" items="${model.resume.content.experience.jobs}">
+      <div id="${model.generateSectionId("employer-", job.employer, "")}"
            class="resume-secondary-section">
         <div class="clearfix">
           <span class="pull-left resume-employer">

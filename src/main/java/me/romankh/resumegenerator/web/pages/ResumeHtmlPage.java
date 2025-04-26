@@ -5,8 +5,6 @@ import me.romankh.resumegenerator.configuration.Prop;
 import me.romankh.resumegenerator.configuration.Property;
 import me.romankh.resumegenerator.parser.*;
 import me.romankh.resumegenerator.service.ResumeCachingFactory;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.xml.sax.SAXException;
 
 import java.io.IOException;
@@ -19,8 +17,6 @@ import java.util.regex.Pattern;
  * @author Roman Khmelichek
  */
 public class ResumeHtmlPage {
-  private static final Logger logger = LogManager.getLogger(ResumeHtmlPage.class);
-
   private static final Pattern CAMEL_CASE_PATTERN = Pattern.compile("([A-Z][a-z]*)");
 
   private final Boolean showPersonalDataOnWeb;
@@ -94,7 +90,7 @@ public class ResumeHtmlPage {
           Section section = new Section(sectionName, sectionId, Education.class);
           for (Institution institution : education.getInstitutions()) {
             String subSectionName = institution.getName();
-            String subSectionId = generateSectionId(Institution.class.getSimpleName(), institution.getName(), "");
+            String subSectionId = generateSectionId("institution-", institution.getName(), "");
             section.addSubSection(new Section(subSectionName, subSectionId, Institution.class));
           }
           sectionList.add(section);
@@ -118,7 +114,7 @@ public class ResumeHtmlPage {
           Section section = new Section(sectionName, sectionId, Experience.class);
           for (Job job : experience.getJobs()) {
             String subSectionName = job.getEmployer();
-            String subSectionId = generateSectionId("", job.getEmployer(), "");
+            String subSectionId = generateSectionId("employer-", job.getEmployer(), "");
             section.addSubSection(new Section(subSectionName, subSectionId, Job.class));
           }
           sectionList.add(section);
@@ -215,5 +211,9 @@ public class ResumeHtmlPage {
 
   public String getExperienceSectionId() {
     return generateSectionId("section", Experience.class.getSimpleName(), "");
+  }
+
+  public String getResumePdfPageUrl() {
+    return "pdf";
   }
 }

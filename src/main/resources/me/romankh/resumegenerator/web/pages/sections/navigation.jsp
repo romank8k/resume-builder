@@ -1,9 +1,8 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--@elvariable id="model" type="me.romankh.resumegenerator.web.pages.ResumeHtmlPage"--%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:useBean id="pageFlow" scope="request" type="me.romankh.resumegenerator.web.pages.ResumeHtmlPage"/>
-
 <ul class="nav">
-  <c:forEach var="section" items="${pageFlow.sections}">
+  <c:forEach var="section" items="${model.sections}">
     <li class="">
       <a href="#${section.sectionId}">${section.sectionName}</a>
 

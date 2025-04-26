@@ -1,7 +1,6 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--@elvariable id="model" type="me.romankh.resumegenerator.web.pages.ResumeHtmlPage"--%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:useBean id="pageFlow" scope="request" type="me.romankh.resumegenerator.web.pages.ResumeHtmlPage"/>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,11 +8,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>
-    Resume - ${pageFlow.resume.header.name}
+    Resume - ${model.resume.header.name}
   </title>
 
-  <link href="static/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
-  <link href="static/css/resume.css" rel="stylesheet" type="text/css">
+  <link href="/static/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="/static/css/resume.css" rel="stylesheet" type="text/css">
   <link href="http://fonts.googleapis.com/css?family=Merriweather+Sans:400,400italic,700,700italic" rel="stylesheet" type="text/css">
 </head>
 
@@ -23,11 +22,11 @@
     <div id="resume-masthead-header">
       <span class="pull-left">
         <c:choose>
-          <c:when test="${empty pageFlow.resume.header.homepage}">
-            ${pageFlow.resume.header.name}
+          <c:when test="${empty model.resume.header.homepage}">
+            ${model.resume.header.name}
           </c:when>
           <c:otherwise>
-            <a href="${pageFlow.resume.header.homepage}">${pageFlow.resume.header.name}</a>
+            <a href="${model.resume.header.homepage}">${model.resume.header.name}</a>
           </c:otherwise>
         </c:choose>
       </span>
@@ -35,26 +34,26 @@
     <div class="clearfix"></div>
 
     <div id="resume-masthead-info">
-      <c:if test="${pageFlow.showPersonalDataOnWeb}">
+      <c:if test="${model.showPersonalDataOnWeb}">
         <div>
           <span class="pull-left">
-            ${pageFlow.resume.header.phone}
+            ${model.resume.header.phone}
           </span>
           <span class="pull-right">
-            ${pageFlow.resume.header.address.street},
-            ${pageFlow.resume.header.address.apartment}
+            ${model.resume.header.address.street},
+            ${model.resume.header.address.apartment}
           </span>
         </div>
         <div class="clearfix"></div>
 
         <div>
           <span class="pull-left">
-            ${pageFlow.resume.header.email}
+            ${model.resume.header.email}
           </span>
           <span class="pull-right">
-            ${pageFlow.resume.header.address.city},
-            ${pageFlow.resume.header.address.state}
-            ${pageFlow.resume.header.address.zip}
+            ${model.resume.header.address.city},
+            ${model.resume.header.address.state}
+            ${model.resume.header.address.zip}
           </span>
         </div>
         <div class="clearfix"></div>
@@ -64,7 +63,7 @@
     <div id="resume-masthead-bottom">
       <div>
         <span class="pull-left">
-          <a href="${pageFlow.resumePdfPageUrl}">
+          <a href="${model.resumePdfPageUrl}">
             Click here for a PDF version
           </a>
         </span>
@@ -84,7 +83,7 @@
 
     <div class="col-xs-12 col-sm-9">
       <div id="resume-content" role="main">
-        <c:forEach var="section" items="${pageFlow.sections}">
+        <c:forEach var="section" items="${model.sections}">
           <c:choose>
             <c:when test="${section.sectionClass.simpleName eq 'Objective'}">
               <jsp:include page="sections/objective.jsp"></jsp:include>
