@@ -1,6 +1,6 @@
 package me.romankh.resumegenerator.model;
 
-import org.apache.commons.lang.StringEscapeUtils;
+import org.apache.commons.text.StringEscapeUtils;
 import org.eclipse.persistence.oxm.XMLRoot;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;

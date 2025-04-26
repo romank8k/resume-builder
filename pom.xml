@@ -13,7 +13,6 @@
   <properties>
     <jdk.version>17</jdk.version>
 
-    <dependency.version.commons-lang>2.6</dependency.version.commons-lang>
     <dependency.version.fop>1.1</dependency.version.fop>
     <dependency.version.jetty>12.0.8</dependency.version.jetty>
     <dependency.version.saxon>9.6.0-4</dependency.version.saxon>
@@ -171,9 +170,9 @@
     </dependency>
 
     <dependency>
-      <groupId>commons-lang</groupId>
-      <artifactId>commons-lang</artifactId>
-      <version>${dependency.version.commons-lang}</version>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-text</artifactId>
+      <version>1.13.1</version>
     </dependency>
 
     <dependency>

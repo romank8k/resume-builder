@@ -1,6 +1,6 @@
 package me.romankh.resumegenerator.parser;
 
-import org.apache.commons.lang.StringEscapeUtils;
+import org.apache.commons.text.StringEscapeUtils;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
@@ -88,7 +88,7 @@ public class SnippetElement extends ResumeElement {
   }
 
   String escapeAttribute(String attr) {
-    return StringEscapeUtils.escapeXml(attr);
+    return StringEscapeUtils.escapeXml11(attr);
   }
 
   public String getHtml() {
