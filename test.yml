@@ -6,7 +6,8 @@ web:
 logging:
   loggers:
     "me.romankh.resumegenerator": DEBUG
-    "com.voodoodyne.gwizard": DEBUG
+    "com.voodoodyne.gwizard": INFO
+    "org.hibernate.validator": INFO
     "org.apache.fop": WARN
 
   xml: |
