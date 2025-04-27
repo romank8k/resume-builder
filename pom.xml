@@ -14,7 +14,6 @@
     <jdk.version>17</jdk.version>
 
     <dependency.version.jetty>12.0.8</dependency.version.jetty>
-    <dependency.version.slf4j>1.7.5</dependency.version.slf4j>
   </properties>
 
   <build>
