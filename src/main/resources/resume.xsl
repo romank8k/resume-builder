@@ -19,18 +19,18 @@
   <xsl:param name="experienceLabel" select="'Experience'"/>
 
   <!-- Fonts -->
-  <xsl:param name="resumeHeaderFontFamily">Trebuchet MS</xsl:param>
+  <xsl:param name="resumeHeaderFontFamily">Roboto-Bold</xsl:param>
   <xsl:param name="resumeHeaderFontSize">12pt</xsl:param>
   <xsl:param name="resumeHeaderFontWeight">normal</xsl:param>
 
   <xsl:param name="resumeHeaderNameFontSize">20pt</xsl:param>
   <xsl:param name="resumeHeaderHomepageFontSize">14pt</xsl:param>
 
-  <xsl:param name="sectionHeaderFontFamily">Trebuchet MS</xsl:param>
+  <xsl:param name="sectionHeaderFontFamily">Roboto-Bold</xsl:param>
   <xsl:param name="sectionHeaderFontSize">12pt</xsl:param>
   <xsl:param name="sectionHeaderFontWeight">bold</xsl:param>
 
-  <xsl:param name="contentFontFamily">Georgia</xsl:param>
+  <xsl:param name="contentFontFamily">Roboto-Normal</xsl:param>
   <xsl:param name="contentFontSize">10pt</xsl:param>
   <xsl:param name="contentFontWeight">normal</xsl:param>
 
