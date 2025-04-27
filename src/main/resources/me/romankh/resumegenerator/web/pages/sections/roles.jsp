@@ -4,10 +4,10 @@
 <c:forEach var="role" items="${rolesList}">
   <div class="resume-tertiary-section">
     <div class="clearfix">
-      <span class="pull-left">
+      <span class="float-start">
         <strong><em>${role.title}</em></strong>
       </span>
-      <span class="pull-right">
+      <span class="float-end">
         <strong>${role.timespan}</strong>
       </span>
     </div>

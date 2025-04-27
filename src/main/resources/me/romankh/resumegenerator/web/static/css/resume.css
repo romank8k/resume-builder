@@ -10,8 +10,6 @@ body {
 
     /* This value is replicated in several style rules. */
     margin-top: 149px;
-
-    background-color: #fafafa;
 }
 
 a {
@@ -164,16 +162,17 @@ a:hover {
 }
 
 /*
- * Bootstrap tweaks
+ * Custom replacement for Bootstrap 3's .page-header which was removed in Bootstrap 5.
  */
-.page-header {
+.section-header {
     padding-bottom: 0;
     border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
 }
-.page-header:first-child {
+.section-header:first-child {
     /* Align the first section with the sidebar. */
     margin-top: 20px;
 }
-.page-header > h3 {
+.section-header > h3 {
     font-weight: 700;
 }

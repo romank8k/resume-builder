@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div id="${model.educationSectionId}" class="resume-primary-section">
-  <div class="page-header">
+  <div class="section-header">
     <h3>
       ${model.educationSectionName}
     </h3>
@@ -13,10 +13,10 @@
       <div id="${model.generateSectionId("institution-", institution.name, "")}"
            class="resume-secondary-section">
         <div class="clearfix">
-          <span class="pull-left resume-institution">
+          <span class="float-start resume-institution">
               ${institution.name}
           </span>
-          <span class="pull-right">
+          <span class="float-end">
             <strong>${institution.location}</strong>
           </span>
         </div>
@@ -25,10 +25,10 @@
           <div id="${model.generateSectionId("", degree.title, "")}"
                class="resume-tertiary-section">
             <div class="clearfix">
-              <span class="pull-left">
+              <span class="float-start">
                 <strong><em>${degree.title}</em></strong>
               </span>
-              <span class="pull-right">
+              <span class="float-end">
                 <strong>${degree.timespan}</strong>
               </span>
             </div>
