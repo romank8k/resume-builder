@@ -13,7 +13,10 @@
 
   <link href="/static/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
   <link href="/static/css/resume.css" rel="stylesheet" type="text/css">
-  <link href="http://fonts.googleapis.com/css?family=Merriweather+Sans:400,400italic,700,700italic" rel="stylesheet" type="text/css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 
 <body>
