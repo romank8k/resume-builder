@@ -1,3 +1,7 @@
+const prefersColorSchemeDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+const bsTheme = prefersColorSchemeDark ? "dark" : "light";
+document.documentElement.setAttribute("data-bs-theme", bsTheme);
+
 // Use window load event due to calculations that require precise positioning (after the fonts load).
 window.addEventListener('load', () => {
     const minHeight = 70;
