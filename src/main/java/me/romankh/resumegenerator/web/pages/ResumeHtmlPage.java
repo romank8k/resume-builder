@@ -88,7 +88,15 @@ public class ResumeHtmlPage {
           for (Institution institution : education.getInstitutions()) {
             String subSectionName = institution.getName();
             String subSectionId = generateSectionId("institution-", institution.getName(), "");
-            section.addSubSection(new Section(subSectionName, subSectionId, Institution.class));
+
+            Section institutionSection = new Section(subSectionName, subSectionId, Institution.class);
+            for (Degree degree : institution.getDegrees()) {
+              institutionSection.addSubSection(new Section(
+                      degree.getTitle(),
+                      generateSectionId("degree-", degree.getTitle(), ""),
+                      Degree.class));
+            }
+            section.addSubSection(institutionSection);
           }
           sectionList.add(section);
         } else if (Awards.class.equals(compositeElementClass)) {
@@ -112,7 +120,15 @@ public class ResumeHtmlPage {
           for (Job job : experience.getJobs()) {
             String subSectionName = job.getEmployer();
             String subSectionId = generateSectionId("employer-", job.getEmployer(), "");
-            section.addSubSection(new Section(subSectionName, subSectionId, Job.class));
+
+            Section jobSection = new Section(subSectionName, subSectionId, Job.class);
+            for (Role role : job.getRoles()) {
+              jobSection.addSubSection(new Section(
+                      role.getTitle(),
+                      generateSectionId("role-", role.getTitle(), ""),
+                      Role.class));
+            }
+            section.addSubSection(jobSection);
           }
           sectionList.add(section);
         }

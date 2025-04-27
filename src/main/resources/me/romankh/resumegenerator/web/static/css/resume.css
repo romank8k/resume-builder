@@ -143,6 +143,13 @@ a:hover {
     font-size: 90%;
 }
 
+#resume-sidebar .nav .nav .nav > li > a {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 60px;
+    font-size: 80%;
+}
+
 @media (min-width: 768px) {
     #resume-sidebar {
         width: 180px;

@@ -22,8 +22,8 @@
         </div>
 
         <c:forEach var="degree" items="${institution.degrees}">
-          <div id="${model.generateSectionId("", degree.title, "")}"
-               class="resume-tertiary-section">
+            <div id="${model.generateSectionId("degree-", degree.title, "")}"
+                 class="resume-tertiary-section">
             <div class="clearfix">
               <span class="float-start">
                 <strong><em>${degree.title}</em></strong>

@@ -11,6 +11,16 @@
           <c:forEach var="subSection" items="${section.subSections}">
             <li class="">
               <a href="#${subSection.sectionId}">${subSection.sectionName}</a>
+
+              <c:if test="${not empty subSection.subSections}">
+                <ul class="nav">
+                  <c:forEach var="subSubSection" items="${subSection.subSections}">
+                    <li class="">
+                      <a href="#${subSubSection.sectionId}">${subSubSection.sectionName}</a>
+                    </li>
+                  </c:forEach>
+                </ul>
+              </c:if>
             </li>
           </c:forEach>
         </ul>

@@ -2,7 +2,8 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <c:forEach var="role" items="${rolesList}">
-  <div class="resume-tertiary-section">
+  <div id="${model.generateSectionId("role-", role.title, "")}"
+       class="resume-tertiary-section">
     <div class="clearfix">
       <span class="float-start">
         <strong><em>${role.title}</em></strong>
