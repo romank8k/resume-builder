@@ -7,9 +7,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * @author Roman Khmelichek
- */
 public class CommaDelimitedListTypeConverter implements TypeConverter {
   public List<?> convert(String value, TypeLiteral<?> toType) {
     Class listClass;

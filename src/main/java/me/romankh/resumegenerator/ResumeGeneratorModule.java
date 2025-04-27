@@ -32,9 +32,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-/**
- * @author Roman Khmelichek
- */
 @Slf4j
 public class ResumeGeneratorModule extends AbstractModule {
   private static final String DEFAULT_PROPERTIES_FILE = "resume.config.properties";

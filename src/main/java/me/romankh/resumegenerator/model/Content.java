@@ -2,9 +2,6 @@ package me.romankh.resumegenerator.model;
 
 import jakarta.xml.bind.annotation.XmlElement;
 
-/**
- * @author Roman Khmelichek
- */
 public class Content {
   @XmlElement(name = "objective")
   private ObjectiveSection objectiveSection;

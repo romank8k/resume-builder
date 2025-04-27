@@ -3,9 +3,6 @@ package me.romankh.resumegenerator.parser;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author Roman Khmelichek
- */
 public class CompositeElement<T extends ResumeElement> extends AbstractElement {
   private final Class<T> clazz;
   private final List<T> resumeElementList;

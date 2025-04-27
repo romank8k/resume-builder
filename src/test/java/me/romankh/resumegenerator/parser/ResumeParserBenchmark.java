@@ -14,9 +14,6 @@ import java.io.InputStream;
 
 import static org.testng.Assert.assertNotNull;
 
-/**
- * @author Roman Khmelichek
- */
 @Slf4j
 public class ResumeParserBenchmark extends TestUtils {
   private final ResumeUtils resumeUtils = new ResumeUtils();

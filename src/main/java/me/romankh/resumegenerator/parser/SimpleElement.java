@@ -3,9 +3,6 @@ package me.romankh.resumegenerator.parser;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author Roman Khmelichek
- */
 public class SimpleElement extends AbstractElement {
   private final List<StringBuilder> stringBuilderList;
 

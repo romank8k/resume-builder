@@ -6,9 +6,6 @@ import org.xml.sax.helpers.DefaultHandler;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author Roman Khmelichek
- */
 public class SummaryOfQualifications extends ResumeElement {
   private static final String ELEMENT_NAME = "summary_of_qualifications";
 

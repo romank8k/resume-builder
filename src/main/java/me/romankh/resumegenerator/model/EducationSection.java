@@ -6,9 +6,6 @@ import jakarta.xml.bind.annotation.XmlElementWrapper;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author Roman Khmelichek
- */
 public class EducationSection {
   @XmlAttribute(name = "include")
   private boolean include;

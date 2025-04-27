@@ -2,9 +2,6 @@ package me.romankh.resumegenerator.model;
 
 import jakarta.xml.bind.annotation.XmlAttribute;
 
-/**
- * @author Roman Khmelichek
- */
 public class ResumeMeta {
   @XmlAttribute(name = "margin-left")
   private int marginLeft;

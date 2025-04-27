@@ -3,9 +3,6 @@ package me.romankh.resumegenerator.model;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
-/**
- * @author Roman Khmelichek
- */
 @XmlRootElement(name = "resume")
 public class Resume {
   @XmlElement(name = "meta")

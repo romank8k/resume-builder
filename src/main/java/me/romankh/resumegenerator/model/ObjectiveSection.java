@@ -4,9 +4,6 @@ import jakarta.xml.bind.annotation.XmlAnyElement;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlValue;
 
-/**
- * @author Roman Khmelichek
- */
 public class ObjectiveSection {
   @XmlAttribute(name = "include")
   private boolean include;

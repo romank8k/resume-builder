@@ -4,9 +4,6 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Date;
 
-/**
- * @author Roman Khmelichek
- */
 public interface InputFileResolver {
   InputStream getResumeXmlInputStream() throws FileNotFoundException;
 

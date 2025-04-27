@@ -42,7 +42,7 @@ public class Path {
      * @return A string representing an absolute path to the annotated class (containing the context base).
      */
     public static String to(Class<?> clazz, String method) {
-        ResteasyProviderFactory factory = ResteasyProviderFactory.getInstance(); // TODO:@roman obtain instance
+        ResteasyProviderFactory factory = ResteasyProviderFactory.getInstance();
         UriInfo uriinfo = factory.getContextData(UriInfo.class);
 
         String path = "";

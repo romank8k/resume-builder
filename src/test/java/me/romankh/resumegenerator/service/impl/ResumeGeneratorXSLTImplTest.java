@@ -11,9 +11,6 @@ import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.Marshaller;
 import java.io.*;
 
-/**
- * @author Roman Khmelichek
- */
 @Slf4j
 public class ResumeGeneratorXSLTImplTest extends TestUtils {
   private final ResumeUtils resumeUtils = new ResumeUtils();

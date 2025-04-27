@@ -6,9 +6,6 @@ import org.xml.sax.helpers.DefaultHandler;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author Roman Khmelichek
- */
 public class Role extends ResumeElement {
   private static final String ELEMENT_NAME = "role";
 

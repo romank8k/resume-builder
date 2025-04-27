@@ -11,9 +11,6 @@ import jakarta.inject.Singleton;
 import java.io.*;
 import java.util.Date;
 
-/**
- * @author Roman Khmelichek
- */
 @Singleton
 public class InputFileResolverImpl implements InputFileResolver {
   private final String resumeXmlPath;

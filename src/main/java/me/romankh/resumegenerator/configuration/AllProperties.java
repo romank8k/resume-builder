@@ -5,9 +5,6 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * @author Roman Khmelichek
- */
 @Slf4j
 public class AllProperties {
   private final Map<String, Property> propertyNameMap = new HashMap<>();

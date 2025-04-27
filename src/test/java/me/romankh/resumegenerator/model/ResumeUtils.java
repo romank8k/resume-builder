@@ -3,9 +3,6 @@ package me.romankh.resumegenerator.model;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 
-/**
- * @author Roman Khmelichek
- */
 public class ResumeUtils {
   public JAXBContext buildResumeJAXBContext() throws JAXBException {
     return JAXBContext.newInstance(

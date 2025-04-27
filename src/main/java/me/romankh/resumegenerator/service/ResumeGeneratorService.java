@@ -10,9 +10,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-/**
- * @author Roman Khmelichek
- */
 @ImplementedBy(ResumeGeneratorXSLTImpl.class)
 public interface ResumeGeneratorService {
   void render(OutputStream pdfOs) throws Exception;

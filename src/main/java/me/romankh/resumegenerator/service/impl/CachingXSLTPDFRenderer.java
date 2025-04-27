@@ -13,9 +13,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.util.Date;
 
-/**
- * @author Roman Khmelichek
- */
 @Singleton
 public class CachingXSLTPDFRenderer extends AbstractCachingPDFRenderer {
   private final String resumeXmlPath;

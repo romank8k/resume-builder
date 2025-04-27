@@ -8,9 +8,6 @@ import org.xml.sax.helpers.XMLReaderFactory;
 import java.io.IOException;
 import java.io.InputStream;
 
-/**
- * @author Roman Khmelichek
- */
 public class ResumeParser extends ResumeElement {
   private static final String ELEMENT_NAME = "resume";
 

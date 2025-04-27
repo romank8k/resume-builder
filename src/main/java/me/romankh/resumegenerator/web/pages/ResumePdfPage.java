@@ -10,9 +10,6 @@ import java.io.InputStream;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
 
-/**
- * @author Roman Khmelichek
- */
 @Slf4j
 public class ResumePdfPage {
     private final CachingPDFRenderer cachingPdfRenderer;

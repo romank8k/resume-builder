@@ -8,9 +8,6 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlValue;
 import java.util.List;
 
-/**
- * @author Roman Khmelichek
- */
 @XmlRootElement(name = "markdown")
 public class MarkdownTag extends Tag {
   @XmlValueExtension

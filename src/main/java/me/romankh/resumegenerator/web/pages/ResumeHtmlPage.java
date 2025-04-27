@@ -13,9 +13,6 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * @author Roman Khmelichek
- */
 public class ResumeHtmlPage {
   private static final Pattern CAMEL_CASE_PATTERN = Pattern.compile("([A-Z][a-z]*)");
 

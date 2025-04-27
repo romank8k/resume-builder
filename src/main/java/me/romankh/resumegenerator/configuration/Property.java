@@ -2,9 +2,6 @@ package me.romankh.resumegenerator.configuration;
 
 import com.google.inject.TypeLiteral;
 
-/**
- * @author Roman Khmelichek
- */
 public enum Property {
   RESUME_XML_PATH(
       "resumeXmlPath",

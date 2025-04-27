@@ -1,8 +1,5 @@
 package me.romankh.resumegenerator.parser;
 
-/**
- * @author Roman Khmelichek
- */
 public enum Html5VoidTag {
   AREA("area"),
   BASE("base"),

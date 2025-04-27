@@ -6,9 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 import java.io.*;
 import java.net.URL;
 
-/**
- * @author Roman Khmelichek
- */
 @Slf4j
 public class TestUtils {
   private static final ClassLoader classLoader = TestUtils.class.getClassLoader();

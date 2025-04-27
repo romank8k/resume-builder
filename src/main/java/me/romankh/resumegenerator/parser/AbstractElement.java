@@ -1,8 +1,5 @@
 package me.romankh.resumegenerator.parser;
 
-/**
- * @author Roman Khmelichek
- */
 public class AbstractElement {
   protected final String name;
 

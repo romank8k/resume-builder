@@ -23,9 +23,6 @@ import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.List;
 
-/**
- * @author Roman Khmelichek
- */
 public class HTMLHandler implements DomHandler<String, JAXBResult> {
   private static final TransformerFactory tFactory = TransformerFactory.newInstance();
 

@@ -11,9 +11,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * @author Roman Khmelichek
- */
 @Slf4j
 public abstract class ResumeElement extends DefaultHandler {
   protected final DefaultHandler parent;

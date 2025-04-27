@@ -6,9 +6,6 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-/**
- * @author Roman Khmelichek
- */
 abstract class AbstractCachingPDFRenderer implements CachingPDFRenderer {
   void writeCachedBytes(byte[] cachedPdfBytes, OutputStream os) throws IOException {
     ByteArrayInputStream cachedInputStream = new ByteArrayInputStream(cachedPdfBytes);

@@ -8,9 +8,6 @@ import jakarta.xml.bind.JAXBException;
 import java.io.IOException;
 import java.io.InputStream;
 
-/**
- * @author Roman Khmelichek
- */
 public interface ResumeFactory {
   public ResumeParser buildSAXResumeModelFromXMLStream(InputStream is)
       throws IOException, SAXException;

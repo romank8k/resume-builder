@@ -15,9 +15,6 @@ import java.io.StringWriter;
 
 import static org.testng.Assert.*;
 
-/**
- * @author Roman Khmelichek
- */
 public class ResumeMarshallingTest extends TestUtils {
   private final ResumeUtils resumeUtils = new ResumeUtils();
 

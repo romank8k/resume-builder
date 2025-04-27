@@ -5,9 +5,6 @@ import org.xml.sax.helpers.DefaultHandler;
 
 import java.util.List;
 
-/**
- * @author Roman Khmelichek
- */
 public class Education extends ResumeElement {
   private static final String ELEMENT_NAME = "education";
 

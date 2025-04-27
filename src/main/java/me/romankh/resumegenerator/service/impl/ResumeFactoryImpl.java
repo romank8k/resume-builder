@@ -18,9 +18,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-/**
- * @author Roman Khmelichek
- */
 @Singleton
 public class ResumeFactoryImpl implements ResumeFactory {
   private final JAXBContext jaxbResumeContext;

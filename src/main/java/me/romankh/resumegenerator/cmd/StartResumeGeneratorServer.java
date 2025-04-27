@@ -18,9 +18,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author Roman Khmelichek
- */
 public class StartResumeGeneratorServer {
   public static class Arguments {
     @Parameter(required = false, description = "Configuration properties file")

@@ -2,9 +2,6 @@ package me.romankh.resumegenerator.configuration;
 
 import java.lang.annotation.Annotation;
 
-/**
- * @author Roman Khmelichek
- */
 public class PropImpl implements Prop {
   private final Property value;
 

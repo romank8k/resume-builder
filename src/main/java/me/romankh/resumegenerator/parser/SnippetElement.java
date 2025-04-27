@@ -6,9 +6,6 @@ import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
 
-/**
- * @author Roman Khmelichek
- */
 public class SnippetElement extends ResumeElement {
   private String html;
   private StringBuilder htmlBuilder;

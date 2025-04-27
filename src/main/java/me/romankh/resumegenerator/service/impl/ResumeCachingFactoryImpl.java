@@ -13,9 +13,6 @@ import jakarta.inject.Singleton;
 import java.io.IOException;
 import java.util.Date;
 
-/**
- * @author Roman Khmelichek
- */
 @Singleton
 @Slf4j
 public class ResumeCachingFactoryImpl implements ResumeCachingFactory {

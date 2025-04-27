@@ -3,9 +3,6 @@ package me.romankh.resumegenerator.parser;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
 
-/**
- * @author Roman Khmelichek
- */
 public class Content extends ResumeElement {
   private static final String ELEMENT_NAME = "content";
 

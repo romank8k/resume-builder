@@ -23,9 +23,6 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Date;
 
-/**
- * @author Roman Khmelichek
- */
 @Singleton
 @Slf4j
 public class ResumeGeneratorXSLTImpl implements ResumeGeneratorService {
