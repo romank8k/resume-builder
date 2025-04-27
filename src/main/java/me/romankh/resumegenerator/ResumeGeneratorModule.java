@@ -18,7 +18,6 @@ import me.romankh.resumegenerator.configuration.Property;
 import me.romankh.resumegenerator.configuration.converters.CommaDelimitedListTypeConverter;
 import me.romankh.resumegenerator.service.*;
 import me.romankh.resumegenerator.service.impl.*;
-import me.romankh.resumegenerator.web.resource.ApiResource;
 import me.romankh.resumegenerator.web.resource.ResumeHtmlResource;
 import me.romankh.resumegenerator.web.resource.ResumePdfResource;
 import org.gwizard.logging.LoggingConfig;
@@ -159,12 +158,10 @@ public class ResumeGeneratorModule extends AbstractModule {
 
   public void bindWebServices() {
     bind(WebServer.class).to(ResumeGeneratorWebServer.class);
-    bind(ApiResource.class);
     bind(ResumeHtmlResource.class);
     bind(ResumePdfResource.class);
   }
 
-  @SuppressWarnings("deprecation")
   private void bindServices() {
     bind(ResumeGeneratorService.class).annotatedWith(XSLT.class).to(ResumeGeneratorXSLTImpl.class);
     bind(CachingPDFRenderer.class).annotatedWith(XSLT.class).to(CachingXSLTPDFRenderer.class);
