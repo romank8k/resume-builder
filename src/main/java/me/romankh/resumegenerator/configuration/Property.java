@@ -2,33 +2,10 @@ package me.romankh.resumegenerator.configuration;
 
 import com.google.inject.TypeLiteral;
 
-import java.util.List;
-
 /**
  * @author Roman Khmelichek
  */
 public enum Property {
-  HTTP_BIND_ADDRESS(
-      "httpBindAddress",
-      "The address to which the HTTP server should bind to",
-      new TypeLiteral<String>() {},
-      "127.0.0.1"
-  ),
-
-  HTTP_PORT(
-      "httpPort",
-      "HTTP Server Port",
-      new TypeLiteral<Integer>() {},
-      "8080"
-  ),
-
-  HTTP_CONTEXT_PATH(
-      "httpContextPath",
-      "The servlet context path",
-      new TypeLiteral<String>() {},
-      "/"
-  ),
-
   RESUME_XML_PATH(
       "resumeXmlPath",
       "Path to the XML resume",
@@ -48,20 +25,6 @@ public enum Property {
       "Whether to show phone, address, and email on web versions of resume",
       new TypeLiteral<Boolean>() {},
       "false"
-  ),
-
-  A_LIST_OF_INTS(
-      "aListOfInts",
-      "Just a list of integers",
-      new TypeLiteral<List<Integer>>() {},
-      "0, 1, 42"
-  ),
-
-  A_LIST_OF_STRINGS(
-      "aListOfStrings",
-      "Just a list of strings",
-      new TypeLiteral<List<String>>() {},
-      "hello, world"
   ),
   ;
 

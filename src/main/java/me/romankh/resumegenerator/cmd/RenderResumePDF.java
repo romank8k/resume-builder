@@ -56,11 +56,6 @@ public class RenderResumePDF {
       ResumeGeneratorService resumeGeneratorService = injector.getInstance(Key.get(ResumeGeneratorService.class,
           XSLT.class));
 
-      List<Integer> aListOfInts = injector.getInstance(Key.get(new TypeLiteral<List<Integer>>(){},
-          new PropImpl(Property.A_LIST_OF_INTS)));
-      List<String> aListOfStrings = injector.getInstance(Key.get(new TypeLiteral<List<String>>(){},
-          new PropImpl(Property.A_LIST_OF_STRINGS)));
-
       // We assume the input filename has some sort of extension,
       // such as ".xml" and our output file will have the same name,
       // but with the extension ".pdf".
