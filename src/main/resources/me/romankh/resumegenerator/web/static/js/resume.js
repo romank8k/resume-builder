@@ -48,17 +48,10 @@ window.addEventListener('load', () => {
         queue: false
     };
 
-    (() => {
-        // Add extra pixels to align with the sidebar.
-        const extra = parseInt($sidebar.css('margin-top'), 10);
-
-        new bootstrap.ScrollSpy('#resume-content', {
-            target: '#resume-sidebar',
-            // Add 5 extra pixels to help active sidebar labels align correctly on FireFox.
-            offset: mastheadTotalMinHeight + extra + 5,
-            smoothScroll: true
-        });
-    })();
+    const scrollSpy = new bootstrap.ScrollSpy('#resume-content', {
+        target: '#resume-sidebar',
+        smoothScroll: true
+    });
 
     const preventDefault = (e) => {
         e = e || window.event;
@@ -93,12 +86,7 @@ window.addEventListener('load', () => {
             ).done(() => {
                 isTransitioning = false;
                 isMastheadShown = false;
-
-                var dataSpyList = [].slice.call(document.querySelectorAll('[data-bs-spy="scroll"]'))
-                dataSpyList.forEach(function (dataSpyEl) {
-                    bootstrap.ScrollSpy.getInstance(dataSpyEl)
-                        .refresh()
-                });
+                scrollSpy.refresh();
             });
         }
     };
@@ -121,12 +109,7 @@ window.addEventListener('load', () => {
             ).done(() => {
                 isTransitioning = false;
                 isMastheadShown = true;
-
-                var dataSpyList = [].slice.call(document.querySelectorAll('[data-bs-spy="scroll"]'))
-                dataSpyList.forEach(function (dataSpyEl) {
-                    bootstrap.ScrollSpy.getInstance(dataSpyEl)
-                        .refresh()
-                });
+                scrollSpy.refresh();
             });
         }
     };
