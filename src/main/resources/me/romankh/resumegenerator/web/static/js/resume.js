@@ -48,7 +48,7 @@ window.addEventListener('load', () => {
         queue: false
     };
 
-    const scrollSpy = new bootstrap.ScrollSpy('#resume-content', {
+    new bootstrap.ScrollSpy('#resume-content', {
         target: '#resume-sidebar',
         smoothScroll: true
     });
@@ -86,7 +86,6 @@ window.addEventListener('load', () => {
             ).done(() => {
                 isTransitioning = false;
                 isMastheadShown = false;
-                scrollSpy.refresh();
             });
         }
     };
@@ -109,7 +108,6 @@ window.addEventListener('load', () => {
             ).done(() => {
                 isTransitioning = false;
                 isMastheadShown = true;
-                scrollSpy.refresh();
             });
         }
     };
