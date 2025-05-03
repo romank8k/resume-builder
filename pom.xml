@@ -14,6 +14,7 @@
     <jdk.version>24</jdk.version>
 
     <dependency.version.jetty>12.0.8</dependency.version.jetty>
+    <dependency.version.lombok>1.18.38</dependency.version.lombok>
   </properties>
 
   <build>
@@ -25,6 +26,14 @@
         <configuration>
           <source>${jdk.version}</source>
           <target>${jdk.version}</target>
+
+          <annotationProcessorPaths>
+            <path>
+              <groupId>org.projectlombok</groupId>
+              <artifactId>lombok</artifactId>
+              <version>${dependency.version.lombok}</version>
+            </path>
+          </annotationProcessorPaths>
         </configuration>
       </plugin>
 
@@ -187,7 +196,7 @@
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-      <version>1.18.38</version>
+      <version>${dependency.version.lombok}</version>
       <scope>provided</scope>
     </dependency>
 
