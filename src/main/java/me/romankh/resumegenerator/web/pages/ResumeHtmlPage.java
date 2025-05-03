@@ -87,13 +87,13 @@ public class ResumeHtmlPage {
                     Section section = new Section(sectionName, sectionId, Education.class);
                     for (Institution institution : education.getInstitutions()) {
                         String subSectionName = institution.getName();
-                        String subSectionId = generateSectionId("institution-", institution.getName(), "");
+                        String subSectionId = generateSectionId("institution", institution.getName());
 
                         Section institutionSection = new Section(subSectionName, subSectionId, Institution.class);
                         for (Degree degree : institution.getDegrees()) {
                             institutionSection.addSubSection(new Section(
                                     degree.getTitle(),
-                                    generateSectionId("degree-", degree.getTitle(), ""),
+                                    generateSectionId("degree", degree.getTitle(), institution.getName()),
                                     Degree.class));
                         }
                         section.addSubSection(institutionSection);
@@ -119,13 +119,13 @@ public class ResumeHtmlPage {
                     Section section = new Section(sectionName, sectionId, Experience.class);
                     for (Job job : experience.getJobs()) {
                         String subSectionName = job.getEmployer();
-                        String subSectionId = generateSectionId("employer-", job.getEmployer(), "");
+                        String subSectionId = generateSectionId("employer", job.getEmployer());
 
                         Section jobSection = new Section(subSectionName, subSectionId, Job.class);
                         for (Role role : job.getRoles()) {
                             jobSection.addSubSection(new Section(
                                     role.getTitle(),
-                                    generateSectionId("role-", role.getTitle(), ""),
+                                    generateSectionId("role", role.getTitle(), job.getEmployer()),
                                     Role.class));
                         }
                         section.addSubSection(jobSection);
@@ -138,10 +138,15 @@ public class ResumeHtmlPage {
         return sectionList;
     }
 
-    public String generateSectionId(String prefix, String name, String postfix) {
-        StringBuilder sb = new StringBuilder(prefix);
-        sb.append(name.toLowerCase().replaceAll("[^0-9a-z]", ""));
-        sb.append(postfix);
+    public String generateSectionId(String... names) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < names.length; i++) {
+            String section = names[i];
+            sb.append(section.toLowerCase().replaceAll("[^0-9a-z]", ""));
+            if (i < names.length - 1) {
+                sb.append("-");
+            }
+        }
         return sb.toString();
     }
 
@@ -175,7 +180,7 @@ public class ResumeHtmlPage {
     }
 
     public String getObjectiveSectionId() {
-        return generateSectionId("section", Objective.class.getSimpleName(), "");
+        return generateSectionId("section", Objective.class.getSimpleName());
     }
 
     public String getSummaryOfQualificationsSectionName() {
@@ -183,7 +188,7 @@ public class ResumeHtmlPage {
     }
 
     public String getSummaryOfQualificationsSectionId() {
-        return generateSectionId("section", SummaryOfQualifications.class.getSimpleName(), "");
+        return generateSectionId("section", SummaryOfQualifications.class.getSimpleName());
     }
 
     public String getEducationSectionName() {
@@ -191,7 +196,7 @@ public class ResumeHtmlPage {
     }
 
     public String getEducationSectionId() {
-        return generateSectionId("section", Education.class.getSimpleName(), "");
+        return generateSectionId("section", Education.class.getSimpleName());
     }
 
     public String getAwardsSectionName() {
@@ -199,7 +204,7 @@ public class ResumeHtmlPage {
     }
 
     public String getAwardsSectionId() {
-        return generateSectionId("section", Awards.class.getSimpleName(), "");
+        return generateSectionId("section", Awards.class.getSimpleName());
     }
 
     public String getRelevantCoursesSectionName() {
@@ -207,7 +212,7 @@ public class ResumeHtmlPage {
     }
 
     public String getRelevantCoursesSectionId() {
-        return generateSectionId("section", RelevantCourses.class.getSimpleName(), "");
+        return generateSectionId("section", RelevantCourses.class.getSimpleName());
     }
 
     public String getProjectsSectionName() {
@@ -215,7 +220,7 @@ public class ResumeHtmlPage {
     }
 
     public String getProjectsSectionId() {
-        return generateSectionId("section", Projects.class.getSimpleName(), "");
+        return generateSectionId("section", Projects.class.getSimpleName());
     }
 
     public String getExperienceSectionName() {
@@ -223,7 +228,7 @@ public class ResumeHtmlPage {
     }
 
     public String getExperienceSectionId() {
-        return generateSectionId("section", Experience.class.getSimpleName(), "");
+        return generateSectionId("section", Experience.class.getSimpleName());
     }
 
     public String getResumePdfPageUrl() {

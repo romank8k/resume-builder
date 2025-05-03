@@ -10,7 +10,7 @@
 
   <div>
     <c:forEach var="institution" items="${model.resume.content.education.institutions}">
-      <div id="${model.generateSectionId("institution-", institution.name, "")}"
+      <div id="${model.generateSectionId("institution", institution.name)}"
            class="resume-secondary-section">
         <div class="clearfix">
           <span class="float-start resume-institution">
@@ -22,7 +22,7 @@
         </div>
 
         <c:forEach var="degree" items="${institution.degrees}">
-            <div id="${model.generateSectionId("degree-", degree.title, "")}"
+            <div id="${model.generateSectionId("degree", degree.title, institution.name)}"
                  class="resume-tertiary-section">
             <div class="clearfix">
               <span class="float-start">

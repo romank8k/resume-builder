@@ -10,7 +10,7 @@
 
   <div>
     <c:forEach var="job" items="${model.resume.content.experience.jobs}">
-      <div id="${model.generateSectionId("employer-", job.employer, "")}"
+      <div id="${model.generateSectionId("employer", job.employer)}"
            class="resume-secondary-section">
         <div class="clearfix">
           <span class="float-start resume-employer">
@@ -21,10 +21,24 @@
           </span>
         </div>
 
-        <c:set scope="request"
-               var="rolesList"
-               value="${job.roles}"/>
-        <jsp:include page="roles.jsp"/>
+        <c:forEach var="role" items="${job.roles}">
+          <div id="${model.generateSectionId("role", role.title, job.employer)}"
+               class="resume-tertiary-section">
+            <div class="clearfix">
+              <span class="float-start">
+                <strong><em>${role.title}</em></strong>
+              </span>
+              <span class="float-end">
+                <strong>${role.timespan}</strong>
+              </span>
+            </div>
+
+            <c:set scope="request"
+                   var="snippetList"
+                   value="${role.accomplishments}"/>
+            <jsp:include page="snippets.jsp"/>
+          </div>
+        </c:forEach>
       </div>
     </c:forEach>
   </div>
