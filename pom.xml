@@ -6,7 +6,7 @@
 
   <groupId>me.romankh</groupId>
   <artifactId>resumegenerator</artifactId>
-  <version>1.0</version>
+  <version>1.0-SNAPSHOT</version>
   <name>Resume Generator</name>
   <packaging>jar</packaging>
 
