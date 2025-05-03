@@ -176,10 +176,10 @@ window.addEventListener('load', () => {
     };
 
     const registerScrollListeners = () => {
-        window.addEventListener('wheel', wheelHandler, false);
+        window.addEventListener('wheel', wheelHandler, { passive: false });
         window.addEventListener('touchmove', touchHandler, { passive: false });
         document.addEventListener('keydown', keydown);
-        window.addEventListener('scroll', collapseMasthead);
+        window.addEventListener('scroll', collapseMasthead, { passive: false });
     };
 
     // Call last.
