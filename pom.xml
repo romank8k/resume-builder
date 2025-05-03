@@ -13,6 +13,9 @@
   <properties>
     <jdk.version>24</jdk.version>
 
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
     <dependency.version.jetty>12.0.8</dependency.version.jetty>
     <dependency.version.lombok>1.18.38</dependency.version.lombok>
   </properties>
