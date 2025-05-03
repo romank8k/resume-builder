@@ -8,64 +8,64 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CommaDelimitedListTypeConverter implements TypeConverter {
-  public List<?> convert(String value, TypeLiteral<?> toType) {
-    Class listClass;
-    try {
-      TypeLiteral<?> listType = toType.getReturnType(List.class.getMethod("get", int.class));
-      listClass = listType.getRawType();
-    } catch (NoSuchMethodException e) {
-      throw new RuntimeException(e);
+    public List<?> convert(String value, TypeLiteral<?> toType) {
+        Class listClass;
+        try {
+            TypeLiteral<?> listType = toType.getReturnType(List.class.getMethod("get", int.class));
+            listClass = listType.getRawType();
+        } catch (NoSuchMethodException e) {
+            throw new RuntimeException(e);
+        }
+
+        String[] values = value.split("\\s*,\\s*");
+        if (listClass.equals(String.class)) {
+            return Arrays.asList(values);
+        } else if (listClass.equals(Integer.class)) {
+            return buildIntList(values);
+        } else if (listClass.equals(Long.class)) {
+            return buildLongList(values);
+        } else if (listClass.equals(Float.class)) {
+            return buildFloatList(values);
+        } else if (listClass.equals(Double.class)) {
+            return buildDoubleList(values);
+        } else {
+            return null;
+        }
     }
 
-    String[] values = value.split("\\s*,\\s*");
-    if (listClass.equals(String.class)) {
-      return Arrays.asList(values);
-    } else if (listClass.equals(Integer.class)) {
-      return buildIntList(values);
-    } else if (listClass.equals(Long.class)) {
-      return buildLongList(values);
-    } else if (listClass.equals(Float.class)) {
-      return buildFloatList(values);
-    } else if (listClass.equals(Double.class)) {
-      return buildDoubleList(values);
-    } else {
-      return null;
-    }
-  }
+    public List<Integer> buildIntList(String[] values) {
+        List<Integer> valueList = new ArrayList<>();
+        for (String val : values) {
+            valueList.add(Integer.parseInt(val));
+        }
 
-  public List<Integer> buildIntList(String[] values) {
-    List<Integer> valueList = new ArrayList<>();
-    for (String val : values) {
-      valueList.add(Integer.parseInt(val));
+        return valueList;
     }
 
-    return valueList;
-  }
+    public List<Long> buildLongList(String[] values) {
+        List<Long> valueList = new ArrayList<>();
+        for (String val : values) {
+            valueList.add(Long.parseLong(val));
+        }
 
-  public List<Long> buildLongList(String[] values) {
-    List<Long> valueList = new ArrayList<>();
-    for (String val : values) {
-      valueList.add(Long.parseLong(val));
+        return valueList;
     }
 
-    return valueList;
-  }
+    public List<Float> buildFloatList(String[] values) {
+        List<Float> valueList = new ArrayList<>();
+        for (String val : values) {
+            valueList.add(Float.parseFloat(val));
+        }
 
-  public List<Float> buildFloatList(String[] values) {
-    List<Float> valueList = new ArrayList<>();
-    for (String val : values) {
-      valueList.add(Float.parseFloat(val));
+        return valueList;
     }
 
-    return valueList;
-  }
+    public List<Double> buildDoubleList(String[] values) {
+        List<Double> valueList = new ArrayList<>();
+        for (String val : values) {
+            valueList.add(Double.parseDouble(val));
+        }
 
-  public List<Double> buildDoubleList(String[] values) {
-    List<Double> valueList = new ArrayList<>();
-    for (String val : values) {
-      valueList.add(Double.parseDouble(val));
+        return valueList;
     }
-
-    return valueList;
-  }
 }

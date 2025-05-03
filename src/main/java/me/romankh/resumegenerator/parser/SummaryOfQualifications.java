@@ -7,37 +7,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SummaryOfQualifications extends ResumeElement {
-  private static final String ELEMENT_NAME = "summary_of_qualifications";
+    private static final String ELEMENT_NAME = "summary_of_qualifications";
 
-  public SummaryOfQualifications(DefaultHandler parent, XMLReader parser) {
-    super(parent, parser, ELEMENT_NAME, null,
-        buildCompositeElementList(new CompositeElement<>(Qualification.class, Qualification.getElementName())));
-  }
-
-  public List<String> getQualifications() {
-    List<String> qualificationSnippets = new ArrayList<>();
-    List<Qualification> qualificationList = getCompositeElementByClass(Qualification.class).getResumeElementList();
-    if (qualificationList != null) {
-      for (Qualification qualification : qualificationList) {
-        qualificationSnippets.add(qualification.getHtml());
-      }
+    public SummaryOfQualifications(DefaultHandler parent, XMLReader parser) {
+        super(parent, parser, ELEMENT_NAME, null,
+                buildCompositeElementList(new CompositeElement<>(Qualification.class, Qualification.getElementName())));
     }
-    return qualificationSnippets;
-  }
 
-  public static class Qualification extends SnippetElement {
-    private static final String ELEMENT_NAME = "qualification";
+    public List<String> getQualifications() {
+        List<String> qualificationSnippets = new ArrayList<>();
+        List<Qualification> qualificationList = getCompositeElementByClass(Qualification.class).getResumeElementList();
+        if (qualificationList != null) {
+            for (Qualification qualification : qualificationList) {
+                qualificationSnippets.add(qualification.getHtml());
+            }
+        }
+        return qualificationSnippets;
+    }
 
-    public Qualification(DefaultHandler parent, XMLReader parser) {
-      super(parent, parser, ELEMENT_NAME);
+    public static class Qualification extends SnippetElement {
+        private static final String ELEMENT_NAME = "qualification";
+
+        public Qualification(DefaultHandler parent, XMLReader parser) {
+            super(parent, parser, ELEMENT_NAME);
+        }
+
+        public static String getElementName() {
+            return ELEMENT_NAME;
+        }
     }
 
     public static String getElementName() {
-      return ELEMENT_NAME;
+        return ELEMENT_NAME;
     }
-  }
-
-  public static String getElementName() {
-    return ELEMENT_NAME;
-  }
 }

@@ -6,18 +6,18 @@ import org.xml.sax.helpers.DefaultHandler;
 import java.util.List;
 
 public class RelevantCourses extends ResumeElement {
-  private static final String ELEMENT_NAME = "relevant_courses";
-  private static final String COURSE = "course";
+    private static final String ELEMENT_NAME = "relevant_courses";
+    private static final String COURSE = "course";
 
-  public RelevantCourses(DefaultHandler parent, XMLReader parser) {
-    super(parent, parser, ELEMENT_NAME, buildElementList(COURSE));
-  }
+    public RelevantCourses(DefaultHandler parent, XMLReader parser) {
+        super(parent, parser, ELEMENT_NAME, buildElementList(COURSE));
+    }
 
-  public List<String> getCourses() {
-    return getElementByName(COURSE).getValues();
-  }
+    public List<String> getCourses() {
+        return getElementByName(COURSE).getValues();
+    }
 
-  public static String getElementName() {
-    return ELEMENT_NAME;
-  }
+    public static String getElementName() {
+        return ELEMENT_NAME;
+    }
 }

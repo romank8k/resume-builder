@@ -9,68 +9,68 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class ResumeParser extends ResumeElement {
-  private static final String ELEMENT_NAME = "resume";
+    private static final String ELEMENT_NAME = "resume";
 
-  private int marginLeft;
-  private int marginRight;
-  private int marginTop;
-  private int marginBottom;
+    private int marginLeft;
+    private int marginRight;
+    private int marginTop;
+    private int marginBottom;
 
-  public ResumeParser(InputStream is) throws IOException, SAXException {
-    super(null, XMLReaderFactory.createXMLReader(), ELEMENT_NAME, buildElementList(),
-        buildCompositeElementList(
-            new CompositeElement<>(Header.class, Header.getElementName()),
-            new CompositeElement<>(Content.class, Content.getElementName())));
+    public ResumeParser(InputStream is) throws IOException, SAXException {
+        super(null, XMLReaderFactory.createXMLReader(), ELEMENT_NAME, buildElementList(),
+                buildCompositeElementList(
+                        new CompositeElement<>(Header.class, Header.getElementName()),
+                        new CompositeElement<>(Content.class, Content.getElementName())));
 
-    parser.setContentHandler(this);
-    parser.parse(new InputSource(is));
-  }
-
-  @Override
-  public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-    super.startElement(uri, localName, qName, attributes);
-
-    if (qName.equals("meta")) {
-      for (int i = 0; i < attributes.getLength(); i++) {
-        int margin = Integer.parseInt(attributes.getValue(i));
-        if (attributes.getQName(i).equals("margin-left")) {
-          marginLeft = margin;
-        } else if (attributes.getQName(i).equals("margin-right")) {
-          marginRight = margin;
-        } else if (attributes.getQName(i).equals("margin-top")) {
-          marginTop = margin;
-        } else if (attributes.getQName(i).equals("margin-bottom")) {
-          marginBottom = margin;
-        }
-      }
+        parser.setContentHandler(this);
+        parser.parse(new InputSource(is));
     }
-  }
 
-  public Header getHeader() {
-    return getCompositeElementByClass(Header.class).getValue();
-  }
+    @Override
+    public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+        super.startElement(uri, localName, qName, attributes);
 
-  public Content getContent() {
-    return getCompositeElementByClass(Content.class).getValue();
-  }
+        if (qName.equals("meta")) {
+            for (int i = 0; i < attributes.getLength(); i++) {
+                int margin = Integer.parseInt(attributes.getValue(i));
+                if (attributes.getQName(i).equals("margin-left")) {
+                    marginLeft = margin;
+                } else if (attributes.getQName(i).equals("margin-right")) {
+                    marginRight = margin;
+                } else if (attributes.getQName(i).equals("margin-top")) {
+                    marginTop = margin;
+                } else if (attributes.getQName(i).equals("margin-bottom")) {
+                    marginBottom = margin;
+                }
+            }
+        }
+    }
 
-  public static String getElementName() {
-    return ELEMENT_NAME;
-  }
+    public Header getHeader() {
+        return getCompositeElementByClass(Header.class).getValue();
+    }
 
-  public int getMarginLeft() {
-    return marginLeft;
-  }
+    public Content getContent() {
+        return getCompositeElementByClass(Content.class).getValue();
+    }
 
-  public int getMarginRight() {
-    return marginRight;
-  }
+    public static String getElementName() {
+        return ELEMENT_NAME;
+    }
 
-  public int getMarginTop() {
-    return marginTop;
-  }
+    public int getMarginLeft() {
+        return marginLeft;
+    }
 
-  public int getMarginBottom() {
-    return marginBottom;
-  }
+    public int getMarginRight() {
+        return marginRight;
+    }
+
+    public int getMarginTop() {
+        return marginTop;
+    }
+
+    public int getMarginBottom() {
+        return marginBottom;
+    }
 }

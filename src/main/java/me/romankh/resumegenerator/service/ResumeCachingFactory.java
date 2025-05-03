@@ -6,5 +6,5 @@ import org.xml.sax.SAXException;
 import java.io.IOException;
 
 public interface ResumeCachingFactory {
-  ResumeParser getResume() throws IOException, SAXException;
+    ResumeParser getResume() throws IOException, SAXException;
 }

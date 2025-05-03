@@ -12,10 +12,10 @@ import java.io.OutputStream;
 
 @ImplementedBy(ResumeGeneratorXSLTImpl.class)
 public interface ResumeGeneratorService {
-  void render(OutputStream pdfOs) throws Exception;
+    void render(OutputStream pdfOs) throws Exception;
 
-  void render(Resume resume, InputStream xslIs, InputStream xmlIs, OutputStream pdfOs)
-      throws TransformerException, FOPException, IOException;
+    void render(Resume resume, InputStream xslIs, InputStream xmlIs, OutputStream pdfOs)
+            throws TransformerException, FOPException, IOException;
 
-  InputStream transformToFo(InputStream xslIs, InputStream xmlIs) throws TransformerException;
+    InputStream transformToFo(InputStream xslIs, InputStream xmlIs) throws TransformerException;
 }

@@ -6,18 +6,18 @@ import org.xml.sax.helpers.DefaultHandler;
 import java.util.List;
 
 public class Awards extends ResumeElement {
-  private static final String ELEMENT_NAME = "awards";
+    private static final String ELEMENT_NAME = "awards";
 
-  public Awards(DefaultHandler parent, XMLReader parser) {
-    super(parent, parser, ELEMENT_NAME, buildElementList(),
-        buildCompositeElementList(new CompositeElement<>(Award.class, Award.getElementName())));
-  }
+    public Awards(DefaultHandler parent, XMLReader parser) {
+        super(parent, parser, ELEMENT_NAME, buildElementList(),
+                buildCompositeElementList(new CompositeElement<>(Award.class, Award.getElementName())));
+    }
 
-  public List<Award> getAwards() {
-    return getCompositeElementByClass(Award.class).getResumeElementList();
-  }
+    public List<Award> getAwards() {
+        return getCompositeElementByClass(Award.class).getResumeElementList();
+    }
 
-  public static String getElementName() {
-    return ELEMENT_NAME;
-  }
+    public static String getElementName() {
+        return ELEMENT_NAME;
+    }
 }
