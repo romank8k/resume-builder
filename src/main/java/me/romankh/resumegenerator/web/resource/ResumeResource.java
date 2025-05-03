@@ -40,7 +40,7 @@ public class ResumeResource {
     }
 
     @GET
-    @Path("/pdf")
+    @Path("/resume.pdf")
     @Produces("application/pdf")
     public Response pdf() {
         StreamingOutput stream;

@@ -227,6 +227,6 @@ public class ResumeHtmlPage {
     }
 
     public String getResumePdfPageUrl() {
-        return "pdf";
+        return "resume.pdf";
     }
 }
