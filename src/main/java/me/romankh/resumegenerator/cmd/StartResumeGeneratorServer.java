@@ -40,7 +40,7 @@ public class StartResumeGeneratorServer {
 
             final Injector injector = Guice.createInjector(
                     resumeGeneratorModule,
-                    new ConfigModule(new File("test.yml"), ResumeGeneratorConfig.class),
+                    new ConfigModule(new File("resume-generator.yml"), ResumeGeneratorConfig.class),
                     new LoggingModule(),
                     new JspRenderingModule(),
                     new RestModule("/web"),

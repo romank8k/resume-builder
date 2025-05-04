@@ -9,3 +9,8 @@ When running as an HTTP server, it's capable of transforming the XML resume docu
 The XML transformation (as well as the generated PDF) is cached after the first invocation.
 
 [1]: http://xmlgraphics.apache.org/fop/fo.html
+
+```
+docker run -it -p 8080:8080 -v "$(PWD)/../resume:/usr/local/opt/resume-generator/resume" resume-generator:latest \
+resume-generator resume/resume.config.properties
+```

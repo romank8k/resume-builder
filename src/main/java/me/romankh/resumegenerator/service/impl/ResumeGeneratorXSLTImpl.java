@@ -19,8 +19,8 @@ import javax.xml.transform.sax.SAXResult;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import java.io.*;
+import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.Date;
 
 @Singleton
@@ -59,8 +59,8 @@ public class ResumeGeneratorXSLTImpl implements ResumeGeneratorService {
     }
 
     FopFactory buildFopFactory() throws SAXException, IOException, URISyntaxException {
-        URL fopConfUrl = getClass().getClassLoader().getResource("fop.xconf");
-        FopConfParser fopConfParser = new FopConfParser(new File(fopConfUrl.toURI()));
+        InputStream fopConfIs = getClass().getClassLoader().getResourceAsStream("fop.xconf");
+        FopConfParser fopConfParser = new FopConfParser(fopConfIs, new URI("classpath:/fop.xconf"));
         FopFactoryBuilder fopFactoryBuilder = fopConfParser.getFopFactoryBuilder();
         return fopFactoryBuilder.build();
     }
@@ -107,17 +107,5 @@ public class ResumeGeneratorXSLTImpl implements ResumeGeneratorService {
         Transformer transformer = transformerFactory.newTransformer(xslSource);
         transformer.transform(xmlSource, result);
         return new ByteArrayInputStream(baos.toByteArray());
-    }
-
-    public static class ClasspathURIResolver implements URIResolver {
-        @Override
-        public Source resolve(String href, String base) throws TransformerException {
-            Source source = null;
-            InputStream inputStream = ClassLoader.getSystemResourceAsStream(href);
-            if (inputStream != null) {
-                source = new StreamSource(inputStream);
-            }
-            return source;
-        }
     }
 }

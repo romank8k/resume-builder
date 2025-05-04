@@ -5,13 +5,13 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>me.romankh</groupId>
-  <artifactId>resumegenerator</artifactId>
+  <artifactId>resume-generator</artifactId>
   <version>1.0-SNAPSHOT</version>
   <name>Resume Generator</name>
   <packaging>jar</packaging>
 
   <properties>
-    <jdk.version>24</jdk.version>
+    <jdk.version>17</jdk.version>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -76,6 +76,49 @@
           <artifactId>maven-clean-plugin</artifactId>
           <version>3.4.1</version>
         </plugin>
+
+        <plugin>
+          <groupId>io.fabric8</groupId>
+          <artifactId>docker-maven-plugin</artifactId>
+          <version>0.46.0</version>
+          <executions>
+            <execution>
+              <id>build</id>
+              <phase>package</phase>
+              <goals>
+                <goal>build</goal>
+              </goals>
+            </execution>
+
+            <execution>
+              <id>start</id>
+              <phase>pre-integration-test</phase>
+              <goals>
+                <goal>start</goal>
+              </goals>
+            </execution>
+
+            <execution>
+              <id>stop</id>
+              <phase>post-integration-test</phase>
+              <goals>
+                <goal>stop</goal>
+              </goals>
+            </execution>
+
+            <execution>
+              <id>remove</id>
+              <phase>clean</phase>
+              <goals>
+                <goal>remove</goal>
+              </goals>
+            </execution>
+          </executions>
+          <configuration>
+            <removeVolumes>true</removeVolumes>
+            <containerNamePattern>%n-%t-%i</containerNamePattern>
+          </configuration>
+        </plugin>
       </plugins>
     </pluginManagement>
 
@@ -123,11 +166,12 @@
         <executions>
           <execution>
             <id>copy-dependencies</id>
-            <phase>package</phase>
+            <phase>prepare-package</phase>
             <goals>
               <goal>copy-dependencies</goal>
             </goals>
             <configuration>
+              <includeScope>runtime</includeScope>
               <outputDirectory>${project.build.directory}/dependencies</outputDirectory>
             </configuration>
           </execution>
@@ -135,27 +179,25 @@
       </plugin>
 
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-assembly-plugin</artifactId>
+        <groupId>io.fabric8</groupId>
+        <artifactId>docker-maven-plugin</artifactId>
         <configuration>
-          <archive>
-            <manifest>
-              <mainClass>me.romankh.resumegenerator.cmd.StartResumeGeneratorServer</mainClass>
-            </manifest>
-          </archive>
-          <descriptorRefs>
-            <descriptorRef>jar-with-dependencies</descriptorRef>
-          </descriptorRefs>
+          <images>
+            <image>
+              <name>resume-generator:%l</name>
+              <alias>resume-generator</alias>
+              <build>
+                <tags>
+                  <tag>latest</tag>
+                </tags>
+                <dockerFileDir>${project.basedir}/src/main/docker</dockerFileDir>
+                <assembly>
+                  <descriptor>assembly.xml</descriptor>
+                </assembly>
+              </build>
+            </image>
+          </images>
         </configuration>
-        <executions>
-          <execution>
-            <id>make-assembly</id>
-            <phase>package</phase>
-            <goals>
-              <goal>single</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
     </plugins>
   </build>

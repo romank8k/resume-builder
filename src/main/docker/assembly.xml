@@ -1,0 +1,30 @@
+<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2 http://maven.apache.org/xsd/assembly-1.1.2.xsd">
+    <files>
+        <file>
+            <source>${project.build.directory}/${project.artifactId}-${project.version}.jar</source>
+            <outputDirectory>.</outputDirectory>
+            <destName>${project.artifactId}.jar</destName>
+        </file>
+    </files>
+    <fileSets>
+        <fileSet>
+            <directory>${project.basedir}/fonts</directory>
+            <outputDirectory>fonts</outputDirectory>
+        </fileSet>
+
+        <fileSet>
+            <directory>${project.build.directory}/dependencies</directory>
+            <outputDirectory>lib</outputDirectory>
+        </fileSet>
+
+        <fileSet>
+            <directory>${project.basedir}</directory>
+            <outputDirectory>config</outputDirectory>
+            <includes>
+                <include>resume-generator.yml</include>
+            </includes>
+        </fileSet>
+    </fileSets>
+</assembly>
