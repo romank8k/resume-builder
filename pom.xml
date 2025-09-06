@@ -17,7 +17,7 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
     <dependency.version.jetty>12.0.8</dependency.version.jetty>
-    <dependency.version.lombok>1.18.38</dependency.version.lombok>
+    <dependency.version.lombok>1.18.40</dependency.version.lombok>
   </properties>
 
   <build>
@@ -207,7 +207,7 @@
       <dependency>
         <groupId>org.gwizard</groupId>
         <artifactId>gwizard-bom</artifactId>
-        <version>1.1</version>
+        <version>1.1.6</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -248,13 +248,13 @@
     <dependency>
       <groupId>org.apache.xmlgraphics</groupId>
       <artifactId>fop</artifactId>
-      <version>2.10</version>
+      <version>2.11</version>
     </dependency>
 
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-text</artifactId>
-      <version>1.13.1</version>
+      <version>1.14.0</version>
     </dependency>
 
     <dependency>
@@ -288,7 +288,7 @@
     <dependency>
       <groupId>net.sf.saxon</groupId>
       <artifactId>Saxon-HE</artifactId>
-      <version>12.5</version>
+      <version>12.8</version>
     </dependency>
 
     <dependency>
