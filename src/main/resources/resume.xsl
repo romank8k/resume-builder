@@ -108,7 +108,9 @@
 
                                     <xsl:with-param name="rightContent">
                                         <xsl:value-of select="header/address/street"/>
-                                        <xsl:text>, </xsl:text>
+                                        <xsl:if test="header/address/street != ''">
+                                            <xsl:text>, </xsl:text>
+                                        </xsl:if>
                                         <xsl:value-of select="header/address/apartment"/>
                                     </xsl:with-param>
                                     <xsl:with-param name="rightAttributes"></xsl:with-param>
