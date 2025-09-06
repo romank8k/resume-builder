@@ -43,7 +43,7 @@
             ${model.resume.header.phone}
           </span>
           <span class="float-end">
-            ${model.resume.header.address.street},
+            ${model.resume.header.address.street}<c:if test="${not empty model.resume.header.address.street}">,</c:if>
             ${model.resume.header.address.apartment}
           </span>
         </div>
