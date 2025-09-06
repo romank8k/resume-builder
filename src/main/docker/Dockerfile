@@ -1,10 +1,10 @@
-FROM almalinux/9-base:9.5
+FROM almalinux/10-base:10.0
 
 RUN dnf install -y --setopt=tsflags=nodocs \
-        java-17-openjdk && \
+        java-21-openjdk && \
     dnf clean all -y --enablerepo='*'
 
-ENV JAVA_HOME=/usr/lib/jvm/jre-17-openjdk
+ENV JAVA_HOME=/usr/lib/jvm/jre-21-openjdk
 
 ENV RESUME_GENERATOR_HOME=/usr/local/opt/resume-generator
 RUN mkdir -p $RESUME_GENERATOR_HOME
