@@ -60,6 +60,7 @@
     <xsl:param name="resumeHeaderBottomMargin" select="'14pt'"/>
 
     <xsl:param name="bulletSymbol" select="'&#x2022;'"/>
+    <xsl:param name="nestedBulletSymbol" select="'&#x00B7;'"/>
 
     <xsl:variable name="lowercase" select="'abcdefghijklmnopqrstuvwxyz'"/>
     <xsl:variable name="uppercase" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZ'"/>
@@ -511,5 +512,29 @@
 
     <xsl:template match="br">
         <fo:block></fo:block>
+    </xsl:template>
+
+    <xsl:template match="ul">
+        <fo:list-block provisional-distance-between-starts="5mm"
+                       provisional-label-separation="15mm">
+            <xsl:apply-templates/>
+        </fo:list-block>
+    </xsl:template>
+
+    <xsl:template match="li">
+        <fo:list-item space-after="{$listSpacing}">
+            <fo:list-item-label end-indent="label-end()">
+                <fo:block>
+                    <fo:inline>
+                        <xsl:value-of select="$nestedBulletSymbol"/>
+                    </fo:inline>
+                </fo:block>
+            </fo:list-item-label>
+            <fo:list-item-body start-indent="body-start()">
+                <fo:block>
+                    <xsl:apply-templates/>
+                </fo:block>
+            </fo:list-item-body>
+        </fo:list-item>
     </xsl:template>
 </xsl:stylesheet>
