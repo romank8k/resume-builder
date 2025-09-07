@@ -111,9 +111,7 @@
       </div>
 
       <div id="resume-footer">
-        <p class="float-end">
-          Made with <a href="https://github.com/romank8k/ResumeGenerator">Resume Generator</a>
-        </p>
+        <p class="float-end"></p>
         <p style="clear: both;"></p>
       </div>
     </div>
