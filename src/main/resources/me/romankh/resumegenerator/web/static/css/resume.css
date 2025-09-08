@@ -116,6 +116,11 @@ a:hover {
     padding: 5px 20px;
 }
 
+#resume-sidebar .nav > li {
+    display: block;
+    width: 100%;
+}
+
 #resume-sidebar .nav > li > a:focus,
 #resume-sidebar .nav > li > a:hover {
     text-decoration: none;
