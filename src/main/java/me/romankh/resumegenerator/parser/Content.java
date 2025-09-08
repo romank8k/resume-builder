@@ -14,6 +14,7 @@ public class Content extends ResumeElement {
                 new CompositeElement<>(Awards.class, Awards.getElementName()),
                 new CompositeElement<>(RelevantCourses.class, RelevantCourses.getElementName()),
                 new CompositeElement<>(Projects.class, Projects.getElementName()),
+                new CompositeElement<>(TechnicalSkills.class, TechnicalSkills.getElementName()),
                 new CompositeElement<>(Experience.class, Experience.getElementName())
         ));
     }
@@ -40,6 +41,10 @@ public class Content extends ResumeElement {
 
     public Projects getProjects() {
         return getCompositeElementByClass(Projects.class).getValue();
+    }
+
+    public TechnicalSkills getTechnicalSkills() {
+        return getCompositeElementByClass(TechnicalSkills.class).getValue();
     }
 
     public Experience getExperience() {

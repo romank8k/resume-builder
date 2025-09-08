@@ -112,6 +112,16 @@
                     "html" : "Project two"
                 } ]
             },
+            "technical_skills" : {
+                "include" : true,
+                "skills" : [ {
+                    "include" : true,
+                    "html" : "Kubernetes"
+                }, {
+                    "include" : false,
+                    "html" : "Docker"
+                } ]
+            },
             "experience" : {
                 "include" : true,
                 "jobs" : [ {

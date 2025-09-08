@@ -18,8 +18,8 @@ public class Projects extends ResumeElement {
         List<String> projectSnippets = new ArrayList<>();
         List<Project> projectList = getCompositeElementByClass(Project.class).getResumeElementList();
         if (projectList != null) {
-            for (Project qualification : projectList) {
-                projectSnippets.add(qualification.getHtml());
+            for (Project project : projectList) {
+                projectSnippets.add(project.getHtml());
             }
         }
         return projectSnippets;

@@ -256,17 +256,6 @@ public class ResumeMarshallingTest extends TestUtils {
     assertEquals(relevantCoursesSection.getCourses().get(4).isInclude(), false);
     assertEquals(relevantCoursesSection.getCourses().get(4).getCourse(), "Unix System Programming");
 
-    // Projects.
-    ProjectsSection projectsSection = resume.getContent().getProjectsSection();
-    assertNotNull(projectsSection);
-    assertEquals(projectsSection.isInclude(), true);
-    assertNotNull(projectsSection.getProjects());
-    assertEquals(projectsSection.getProjects().size(), 2);
-    assertEquals(projectsSection.getProjects().get(0).isInclude(), true);
-    assertEquals(projectsSection.getProjects().get(0).getProject(), "Project one");
-    assertEquals(projectsSection.getProjects().get(1).isInclude(), false);
-    assertEquals(projectsSection.getProjects().get(1).getProject(), "Project two");
-
     // Experience.
     ExperienceSection experienceSection = resume.getContent().getExperienceSection();
     assertNotNull(experienceSection);
@@ -287,5 +276,27 @@ public class ResumeMarshallingTest extends TestUtils {
     assertTrue(experienceSection.getJobs().get(0).getRoles().get(0).getRoleAccomplishments().get(0).isInclude());
     assertEquals(experienceSection.getJobs().get(0).getRoles().get(0).getRoleAccomplishments().get(0).getAccomplishment(),
         "Wrote <b>automation</b> and <b>software testing</b> tools.");
+
+      // Projects.
+      ProjectsSection projectsSection = resume.getContent().getProjectsSection();
+      assertNotNull(projectsSection);
+      assertEquals(projectsSection.isInclude(), true);
+      assertNotNull(projectsSection.getProjects());
+      assertEquals(projectsSection.getProjects().size(), 2);
+      assertEquals(projectsSection.getProjects().get(0).isInclude(), true);
+      assertEquals(projectsSection.getProjects().get(0).getProject(), "Project one");
+      assertEquals(projectsSection.getProjects().get(1).isInclude(), false);
+      assertEquals(projectsSection.getProjects().get(1).getProject(), "Project two");
+
+      // Technical Skills.
+      TechnicalSkillsSection technicalSkillsSection = resume.getContent().getTechnicalSkillsSection();
+      assertNotNull(technicalSkillsSection);
+      assertEquals(technicalSkillsSection.isInclude(), true);
+      assertNotNull(technicalSkillsSection.getSkills());
+      assertEquals(technicalSkillsSection.getSkills().size(), 2);
+      assertEquals(technicalSkillsSection.getSkills().get(0).isInclude(), true);
+      assertEquals(technicalSkillsSection.getSkills().get(0).getSkill(), "Kubernetes");
+      assertEquals(technicalSkillsSection.getSkills().get(1).isInclude(), false);
+      assertEquals(technicalSkillsSection.getSkills().get(1).getSkill(), "Docker");
   }
 }

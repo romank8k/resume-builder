@@ -24,6 +24,9 @@ public class Content {
     @XmlElement(name = "projects")
     private ProjectsSection projectsSection;
 
+    @XmlElement(name = "technical_skills")
+    private TechnicalSkillsSection technicalSkillsSection;
+
     public ObjectiveSection getObjectiveSection() {
         return objectiveSection;
     }
@@ -84,6 +87,15 @@ public class Content {
 
     public Content setProjectsSection(ProjectsSection projectsSection) {
         this.projectsSection = projectsSection;
+        return this;
+    }
+
+    public TechnicalSkillsSection getTechnicalSkillsSection() {
+        return technicalSkillsSection;
+    }
+
+    public Content setTechnicalSkillsSection(TechnicalSkillsSection technicalSkillsSection) {
+        this.technicalSkillsSection = technicalSkillsSection;
         return this;
     }
 }

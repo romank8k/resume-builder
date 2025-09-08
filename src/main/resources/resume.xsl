@@ -11,11 +11,12 @@
     <!-- Section Header Labels -->
     <xsl:param name="objectiveLabel" select="'Objective'"/>
     <xsl:param name="summaryOfQualificationsLabel" select="'Summary of Qualifications'"/>
-    <xsl:param name="projectsLabel" select="'Projects'"/>
     <xsl:param name="educationLabel" select="'Education'"/>
     <xsl:param name="awardsLabel" select="'Awards'"/>
     <xsl:param name="relevantCoursesLabel" select="'Relevant Courses'"/>
     <xsl:param name="experienceLabel" select="'Experience'"/>
+    <xsl:param name="projectsLabel" select="'Projects'"/>
+    <xsl:param name="technicalSkillsLabel" select="'Technical Skills'"/>
 
     <!-- Fonts -->
     <xsl:param name="resumeHeaderFontFamily">Roboto</xsl:param>
@@ -405,6 +406,34 @@
                         <fo:list-block provisional-distance-between-starts="5mm"
                                        provisional-label-separation="15mm">
                             <xsl:for-each select="projects/project[@include='true']">
+                                <xsl:call-template name="listItemTemplate">
+                                    <xsl:with-param name="bulleted" select="xs:boolean('true')"/>
+                                </xsl:call-template>
+                            </xsl:for-each>
+                        </fo:list-block>
+                    </xsl:if>
+                </fo:block>
+            </fo:table-cell>
+        </fo:table-row>
+    </xsl:template>
+
+    <!-- Technical Skills -->
+    <xsl:template match="technical_skills[@include='true']">
+        <fo:table-row>
+            <fo:table-cell>
+                <fo:block font-family="{$sectionHeaderFontFamily}"
+                          font-size="{$sectionHeaderFontSize}"
+                          font-weight="{$sectionHeaderFontWeight}">
+                    <xsl:value-of select="translate($technicalSkillsLabel, $lowercase, $uppercase)"/>
+                </fo:block>
+            </fo:table-cell>
+
+            <fo:table-cell>
+                <fo:block padding-bottom="{$sectionContentBottomPadding}">
+                    <xsl:if test="technical_skills">
+                        <fo:list-block provisional-distance-between-starts="5mm"
+                                       provisional-label-separation="15mm">
+                            <xsl:for-each select="technical_skills/project[@include='true']">
                                 <xsl:call-template name="listItemTemplate">
                                     <xsl:with-param name="bulleted" select="xs:boolean('true')"/>
                                 </xsl:call-template>

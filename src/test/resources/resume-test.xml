@@ -19,11 +19,7 @@
     <content>
         <objective include="true">
             <html>
-                Find a job as a
-                <b>
-                    <i>software</i>
-                    engineer
-                </b>
+                Find a job as a <b><i>software</i> engineer</b>
             </html>
         </objective>
 
@@ -156,6 +152,21 @@
                 </project>
             </projects>
         </projects>
+
+        <technical_skills include="true">
+            <skills>
+                <skill include="true">
+                    <html>
+                        Kubernetes
+                    </html>
+                </skill>
+                <skill include="false">
+                    <html>
+                        Docker
+                    </html>
+                </skill>
+            </skills>
+        </technical_skills>
 
         <experience include="true">
             <jobs>

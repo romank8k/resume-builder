@@ -111,6 +111,10 @@ public class ResumeHtmlPage {
                     String sectionName = getProjectsSectionName();
                     String sectionId = getProjectsSectionId();
                     sectionList.add(new Section(sectionName, sectionId, Projects.class));
+                } else if (TechnicalSkills.class.equals(compositeElementClass)) {
+                    String sectionName = getTechnicalSkillsSectionName();
+                    String sectionId = getTechnicalSkillsSectionId();
+                    sectionList.add(new Section(sectionName, sectionId, TechnicalSkills.class));
                 } else if (Experience.class.equals(compositeElementClass)) {
                     Experience experience = (Experience) compositeElement.getValue();
                     String sectionName = getExperienceSectionName();
@@ -221,6 +225,14 @@ public class ResumeHtmlPage {
 
     public String getProjectsSectionId() {
         return generateSectionId("section", Projects.class.getSimpleName());
+    }
+
+    public String getTechnicalSkillsSectionName() {
+        return formatCamelCaseName(TechnicalSkills.class.getSimpleName());
+    }
+
+    public String getTechnicalSkillsSectionId() {
+        return generateSectionId("section", TechnicalSkills.class.getSimpleName());
     }
 
     public String getExperienceSectionName() {

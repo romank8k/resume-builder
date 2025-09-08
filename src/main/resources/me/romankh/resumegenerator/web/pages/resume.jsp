@@ -106,6 +106,9 @@
             <c:when test="${section.sectionClass.simpleName eq 'Projects'}">
               <jsp:include page="sections/projects.jsp"></jsp:include>
             </c:when>
+            <c:when test="${section.sectionClass.simpleName eq 'TechnicalSkills'}">
+              <jsp:include page="sections/technicalSkills.jsp"></jsp:include>
+            </c:when>
           </c:choose>
         </c:forEach>
       </div>
