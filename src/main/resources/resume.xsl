@@ -430,10 +430,10 @@
 
             <fo:table-cell>
                 <fo:block padding-bottom="{$sectionContentBottomPadding}">
-                    <xsl:if test="technical_skills">
+                    <xsl:if test="skills">
                         <fo:list-block provisional-distance-between-starts="5mm"
                                        provisional-label-separation="15mm">
-                            <xsl:for-each select="technical_skills/project[@include='true']">
+                            <xsl:for-each select="skills/skill[@include='true']">
                                 <xsl:call-template name="listItemTemplate">
                                     <xsl:with-param name="bulleted" select="xs:boolean('true')"/>
                                 </xsl:call-template>
