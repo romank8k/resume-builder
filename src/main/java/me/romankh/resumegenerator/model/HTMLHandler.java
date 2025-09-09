@@ -114,12 +114,45 @@ public class HTMLHandler implements DomHandler<String, JAXBResult> {
 
     @Override
     public Source marshal(String n, ValidationEventHandler errorHandler) {
-        String xml = HTML_START_TAG + n.trim() + HTML_END_TAG;
-
-        // TODO: Must make sure this is valid XML and clean unexpected HTML tags here.
+        String escaped = escapeXMLChars(n.trim());
+        String xml = HTML_START_TAG + escaped + HTML_END_TAG;
 
         StringReader xmlReader = new StringReader(xml);
         return new StreamSource(xmlReader);
+    }
+
+    private String escapeXMLChars(String in) {
+        StringBuilder out = new StringBuilder();
+
+        boolean inTag = false;
+        for (int i = 0; i < in.length(); i++) {
+            char c = in.charAt(i);
+
+            if (c == '<' && !inTag) {
+                // Check if this starts a valid HTML tag.
+                if (i + 1 < in.length() && (Character.isLetter(in.charAt(i + 1)) || in.charAt(i + 1) == '/')) {
+                    inTag = true;
+                    out.append(c);
+                } else {
+                    out.append("&lt;");
+                }
+            } else if (c == '>' && inTag) {
+                inTag = false;
+                out.append(c);
+            } else if (c == '>' && !inTag) {
+                out.append("&gt;");
+            } else if (c == '"' && !inTag) {
+                out.append("&quot;");
+            } else if (c == '\'' && !inTag) {
+                out.append("&apos;");
+            } else if (c == '&') {
+                out.append("&amp;");
+            } else {
+                out.append(c);
+            }
+        }
+
+        return out.toString();
     }
 
     static JAXBContext createJAXBContext() {
