@@ -9,11 +9,11 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public interface ResumeFactory {
-    public ResumeParser buildSAXResumeModelFromXMLStream(InputStream is)
+    ResumeParser buildSAXResumeModelFromXMLStream(InputStream is)
             throws IOException, SAXException;
 
-    public Resume buildJAXBResumeModelFromXMLStream(InputStream is) throws JAXBException;
+    Resume buildJAXBResumeModelFromXMLStream(InputStream is) throws JAXBException;
 
-    public InputStream buildXMLStreamFromJAXBResumeModel(me.romankh.resumegenerator.model.Resume resume)
+    InputStream buildXMLStreamFromJAXBResumeModel(me.romankh.resumegenerator.model.Resume resume)
             throws JAXBException;
 }
