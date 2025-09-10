@@ -12,6 +12,8 @@ import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.StreamingOutput;
 import lombok.extern.slf4j.Slf4j;
 import me.romankh.resumegenerator.ResumeGeneratorConfig;
+import me.romankh.resumegenerator.parser.ResumeParser;
+import me.romankh.resumegenerator.service.ResumeCachingFactory;
 import me.romankh.resumegenerator.web.pages.ResumeHtmlPage;
 import me.romankh.resumegenerator.web.pages.ResumePdfPage;
 
@@ -23,13 +25,16 @@ import java.io.InputStream;
 public class ResumeResource {
     private final ResumeHtmlPage resumeHtmlPage;
     private final ResumePdfPage resumePdfPage;
+    private final ResumeCachingFactory resumeCachingFactory;
 
     @Inject
     public ResumeResource(ResumeGeneratorConfig cfg,
                           ResumeHtmlPage resumeHtmlPage,
-                          ResumePdfPage resumePdfPage) {
+                          ResumePdfPage resumePdfPage,
+                          ResumeCachingFactory resumeCachingFactory) {
         this.resumeHtmlPage = resumeHtmlPage;
         this.resumePdfPage = resumePdfPage;
+        this.resumeCachingFactory = resumeCachingFactory;
     }
 
     @GET
@@ -43,8 +48,15 @@ public class ResumeResource {
     @Path("/resume.pdf")
     @Produces("application/pdf")
     public Response pdf() {
+        String filename = "resume.pdf";
         StreamingOutput stream;
+
         try {
+            ResumeParser resume = resumeCachingFactory.getResume();
+            if (resume.getHeader() != null && resume.getHeader().getName() != null && !resume.getHeader().getName().isEmpty()) {
+                filename = resume.getHeader().getName().trim().toLowerCase().replaceAll("\\s+", "_") + "_resume.pdf";
+            }
+
             InputStream is = resumePdfPage.handler();
             stream = os -> {
                 try {
@@ -53,13 +65,13 @@ public class ResumeResource {
                     is.close();
                 }
             };
-        } catch (IOException e) {
+        } catch (Exception e) {
             log.error(e.getMessage(), e);
             throw new ViewException(new View("/error.jsp"));
         }
 
         Response.ResponseBuilder responseBuilder = Response.ok(stream)
-                .header("Content-Disposition", "inline; filename=\"resume.pdf\"")
+                .header("Content-Disposition", "inline; filename=\"" + filename + "\"")
                 .header("Content-Type", "application/pdf");
         return responseBuilder.build();
     }
