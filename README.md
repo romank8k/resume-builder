@@ -1,5 +1,5 @@
-Resume Generator
-================
+Resume Builder
+==============
 
 Transforms an XML resume document into a professional formatted PDF.
 The transformation is driven via an [XSL-FO stylesheet][1]

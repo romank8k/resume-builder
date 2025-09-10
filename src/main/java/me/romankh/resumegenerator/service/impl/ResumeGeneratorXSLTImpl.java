@@ -75,7 +75,7 @@ public class ResumeGeneratorXSLTImpl implements ResumeGeneratorService {
     public void render(Resume resume, InputStream xslIs, InputStream xmlIs, OutputStream pdfOs)
             throws TransformerException, FOPException, IOException {
         FOUserAgent foUserAgent = fopFactory.newFOUserAgent();
-        foUserAgent.setProducer("Resume Generator");
+        foUserAgent.setProducer("Resume Builder");
         foUserAgent.setCreator(resume.getResumeHeader().getName());
         foUserAgent.setAuthor(resume.getResumeHeader().getName());
         foUserAgent.setCreationDate(new Date());
