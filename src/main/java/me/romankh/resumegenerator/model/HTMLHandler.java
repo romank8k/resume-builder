@@ -60,7 +60,7 @@ public class HTMLHandler implements DomHandler<String, JAXBResult> {
     String handleHtml(Object value) throws Exception {
         if (value instanceof Element) {
             Element element = (Element) value;
-            return domToStr(element, false);
+            return domToStr(element, true);
         } else if (value instanceof XMLRoot) {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = dbf.newDocumentBuilder();
