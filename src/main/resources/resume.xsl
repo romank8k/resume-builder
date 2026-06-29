@@ -276,8 +276,7 @@
             <fo:table-cell>
                 <fo:block padding-bottom="{$sectionContentBottomPadding}">
                     <xsl:for-each select="jobs/job[@include='true']">
-                        <!-- Avoid splitting jobs across multiple pages. -->
-                        <fo:block page-break-inside="avoid">
+                        <fo:block>
                             <fo:block font-weight="bold">
                                 <xsl:call-template name="justifyLineTemplate">
                                     <xsl:with-param name="leftContent" select="employer"/>
